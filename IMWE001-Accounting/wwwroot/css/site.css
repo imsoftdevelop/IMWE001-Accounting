@@ -1,56 +1,72 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿.icon-black {
+    color:#000 !important;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+@font-face {
+    font-family: 'Aksorn';
+    src: url('../fonts/AksornBold_0_wt.eot');
+    src: url('../fonts/AksornBold_0_wt.eot?#iefix') format('embedded-opentype'), url('../fonts/AksornBold_0_wt.woff2') format('woff2'), url('../fonts/AksornBold_0_wt.woff') format('woff'), url('../fonts/AksornBold_0_wt.ttf') format('truetype'), url('AksornBold_0_wt.svg#AksornBold_0_wt') format('svg');
+    font-weight: bold;
+    font-style: normal;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+@font-face {
+    font-family: 'Aksorn';
+    src: url('../fonts/AksornRegular.eot');
+    src: url('../fonts/AksornRegular.eot?#iefix') format('embedded-opentype'), url('../fonts/AksornRegular.woff2') format('woff2'), url('../fonts/AksornRegular.woff') format('woff'),
+        url('../fonts/AksornRegular.ttf') format('truetype'), url('AksornRegular.svg#AksornRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+
+.aksorn-Bold {
+    font-family: 'Aksorn' !important;
+    font-weight: bold;
+    font-size: 1.4rem;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
+.aksorn {
+    font-family: 'Aksorn' !important;
+    font-size: 1.4rem;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+.cursor-pointer {
+    cursor: pointer !important;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+
+.f-0-6 {
+    font-size: 0.6rem !important;
+}
+
+.f-0-8 {
+    font-size: 0.8rem !important;
+}
+
+.f-1-0 {
+    font-size: 1.0rem !important;
+}
+
+.f-1-2 {
+    font-size: 1.2rem !important;
+}
+
+.f-1-4 {
+    font-size: 1.4rem !important;
+}
+
+.f-1-6 {
+    font-size: 1.6rem !important;
+}
+
+.f-1-8 {
+    font-size: 1.8rem !important;
+}
+
+.f-2-0 {
+    font-size: 2.0rem !important;
+}
+
+.f-2-2 {
+    font-size: 2.2rem !important;
 }
