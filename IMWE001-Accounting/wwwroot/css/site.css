@@ -79,13 +79,13 @@
 .title-page {
     font-family: 'Aksorn';
     font-size: 1.6rem;
-    margin: 0px 0px 30px 20px;
+    margin: 0px 0px 30px 0px;
 }
 
 .title-page-1 {
     font-family: 'Aksorn';
     font-size: 1.6rem;
-    margin: 0px 0px 10px 20px;
+    margin: 0px 0px 0px 0px;
 }
 
 .card-weaccount {
@@ -99,8 +99,12 @@
 .bg-softred {
     background: #fff2f8;
 }
-.badge-softyeelow {
+.badge-softyellow {
     color: #fea000 !important;
+    background: rgba(255,207,85,.2) !important;
+}
+.table-softyellow {
+    color: #000 !important;
     background: rgba(255,207,85,.2) !important;
 }
 .badge-softgray {
@@ -119,3 +123,54 @@
     color: #ed5564;
     background: rgba(237,85,100,.1);
 }
+.ul-width-10 {
+    width:10%;
+}
+.ul-width-12{
+    width: 12%;
+}
+.paging-active-subtitle {
+    color: #2898cb !important;
+    background: #f3fbfe !important;
+    border: 1px solid #ccd0d9 !important;
+}
+.paging-non-active-subtitle {
+    color: #000 !important;
+    background-color: #fff !important;
+    border: 1px solid #ccd0d9 !important;
+}
+.border-fix {
+    border: 1px solid #ccd0d9 !important;
+}
+.border-fix-table {
+   border: 1px solid #ccd0d9;
+}
+.dropdown-menu-search {
+    width:300px;
+}
+table.scroll tbody,
+table.scroll thead {
+    display: block;
+}
+
+thead tr th {
+    height: 30px;
+    line-height: 30px;
+    /*text-align: left;*/
+}
+
+table.scroll tbody {
+    height: calc((var(--vh,1vh) * 100) - 292px - 40px) !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+tbody {
+}
+
+    tbody td, thead th {
+    }
+
+        tbody td:last-child, thead th:last-child {
+            border-right: none;
+        }
