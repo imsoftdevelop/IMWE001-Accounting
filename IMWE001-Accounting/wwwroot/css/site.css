@@ -70,3 +70,52 @@
 .f-2-2 {
     font-size: 2.2rem !important;
 }
+
+.logo-auth {
+    height: 60px;
+    text-align:center !important;
+}
+
+.title-page {
+    font-family: 'Aksorn';
+    font-size: 1.6rem;
+    margin: 0px 0px 30px 20px;
+}
+
+.title-page-1 {
+    font-family: 'Aksorn';
+    font-size: 1.6rem;
+    margin: 0px 0px 10px 20px;
+}
+
+.card-weaccount {
+    border: 1px solid #e8eaef;
+    box-shadow: 0 3px 10px 0 rgba(0,0,0,.1);
+    border-radius: 10px;
+}
+.bg-softblue {
+    background: #eaf8fd;
+}
+.bg-softred {
+    background: #fff2f8;
+}
+.badge-softyeelow {
+    color: #fea000 !important;
+    background: rgba(255,207,85,.2) !important;
+}
+.badge-softgray {
+    color: #434a54;
+    background: rgba(170,178,189,.15);
+}
+.badge-softblue {
+    color: #2898cb;
+    background: rgba(79,192,232,.15);
+}
+.badge-softgreen {
+    color: #4cb050;
+    background: rgba(136,196,38,.15);
+}
+.badge-softred {
+    color: #ed5564;
+    background: rgba(237,85,100,.1);
+}

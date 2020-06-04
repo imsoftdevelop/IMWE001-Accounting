@@ -1,8 +1,353 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@section RenderScriptWithPage
+    {
+    <script src="~/lib/vendors/loader.js"></script>
+    <script src="~/lib/vendors/google-charts.js"></script>
+
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<title>ภาพรวม | WeAccount</title>
+<div class="row">
+    <div class="col-md-12 ">
+        <h5 class="title-page">ภาพรวมบริษัท</h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card card-weaccount">
+            <div class="card-htitle">
+                <h4 class="f-1-2 aksorn">
+                    ยอดขายทั้งหมด
+                    <div class="badge badge-pill badge-primary ml-auto px-1 py-1 cursor-pointer "
+                         data-toggle="popover" data-custom-class="popover-primary" data-content="กราฟแสดงค่าใช้จ่ายทั้งหมด."><i class="ti-help"></i></div>
+                </h4>
+               
+            </div>
+            <div class="card-body ">
+                <div class="google-chart-container">
+
+                    <div id="Donut-chart" class="google-charts "></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card card-weaccount">
+            <div class="card-htitle">
+                <h4 class="f-1-2 aksorn">
+                    สรุปยอดเก็บเงิน
+                    <div class="badge badge-pill badge-primary ml-auto px-1 py-1 cursor-pointer "
+                         data-toggle="popover" data-custom-class="popover-primary" data-content="กราฟแสดงค่าใช้จ่ายทั้งหมด."><i class="ti-help"></i></div>
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="google-chart-container d-flex align-items-center justify-content-center h-100">
+                    <div id="Bar-chart" class="google-charts"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card card-weaccount">
+            <div class="card-htitle">
+                <h4 class="f-1-2 aksorn">
+                    ค่าใช้จ่ายทั้งหมด
+                    <div class="badge badge-pill badge-primary ml-auto px-1 py-1 cursor-pointer " 
+                         data-toggle="popover" data-custom-class="popover-primary" data-content="กราฟแสดงค่าใช้จ่ายทั้งหมด."><i class="ti-help"></i></div>
+                </h4>
+            </div>
+            <div class="card-body ">
+                <div class="google-chart-container">
+
+                    <div id="Donut-chart1" class="google-charts "></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card card-weaccount">
+            <div class="card-htitle">
+                <h4 class="f-1-2 aksorn">สรุปยอดชำระเงิน
+                    <div class="badge badge-pill badge-primary ml-auto px-1 py-1 cursor-pointer "
+                         data-toggle="popover" data-custom-class="popover-primary" data-content="กราฟแสดงค่าใช้จ่ายทั้งหมด."><i class="ti-help"></i></div></h4>
+                
+            </div>
+            <div class="card-body">
+                <div class="google-chart-container d-flex align-items-center justify-content-center h-100">
+                    <div id="Bar-chart1" class="google-charts"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card card-weaccount">
+            <div class="card-htitle">
+                <h4 class="f-1-2 aksorn">รายได้และค่าใช้จ่ายตามเอกสาร
+                    <div class="badge badge-pill badge-primary ml-auto px-1 py-1 cursor-pointer "
+                         data-toggle="popover" data-custom-class="popover-primary" data-content="กราฟแสดงค่าใช้จ่ายทั้งหมด."><i class="ti-help"></i></div></h4>
+                
+            </div>
+            <div class="card-body ">
+                <div class="google-chart-container">
+                    <div id="area-chart" class="google-charts "></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card card-weaccount">
+            <div class="card-htitle">
+                <h4 class="f-1-2 aksorn">ยอดค้างรับ
+                    <div class="badge badge-pill badge-primary ml-auto px-1 py-1 cursor-pointer "
+                         data-toggle="popover" data-custom-class="popover-primary" data-content="กราฟแสดงค่าใช้จ่ายทั้งหมด."><i class="ti-help"></i></div></h4>
+            </div>
+            <div class="card-body ">
+                <h5 class="card-title aksorn f-1-0 mb-0"><i class="icon-arrow-up-circle text-primary f-0-8"></i> ยอดค้างรับ : <label class="text-primary">500,000.00</label> </h5>
+            </div>
+            <div class="card-table">
+                <table class="table aksorn">
+                    <thead class="bg-softblue ">
+                        <tr>
+                            <th width="80%" class="aksorn f-1-0">เอกสาร</th>
+                            <th width="20%" class="aksorn f-1-0">สถานะ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-1-0 text-right">10,000.00</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-0-8 text-muted mb-0">INV2020060001</p>
+                                    </div>
+                                    <div class="col-9">
+                                        <p class="f-0-8 text-muted mb-0">ครบกำหนด 30-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <label class="mb-3 badge badge-softyeelow aksorn f-1-0 p-2 px-4">รอเก็บเงิน</label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-1-0 text-right">10,000.00</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-0-8 text-muted mb-0">INV2020060001</p>
+                                    </div>
+                                    <div class="col-9">
+                                        <p class="f-0-8 text-muted mb-0">ครบกำหนด 30-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <label class="mb-3 badge badge-softgray aksorn f-1-0 p-2 px-4">รอวางบิล</label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-1-0 text-right">10,000.00</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-0-8 text-muted mb-0">INV2020060001</p>
+                                    </div>
+                                    <div class="col-9">
+                                        <p class="f-0-8 text-muted mb-0">ครบกำหนด 30-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <label class="mb-3 badge badge-softgray aksorn f-1-0 p-2 px-4">รอดำเนินการ</label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-1-0 text-right">10,000.00</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-0-8 text-muted mb-0">INV2020060001</p>
+                                    </div>
+                                    <div class="col-9">
+                                        <p class="f-0-8 text-muted mb-0">ครบกำหนด 30-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <label class="mb-3 badge badge-softgray aksorn f-1-0 p-2 px-4">รอดำเนินการ</label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card card-weaccount">
+            <div class="card-htitle">
+                <h4 class="f-1-2 aksorn">ยอดค้างจ่าย
+                    <div class="badge badge-pill badge-primary ml-auto px-1 py-1 cursor-pointer "
+                         data-toggle="popover" data-custom-class="popover-primary" data-content="กราฟแสดงค่าใช้จ่ายทั้งหมด."><i class="ti-help"></i></div>
+                </h4>
+                
+            </div>
+            <div class="card-body ">
+                <h5 class="card-title aksorn f-1-0 mb-0"><i class="icon-arrow-up-circle text-primary f-0-8"></i> ยอดค้างจ่าย : <label class="text-danger">300,000.00</label> </h5>
+            </div>
+            <div class="card-table">
+                <table class="table aksorn">
+                    <thead class="bg-softred ">
+                        <tr>
+                            <th width="80%" class="aksorn f-1-0">เอกสาร</th>
+                            <th width="20%" class="aksorn f-1-0">สถานะ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-1-0 text-right">10,000.00</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-0-8 text-muted mb-0">INV2020060001</p>
+                                    </div>
+                                    <div class="col-9">
+                                        <p class="f-0-8 text-muted mb-0">ครบกำหนด 30-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <label class="mb-3 badge badge-softyeelow aksorn f-1-0 p-2 px-4">รออนุมัติ</label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-1-0 text-right">10,000.00</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-0-8 text-muted mb-0">INV2020060001</p>
+                                    </div>
+                                    <div class="col-9">
+                                        <p class="f-0-8 text-muted mb-0">ครบกำหนด 30-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <label class="mb-3 badge badge-softgray aksorn f-1-0 p-2 px-4">รอดำเนินการ</label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-1-0 text-right">10,000.00</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-0-8 text-muted mb-0">INV2020060001</p>
+                                    </div>
+                                    <div class="col-9">
+                                        <p class="f-0-8 text-muted mb-0">ครบกำหนด 30-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <label class="mb-3 badge badge-softgray aksorn f-1-0 p-2 px-4">รอดำเนินการ</label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-1-0 text-right">10,000.00</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="f-0-8 text-muted mb-0">INV2020060001</p>
+                                    </div>
+                                    <div class="col-9">
+                                        <p class="f-0-8 text-muted mb-0">ครบกำหนด 30-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <label class="mb-3 badge badge-softgray aksorn f-1-0 p-2 px-4">รอดำเนินการ</label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

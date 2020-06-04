@@ -10845,7 +10845,7 @@ pre {
     .table th, .jsgrid .jsgrid-table th,
     .table td,
     .jsgrid .jsgrid-table td {
-        padding: 0.9375rem;
+        padding: 1rem 2rem 0.5rem 2rem;
         vertical-align: top;
         border-top: 1px solid #f3f3f3;
     }
@@ -11830,6 +11830,40 @@ pre {
         .show > .btn-secondary.dropdown-toggle:focus,
         .editable-container.editable-inline .editableform .control-group .editable-buttons .show > .dropdown-toggle.editable-cancel:focus {
             box-shadow: 0 0 0 0.2rem rgba(244, 244, 244, 0.5);
+        }
+
+.btn-wedev {
+    color: #fff;
+    background-color: #FEBF00;
+    border-color: #FEBF00;
+}
+
+    .btn-wedev:hover {
+        color: #000;
+        background-color: #927007;
+        border-color: #846507;
+    }
+
+    .btn-wedev:focus, .btn-wedev.focus {
+        box-shadow: 0 0 0 0.2rem rgba(9, 183, 107, 0.5);
+    }
+
+    .btn-wedev.disabled, .btn-wedev:disabled {
+        color: #fff;
+        background-color: #FEBF00;
+        border-color: #FEBF00;
+    }
+
+    .btn-wedev:not(:disabled):not(.disabled):active, .btn-wedev:not(:disabled):not(.disabled).active,
+    .show > .btn-wedev.dropdown-toggle {
+        color: #fff;
+        background-color: #927007;
+        border-color: #846507;
+    }
+
+        .btn-wedev:not(:disabled):not(.disabled):active:focus, .btn-wedev:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-wedev.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.2rem rgba(9, 183, 107, 0.5);
         }
 
 .btn-success {
@@ -14080,6 +14114,7 @@ tbody.collapse.show {
 
 .card-title {
     margin-bottom: 0.75rem;
+    font-size:0.9rem !important;
 }
 
 .card-subtitle {
@@ -14289,8 +14324,8 @@ tbody.collapse.show {
 .breadcrumb {
     display: flex;
     flex-wrap: wrap;
-    padding: 0.56rem 1.13rem;
-    margin-bottom: 1rem;
+    /*padding: 0.56rem 1.13rem;*/
+    /*margin-bottom: 1rem;*/
     list-style: none;
     background-color: transparent;
     border-radius: 0.25rem;
@@ -15261,7 +15296,7 @@ button.close {
     line-break: auto;
     font-size: 0.875rem;
     word-wrap: break-word;
-    background-color: #f4f4f8;
+    background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #f3f3f3;
     border-radius: 0.3rem;
@@ -19498,7 +19533,7 @@ input:focus {
     .navbar .navbar-brand-wrapper .navbar-brand img {
         width: calc(265px - 120px);
         max-width: 60%;
-        height: 34px;
+        /*height: 34px;*/
         margin: auto;
         vertical-align: middle;
     }
@@ -21457,6 +21492,8 @@ pre {
     color: #ffffff;
 }
 
+
+
 .badge-danger {
     border: 1px solid #f90000;
     color: #ffffff;
@@ -22922,8 +22959,16 @@ pre {
     border-radius: 2px;
 }
 
+    .card .card-htitle {
+        font-size:1.2rem;
+        height: 50px;
+        border-bottom: 1px solid #e8eaef;
+        padding: 15px 10px 10px 30px;
+    }
+
+
     .card .card-body {
-        padding: 1.88rem 1.81rem;
+        padding: 1.25rem 1rem 0.5rem 1.81rem;
     }
 
         .card .card-body + .card-body {
@@ -24700,6 +24745,7 @@ ul {
     }
 
 .popover {
+    font-family:'Aksorn';
     z-index: 1029;
 }
 
@@ -24750,7 +24796,7 @@ ul {
     }
 
     .popover .popover-body {
-        color: #b7b7b7;
+        color: #000;
     }
 
     .popover.left .arrow {
@@ -27691,8 +27737,8 @@ body.avgrund-active {
 /* Google Charts */
 .google-chart-container .google-charts {
     width: 100%;
-    height: 280px;
-    min-height: 280px;
+    height: 400px;
+    min-height: 400px;
     min-width: 100%;
 }
 
@@ -29174,8 +29220,8 @@ div.tagsinput {
 }
 
 .auth .login-half-bg {
-    background: url("../images/auth/login_2.jpg");
-    background-size: cover;
+    background: url("../../images/auth/auth-background3.jpg");
+    background-size:  cover;
 }
 
 .auth.register-full-bg {

@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Login Pages";
+}
+<base href="@Url.Content("~/")" />
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <base href="@Url.Content("~/")" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>เข้าสู่ระบบ | WeAccount</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/css/vendors/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/css/vendors/feather.css">
+    <link rel="stylesheet" href="~/css/vendors/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <link rel="stylesheet" href="~/css/vendors/style.css">
+    <!-- endinject -->
+    <link href="~/css/bootstrap.custom.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth">
+                <div class="row w-100">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="row">
+                            <div class="col-lg-6 bg-white">
+                                <div class="auth-form-light text-left p-5">
+                                    <img src="@Url.Content("~/")images/auth/auth-logo.png" class="logo-auth" alt="logo" />
+                                    <h2 class="aksorn">ล็อกอินเข้าสู่ระบบ</h2>
+                                    <form class="pt-5">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1" class="aksorn f-1-2">อีเมล</label>
+                                            <input type="email" class="form-control aksorn" id="exampleInputEmail1" placeholder="name@example.com">
+                                            <i class="mdi mdi-account"></i>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1" class="aksorn  f-1-2">รหัสผ่าน</label>
+                                            <input type="password" class="form-control aksorn" id="exampleInputPassword1" placeholder="">
+                                            <i class="mdi mdi-eye"></i>
+                                        </div>
+                                        <div class="mt-5">
+                                            <a class="btn btn-block btn-wedev aksorn btn-lg font-weight-medium" href="@Url.Content("~/")Home/DashBoard">เข้าสู่ระบบ</a>
+                                        </div>
+                                        <div class="mt-3 text-center">
+                                            <a href="#" class="auth-link text-black aksorn f-1-0">ลืมรหัสผ่าน ?</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 login-half-bg d-flex flex-row">
+                                <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2020  All rights reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/lib/vendors/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="~/lib/vendors/off-canvas.js"></script>
+    <script src="~/lib/vendors/hoverable-collapse.js"></script>
+    <script src="~/lib/vendors/misc.js"></script>
+    <script src="~/lib/vendors/settings.js"></script>
+    <script src="~/lib/vendors/todolist.js"></script>
+    <!-- endinject -->
+</body>
+
+</html>
