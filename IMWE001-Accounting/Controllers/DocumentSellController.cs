@@ -15,6 +15,11 @@ namespace IMWE001_Accounting.Controllers
             return View();
         }
 
+        public IActionResult QuotationAdd()
+        {
+            return View();
+        }
+
         public IActionResult BillingNote()
         {
             return View();

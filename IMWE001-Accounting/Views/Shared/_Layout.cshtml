@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="~/css/vendors/all.css">
     <link rel="stylesheet" href="~/css/vendors/select2.min.css">
     <link rel="stylesheet" href="~/css/vendors/select2-bootstrap.min.css">
+    <link href="~/lib/dropify/dropify.min.css" rel="stylesheet" />
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="~/css/vendors/style.css">
@@ -29,13 +30,13 @@
 
 
 </head>
-<body>
+<body id="bodyframe">
     <div class="container-scroller">
         <!-- partial:header menu-->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row navbar-primary">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="@Url.Content("~/")/Home/DashBoard"><img src="@Url.Content("~/")images/logo.png" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="@Url.Content("~/")/Home/DashBoard"><img src="@Url.Content("~/")images/logo.png" alt="logo" /></a>
+                <a class="navbar-brand brand-logo" href="@Url.Content("~/")Home/DashBoard"><img src="@Url.Content("~/")images/logo.png" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="@Url.Content("~/")Home/DashBoard"><img src="@Url.Content("~/")images/logo.png" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -254,6 +255,15 @@
                                 <li class="nav-item"> <a class="nav-link" href="#">หัก ณ ที่จ่าย</a></li>
                             </ul>
                         </div>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <span class="nav-link">สินค้า / บริการ</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="ti-package menu-icon"></i>
+                            <span class="menu-title">สินค้า / บริการ</span>
+                        </a>
                     </li>
                     <li class="nav-item nav-category">
                         <span class="nav-link">สมุดรายชื่อ</span>

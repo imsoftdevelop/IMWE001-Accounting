@@ -1,0 +1,1269 @@
+﻿
+@section RenderScriptWithPage
+    {
+    <script src="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/lib/dropify/dropify.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("body").addClass("noscroll");
+
+            $('.dropdown-menu select.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+
+        (function ($) {
+            'use strict';
+            $('.dropify').dropify();
+        })(jQuery);
+
+        (function ($) {
+            if ($("#datepicker-popup").length) {
+                $('#datepicker-popup').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+            if ($("#datepicker-popup-1").length) {
+                $('#datepicker-popup-1').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+        })(jQuery);
+
+        var $table = $('table.scroll'),
+            $bodyCells = $table.find('tbody tr:first').children(),
+            colWidth;
+
+        // Adjust the width of thead cells when window resizes
+        $(window).resize(function () {
+            // Get the tbody columns width array
+            colWidth = $bodyCells.map(function () {
+                return $(this).width();
+            }).get();
+
+            // Set the width of thead columns
+            $table.find('thead tr').children().each(function (i, v) {
+                $(v).width(colWidth[i]);
+            });
+        }).resize(); // Trigger resize handler
+
+        $('#exampleModal').modal('show');
+
+        function modalcustom() {
+            $('#exampleModal-2').modal('show');
+        }
+
+        function modaladd() {
+            $('#exampleModal-4').modal('show');
+        }
+
+        function modalproductadd() {
+            $('#exampleModal-5').modal('show');
+        }
+
+        function modaltax() {
+            $('#exampleModal-3').modal('show');
+        }
+        function modalproductsearch() {
+            $('#exampleModal-6').modal('show');
+        }
+    </script>
+
+}
+
+<link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+<title>ใบเสนอราคา | WeAccount</title>
+<!-- Dummy Modal Ends -->
+<!-- Main Modal starts -->
+<div class="modal fade pr-0 modal-noscroll" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog-full modal-full" role="document">
+        <div class="modal-content-full">
+            <div class="modal-header-full d-flex">
+                <div class="modal-header-title">
+                    <h5 class="modal-title-full"><i class="fa fa-file-text-o f-1-0 mr-2 text-primary"></i>สร้างใบเสนอราคา</h5>
+                    <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">QT20200600001</h5>
+                </div>
+                <div class="modal-header-button">
+                    <a href="@Url.Content("~/")DocumentSell/Quotation" class="btn btn-inverse-light btn-fw aksorn f-1-2" onclick="onclickclose()">ปิดหน้าต่าง</a>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success  aksorn f-1-2">บันทึกเอกสาร</button>
+                        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" id="dropdownMenuSplitButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuSplitButton3">
+                            <a class="dropdown-item  aksorn f-1-0">บันทึกแล้วปิด</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body-full">
+                <div class="row ">
+                    <div class="col-lg-12  grid-margin stretch-card ">
+                        <div class="card card-weaccount border-fix-table scroll-modal  ">
+                            <div class="card-table search-table-outter p-4 pb-5">
+                                <!-- Hedear Start-->
+                                <div class="row-modal">
+                                    <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1" class="aksorn f-1-0">ชื่อลูกค้า</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control aksorn f-1-0" placeholder="เลือกรายชื่อลูกค้า" aria-label="Username" disabled>
+                                                <div class="dropdown ">
+                                                    <div class="input-group-append bg-primary cursor-pointer " id="dropdownMenuIconButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span class="input-group-text bg-transparent px-2"><i class="  icon-user-follow text-white"></i></span>
+                                                        <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton6">
+                                                            <a class="dropdown-item aksorn f-1-0 text-primary" onclick="modalcustom()"><i class="icon-magnifier mr-2 "></i>ค้นหาจากสมุดรายชื่อ</a>
+                                                            <a class="dropdown-item aksorn f-1-0 text-primary" onclick="modaladd()"><i class="icon-user-follow mr-2 "></i>เพิ่มรายชื่อผู้ติดต่อ</a>
+                                                            <a class="dropdown-item aksorn f-1-0 text-primary" onclick="modaltax()"><i class="icon-book-open mr-2 "></i>ค้นหาข้อมูลจากฐานข้อมูลกรมสรรพากร</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1" class="aksorn f-1-0">รายละเอียด</label>
+                                            <textarea rows="4" class="form-control h-25 mb-1" id="exampleInputEmail1" placeholder="รายละเอียดที่อยู่"></textarea>
+                                            <input type="text" class="form-control mb-1" id="exampleInputEmail1" placeholder="เลขที่ประจำตัวผู้เสียภาษี">
+                                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="สำนักงาน/สาขาเลขที่">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4  col-md-6 col-sm-12 col-12 ml-auto text-right">
+                                        <button class="modal-option-item  cursor-pointer">
+                                            <a class="modal-option-link ">
+                                                <i aria-hidden="true" class="fa fa-print"></i>
+                                                <span class="aksorn f-0-8">พิมพ์เอกสาร</span>
+                                            </a>
+                                        </button>
+                                        <div class="form-group text-left">
+                                            <div class="  row ">
+                                                <label for="exampleInputEmail1" class="aksorn f-1-0">จำนวนรวมทั้งสิ้น</label>
+                                            </div>
+                                            <div class=" row ">
+                                                <h5 class="modal-subtitle-full text-primary f-2-0 aksorn">0.00</h5>
+                                            </div>
+                                            <div class="form-group row ">
+                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn pl-0 f-1-0">วันที่ : </label>
+                                                <div class="col-sm-8">
+                                                    <input type="email" class="form-control" id="exampleInputEmail2" value="01-01-2020" placeholder="DD/MM/YYYY">
+                                                </div>
+                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn pl-0 f-1-0">เครดิต (วัน) : </label>
+                                                <div class="col-sm-8">
+                                                    <input type="email" class="form-control" id="exampleInputEmail2" value="0" placeholder="">
+                                                </div>
+                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn pl-0 f-1-0">ครบกำหนด : </label>
+                                                <div class="col-sm-8">
+                                                    <input type="email" class="form-control" id="exampleInputEmail2" value="01-01-2020" placeholder="">
+                                                </div>
+                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn pl-0 f-1-0">พนักงานขาย : </label>
+                                                <div class="col-sm-8">
+                                                    <input type="email" class="form-control" value="นายทดสอบ ระบบยอดเยี่ยม" id="exampleInputEmail2" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Hedear End-->
+                                <hr>
+                                <!-- Detail Start-->
+                                <div class="row-modal">
+                                    <div class="col-lg-8">
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail2" class="col-sm-2 col-form-label aksorn f-1-0">ชื่อโปรเจค : </label>
+                                            <div class="col-sm-10">
+                                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 ml-auto">
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn f-1-0">เลขที่อ้างอิง : </label>
+                                            <div class="col-sm-8">
+                                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Table Start-->
+                                <div class="row-modal">
+                                    <div class="card card-weaccount border-fix-table w-100 ">
+                                        <div class="card-table search-table-outter table-responsive ">
+                                            <table class="table aksorn s-table">
+                                                <thead class="badge-softblue">
+                                                    <tr>
+                                                        <th width="5%" class="aksorn f-1-0 text-center">ลำดับ</th>
+                                                        <th width="50%" class="aksorn f-1-0">ชื่อสินค้า/รายละเอียด</th>
+                                                        <th width="10%" class="aksorn text-center f-1-0">จำนวน</th>
+                                                        <th width="10%" class="aksorn text-center f-1-0">หน่วย</th>
+                                                        <th width="10%" class="aksorn text-right f-1-0">ราคาต่อหน่วย</th>
+                                                        <th width="10%" class="aksorn text-right f-1-0">ราคารวม</th>
+                                                        <th width="5%" class="aksorn f-1-0"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="">
+                                                    <tr>
+                                                        <td width="10%" class="text-center">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <p class="f-1-0">1</p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="50%">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <p class="f-1-0">ค่าอาหารกลางวัน</p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%" class="text-center">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <input type="email" class="form-control  text-right" id="exampleInputEmail2" placeholder="" value="0.00">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%" class="text-right">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="0.00">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%" class="text-left">
+                                                            <div class="row">
+                                                                <div class="col-12 ">
+                                                                    <input type="text" class="form-control text-right" id="exampleInputEmail2" placeholder="" value="0.00">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%" class="text-right">
+                                                            <div class="row">
+                                                                <div class="col-12 ">
+                                                                    <p class="f-1-0">0.00</p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="5%" class="text-center">
+                                                            <div class="row">
+                                                                <div class="col-12 ">
+                                                                    <div class="dropdown">
+                                                                        <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3">
+                                                                            <i class="fa fa-trash-o"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="10%" class="text-center">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <p class="f-1-0">1</p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="50%">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <p class="f-1-0">ค่าอาหารกลางวัน</p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%" class="text-center">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <input type="email" class="form-control  text-right" id="exampleInputEmail2" placeholder="" value="0.00">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%" class="text-right">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="0.00">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%" class="text-left">
+                                                            <div class="row">
+                                                                <div class="col-12 ">
+                                                                    <input type="text" class="form-control text-right" id="exampleInputEmail2" placeholder="" value="0.00">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%" class="text-right">
+                                                            <div class="row">
+                                                                <div class="col-12 ">
+                                                                    <p class="f-1-0">0.00</p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="5%" class="text-center">
+                                                            <div class="row">
+                                                                <div class="col-12 ">
+                                                                    <div class="dropdown">
+                                                                        <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3">
+                                                                            <i class="fa fa-trash-o"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td width="10%" class="text-center">
+                                                            <div class="row">
+                                                                <div class="col-12">
+
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="50%">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control aksorn f-1-0" placeholder="เลือกรายการสินค้า/บริการ" aria-label="Username" disabled>
+                                                                        <div class="dropdown ">
+                                                                            <div class="input-group-append bg-primary cursor-pointer " id="dropdownMenuIconButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                <span class="input-group-text bg-transparent px-2"><i class="  icon-plus text-white"></i></span>
+                                                                                <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton6">
+                                                                                    <a class="dropdown-item aksorn f-1-0 text-primary" onclick="modalproductsearch()"><i class="icon-magnifier mr-2 "></i>ค้นหาจากรายการสินค้า</a>
+                                                                                    <a class="dropdown-item aksorn f-1-0 text-primary" onclick="modalproductadd()"><i class="ti-package mr-2 "></i>เพิ่มรายการสินค้า</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control aksorn f-1-0" placeholder="รายละเอียด" aria-label="Username">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%" class="text-center">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <input type="email" class="form-control  text-right" id="exampleInputEmail2" placeholder="" value="0.00">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%" class="text-right">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="0.00">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%" class="text-left">
+                                                            <div class="row">
+                                                                <div class="col-12 ">
+                                                                    <input type="text" class="form-control text-right" id="exampleInputEmail2" placeholder="" value="0.00">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%" class="text-right">
+                                                            <div class="row">
+                                                                <div class="col-12 ">
+                                                                    <p class="f-1-0">0.00</p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td width="5%" class="text-center">
+                                                            <div class="row">
+                                                                <div class="col-12 ">
+                                                                    <div class="dropdown">
+                                                                        <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3">
+                                                                            <i class=" icon-plus"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Table End-->
+                                <!-- Detail End-->
+                                <!-- Footer Start-->
+                                <div class="row-modal mt-5">
+                                    <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail1" class="aksorn f-1-0">หมายเหตุ</label>
+                                            <textarea rows="4" class="form-control h-25" id="exampleInputEmail1" placeholder=""></textarea>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail1" class="aksorn f-1-0">โน้ตภายในบริษัท</label>
+                                            <textarea rows="4" class="form-control h-25" id="exampleInputEmail1" placeholder=""></textarea>
+                                        </div>
+                                        <div class="form-check">
+                                            <label class="form-check-label aksorn f-1-0">
+                                                <input type="checkbox" class="form-check-input ">
+                                                ลายเซ็นอิเล็กทรอนิกส์และตรายาง
+                                                <i class="input-helper"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-md-6 col-sm-12 col-12 ml-auto">
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0 text-primary">รวมเป็นเงิน</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-2 col-form-label aksorn f-1-0  text-primary">ส่วนลด </label>
+                                            <div class="col-sm-3 text-right">
+                                                <input type="email" class="form-control" id="exampleInputEmail2" value="0.00" placeholder="0.00">
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn f-1-0  text-primary">% </label>
+                                            <div class="col-sm-3 text-right">
+                                                <input type="email" class="form-control text-right" value="0.00" id="exampleInputEmail2" placeholder="0.00">
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">ราคาหลังหักส่วนลด</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">จำนวนเงินรวมทั้งสิ้น</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                            </div>
+
+                                        </div>
+                                        <hr>
+                                        <div class="form-check">
+                                            <label class="form-check-label aksorn f-1-0 text-primary">
+                                                <input type="checkbox" class="form-check-input ">
+                                                หักภาษี ณ ที่จ่าย
+                                                <i class="input-helper"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Footer End-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Modal Ends -->
+<!-- Customer Modal starts -->
+<div class="modal fade" id="exampleModal-2" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">ค้นหาข้อมูลรายละเอียดจากสมุดรายชื่อ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row-modal mb-3">
+                    <div class="col-lg-10 pl-0">
+                        <div class="form-group row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ค้นหา : </label>
+                            <div class="col-sm-10 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="พิมพ์รหัสลูกค้า , ชื่อลูกค้า , เลขประจำตัวผู้เสียภาษี ตัวอย่างเช่น 'We Develop หรือ 00177422145'">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 pl-0">
+                        <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block"><i class="fa fa-search f-0-8"></i>ค้นหา</button>
+                    </div>
+                </div>
+                <div class="row-modal ">
+                    <div class="col-lg-12  grid-margin stretch-card pl-0 ">
+                        <!-- Table Start-->
+                        <div class="card card-weaccount border-fix-table w-100 ">
+                            <div class="card-table search-table-outter table-responsive h-500px">
+                                <table class="table aksorn  s-table">
+                                    <thead class="badge-softblue">
+                                        <tr>
+                                            <th width="15%" class="aksorn f-1-0">เลขที่ผู้เสียภาษี</th>
+                                            <th width="10%" class="aksorn f-1-0">รหัสลูกค้า</th>
+                                            <th width="20%" class="aksorn f-1-0">ชื่อลูกค้า</th>
+                                            <th width="10%" class="aksorn f-1-0">สาขา</th>
+                                            <th width="20%" class="aksorn f-1-0">ที่อยู่</th>
+                                            <th width="15%" class="aksorn f-1-0"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <tr>
+                                            <td>
+                                                <p class="f-1-0">0107555000406</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">001</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">บริษัท เมืองไทยประกันชีวิต จำกัด (มหาชน)</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">00002</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">835 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองพิษณุโลก พิษณุโลก 65000</p>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="f-1-0">0107555000406</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">001</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">บริษัท เมืองไทยประกันชีวิต จำกัด (มหาชน)</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">00002</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">835 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองพิษณุโลก พิษณุโลก 65000</p>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="f-1-0">0107555000406</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">001</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">บริษัท เมืองไทยประกันชีวิต จำกัด (มหาชน)</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">00002</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">835 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองพิษณุโลก พิษณุโลก 65000</p>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="f-1-0">0107555000406</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">001</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">บริษัท เมืองไทยประกันชีวิต จำกัด (มหาชน)</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">00002</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">835 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองพิษณุโลก พิษณุโลก 65000</p>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="f-1-0">0107555000406</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">001</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">บริษัท เมืองไทยประกันชีวิต จำกัด (มหาชน)</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">00002</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">835 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองพิษณุโลก พิษณุโลก 65000</p>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="f-1-0">0107555000406</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">001</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">บริษัท เมืองไทยประกันชีวิต จำกัด (มหาชน)</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">00002</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">835 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองพิษณุโลก พิษณุโลก 65000</p>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="f-1-0">0107555000406</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">001</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">บริษัท เมืองไทยประกันชีวิต จำกัด (มหาชน)</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">00002</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">835 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองพิษณุโลก พิษณุโลก 65000</p>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Table End-->
+
+                    </div>
+                    <div class="col-lg-12  grid-margin stretch-card pb-0 pl-0 mb-0">
+                        <nav>
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-left"></i></a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-right"></i></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Customer Ends -->
+<!-- E-Tax Modal starts -->
+<div class="modal fade" id="exampleModal-3" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">
+                    ค้นหาข้อมูลรายละเอียดธุรกิจ จากฐานข้อมูลกรมสรรพากร
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row-modal  mb-3">
+                    <div class="col-lg-10 pl-0">
+                        <div class="form-group row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ค้นหา : </label>
+                            <div class="col-sm-10 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="พิมพ์รหัสลูกค้า , ชื่อลูกค้า , เลขประจำตัวผู้เสียภาษี ตัวอย่างเช่น 'We Develop หรือ 00177422145'">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 pl-0">
+                        <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block"><i class="fa fa-search f-0-8"></i>ค้นหา</button>
+                    </div>
+                </div>
+                <div class="row-modal ">
+                    <div class="col-lg-12  grid-margin stretch-card pl-0 ">
+                        <!-- Table Start-->
+                        <div class="card card-weaccount border-fix-table w-100 ">
+                            <div class="card-table search-table-outter table-responsive h-500px">
+                                <table class="table aksorn s-table">
+                                    <thead class="badge-softblue">
+                                        <tr>
+                                            <th width="15%" class="aksorn f-1-0">เลขที่ผู้เสียภาษี</th>
+                                            <th width="20%" class="aksorn f-1-0">ชื่อบริษัท</th>
+                                            <th width="10%" class="aksorn f-1-0">สาขา</th>
+                                            <th width="10%" class="aksorn f-1-0">เลขที่</th>
+                                            <th width="20%" class="aksorn f-1-0">ที่อยู่</th>
+                                            <th width="15%" class="aksorn f-1-0"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <tr>
+                                            <td>
+                                                <p class="f-1-0">
+                                                    0105533034471
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">บริษัท ไอ แอนด์ วี มาร์เก็ตติ้ง จำกัด</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">สำนักงานใหญ่</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">00000</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">79 ซอยวิภาวดีรังสิต 64 (มหานคร) ถนนวิภาวดีรังสิต ตำบลตลาดบางเขน อำเภอหลักสี่ กรุงเทพมหานคร 10210</p>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="f-1-0">
+                                                    0105533034471
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">บริษัท ไอ แอนด์ วี มาร์เก็ตติ้ง จำกัด</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">สำนักงานใหญ่</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">00000</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">79 ซอยวิภาวดีรังสิต 64 (มหานคร) ถนนวิภาวดีรังสิต ตำบลตลาดบางเขน อำเภอหลักสี่ กรุงเทพมหานคร 10210</p>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="f-1-0">
+                                                    0105533034471
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">บริษัท ไอ แอนด์ วี มาร์เก็ตติ้ง จำกัด</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">สำนักงานใหญ่</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">00000</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">79 ซอยวิภาวดีรังสิต 64 (มหานคร) ถนนวิภาวดีรังสิต ตำบลตลาดบางเขน อำเภอหลักสี่ กรุงเทพมหานคร 10210</p>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Table End-->
+
+                    </div>
+                    <div class="col-lg-12  grid-margin stretch-card pb-0 pl-0 mb-0">
+                        <nav>
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-left"></i></a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-right"></i></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- E-Tax Modal Ends -->
+<!-- Customer Add Start -->
+<div class="modal fade" id="exampleModal-4" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-text" role="document">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">
+                    รายชื่อผู้ติดต่อ
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row text-left  pl-2">
+                    <div class="col-lg-7 col-md-12 col-sm-12 col-12 pl-0">
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ประเภทผู้ติดต่อ: </label>
+                            <div class="col-sm-7 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>นิติบุคคล</option>
+                                    <option>บุคคลธรรมดา</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">รหัสผู้ติดต่อ: </label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ชื่อธุรกิจ: </label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ที่อยู่: </label>
+                            <div class="col-sm-7 pl-0">
+                                <textarea rows="4" class="form-control form-textarea" id="exampleInputEmail2" placeholder=""></textarea>
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">เลขผู้เสียภาษี:</label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0 mt-2">เลขผู้เสียภาษี:</label>
+                            <div class="col-sm-4 pl-0">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked="">
+                                        สำนักงานใหญ่
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 pl-0">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked="">
+                                        สาขา
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="modal-subtitle-full text-primary pl-0 f-1-2 col-sm-12 aksorn">
+                            รายละเอียดผู้ติดต่อ
+                        </h5>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ชื่อผู้ติดต่อ: </label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">อีเมล:</label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">เบอร์มือถือ: </label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <h5 class="modal-subtitle-full text-primary pl-0 f-1-2 col-sm-12 aksorn">
+                            ข้อมูลธนาคาร
+                        </h5>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ธนาคาร: </label>
+                            <div class="col-sm-7 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>--กรุณาเลือกธนาคราร--</option>
+                                    <option>ธ.ไทยพานิช</option>
+                                    <option>ธ.กสิกร</option>
+                                    <option>ธ.กรุงไทย</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">เลขที่บัญชี:</label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">สาขาธนาคาร: </label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0 mt-2">ประเภทบัญชี:</label>
+                            <div class="col-sm-4 pl-0">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked="">
+                                        บัญชีออมทรัพย์
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 pl-0">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked="">
+                                        บัญชีกระแสรายวัน
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5  col-md-12 col-sm-12 col-12 col-12 pl-0">
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0 mt-2">ประเภท : </label>
+                            <div class="col-sm-4 pl-0">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" checked>
+                                        ลูกค้า
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 pl-0">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input">
+                                        ผู้จำหน่าย
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">เครดิต(วัน): </label>
+                            <div class="col-sm-8 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">เบอร์สำนักงาน: </label>
+                            <div class="col-sm-8 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">เบอร์โทรสาร: </label>
+                            <div class="col-sm-8 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">เว็บไซต์: </label>
+                            <div class="col-sm-8 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row-modal">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ที่อยู่สำหรับจัดส่ง: </label>
+                            <div class="col-sm-8 pl-0">
+                                <textarea rows="4" class="form-control form-textarea" id="exampleInputEmail2" placeholder=""></textarea>
+                            </div>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">โน้ต: </label>
+                            <div class="col-sm-8 pl-0">
+                                <textarea rows="4" class="form-control form-textarea" id="exampleInputEmail2" placeholder=""></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-inverse-light btn-fw aksorn f-1-0" data-dismiss="modal" aria-label="Close">ยกเลิก</button>
+                <button type="button" class="btn btn-success btn-fw aksorn f-1-0">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Customer Add Ends -->
+<!-- ProductAdd Modal starts -->
+<div class="modal fade" id="exampleModal-5" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-text" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">
+                    รายการสินค้า
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row-modal pl-2 mb-4">
+                    <div class="col-lg-7 pl-0">
+                        <div class="row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ประเภทสินค้า: </label>
+                            <div class="col-sm-7 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>บริการ</option>
+                                    <option>สินค้า</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">รหัสสินค้า: </label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ชื่อสินค้า: </label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">รายละเอียดสินค้า: </label>
+                            <div class="col-sm-7 pl-0">
+                                <textarea rows="4" class="form-control form-textarea" id="exampleInputEmail2" placeholder=""></textarea>
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">หน่วยสินค้า:</label>
+                            <div class="col-sm-7 pl-0">
+                                <div class=" pl-0">
+                                    <select class="form-control" id="exampleFormControlSelect2">
+                                        <option>กก.</option>
+                                        <option>กล่อง</option>
+                                        <option>ครั้ง</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0 mt-2">หมวดสินค้า:</label>
+                            <div class="col-sm-7 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>ทั่วไป</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 pl-0">
+                        <div class=" row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ราคาขาย: </label>
+                            <div class="col-sm-8 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ภาษีมูลค่าเพิ่ม: </label>
+                            <div class="col-sm-8 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>ราคาไม่รวม VAT</option>
+                                    <option>ราคารวม VAT แล้ว</option>
+                                    <option>VAT 0%</option>
+                                    <option>สินค้าได้รับยกเว้นภาษี (N/A)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-modal pl-2 mb-4">
+                    <div class="col-lg-12 pl-0" style="position:relative;">
+                        <h5 class="modal-subtitle-full text-primary pl-0 f-1-2  aksorn">
+                            รายละเอียดการซื้อ
+                        </h5>
+                        <div class="hr-title">&nbsp;</div>
+                    </div>
+                    <div class="col-lg-7 pl-0">
+                        <div class=" row-modal text-left ">
+
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">
+                                รายละเอียดการซื้อ:
+                            </label>
+                            <div class="col-sm-7 pl-0">
+                                <textarea rows="4" class="form-control form-textarea" id="exampleInputEmail2" placeholder=""></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 pl-0">
+                        <div class=" row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ราคาซื้อ: </label>
+                            <div class="col-sm-8 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ภาษีมูลค่าเพิ่ม: </label>
+                            <div class="col-sm-8 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>ราคาไม่รวม VAT</option>
+                                    <option>ราคารวม VAT แล้ว</option>
+                                    <option>VAT 0%</option>
+                                    <option>สินค้าได้รับยกเว้นภาษี (N/A)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-modal pl-2 mb-4">
+                    <div class="col-lg-12 pl-0" style="position:relative;">
+                        <h5 class="modal-subtitle-full text-primary pl-0 f-1-2  aksorn">
+                            รายละเอียดเพิ่มเติม
+                        </h5>
+                        <div class="hr-title">&nbsp;</div>
+                    </div>
+                    <div class="col-lg-7 pl-0">
+                        <div class="row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">รหัสบาร์โค้ด: </label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">รูปสินค้า: </label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="file" class="dropify " />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-inverse-light btn-fw aksorn f-1-0" data-dismiss="modal" aria-label="Close">ยกเลิก</button>
+                <button type="button" class="btn btn-success btn-fw aksorn f-1-0">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ProductAdd Ends -->
+<!-- Customer Modal starts -->
+<div class="modal fade" id="exampleModal-6" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">ค้นหารายละเอียดสินค้า/บริการ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row-modal mb-3">
+                    <div class="col-lg-9 pl-0">
+                        <div class="form-group row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-1-0">ค้นหา : </label>
+                            <div class="col-sm-9 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="พิมพ์ รหัสสินค้า, ชื่อสินค้า ">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 pl-0">
+                        <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block"><i class="fa fa-search f-0-8"></i>ค้นหา</button>
+                    </div>
+                </div>
+                <div class="row-modal ">
+                    <div class="col-lg-12  grid-margin stretch-card pl-0 ">
+                        <!-- Table Start-->
+                        <div class="card card-weaccount border-fix-table w-100 ">
+                            <div class="card-table search-table-outter table-responsive h-500px">
+                                <table class="table aksorn  s-table">
+                                    <thead class="badge-softblue">
+                                        <tr>
+                                            <th width="80%" class="aksorn f-1-0">ชื่อสินค้า</th>
+                                            <th width="20%" class="aksorn f-1-0"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <tr>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-12">
+                                                        <p class="f-1-0">บริการพัฒนาระบบ</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-6">
+                                                        <p class="f-0-8 text-muted mb-0">รหัสสินค้า: S001</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-6 text-right">
+                                                        <p class="f-0-8 text-muted mb-0">ราคาขาย: 100.00</p>
+                                                    </div>
+                                                </div>
+                                                
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-12">
+                                                        <p class="f-1-0">บริการพัฒนาระบบ</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-6">
+                                                        <p class="f-0-8 text-muted mb-0">รหัสสินค้า: S001</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-6 text-right">
+                                                        <p class="f-0-8 text-muted mb-0">ราคาขาย: 100.00</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-12">
+                                                        <p class="f-1-0">บริการพัฒนาระบบ</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-6">
+                                                        <p class="f-0-8 text-muted mb-0">รหัสสินค้า: S001</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-6 text-right">
+                                                        <p class="f-0-8 text-muted mb-0">ราคาขาย: 100.00</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Table End-->
+
+                    </div>
+                    <div class="col-lg-12  grid-margin stretch-card pb-0 pl-0 mb-0">
+                        <nav>
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-left"></i></a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-right"></i></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Customer Ends -->
