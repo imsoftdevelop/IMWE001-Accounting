@@ -73,12 +73,16 @@
         function modalproductsearch() {
             $('#exampleModal-6').modal('show');
         }
+
+        function modalreceipt() {
+            $('#exampleModal-7').modal('show');
+        }
     </script>
 
 }
 
 <link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
-<title>ใบเสนอราคา | WeAccount</title>
+<title>ใบเสร็จรับเงิน (เงินสด) | WeAccount</title>
 <!-- Dummy Modal Ends -->
 <!-- Main Modal starts -->
 <div class="modal fade pr-0 modal-noscroll" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -86,12 +90,12 @@
         <div class="modal-content-full">
             <div class="modal-header-full d-flex">
                 <div class="modal-header-title">
-                    <h5 class="modal-title-full"><i class="fa fa-file-text-o f-1-0 mr-2 text-primary"></i>สร้างใบเสนอราคา</h5>
-                    <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">QT20200600001</h5>
-                    <button type="button" class="btn btn-gray btn-fw aksorn f-1-0 px-3" style="cursor:default">รออนุมัติ</button>
+                    <h5 class="modal-title-full"><i class="fa fa-file-text-o f-1-0 mr-2 text-primary"></i>สร้างใบเสร็จรับเงิน (เงินสด)</h5>
+                    <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">CA20200600001</h5>
+                    <button type="button" class="btn btn-gray btn-fw aksorn f-1-0 px-3" style="cursor:default">รอดำเนินการ</button>
                 </div>
                 <div class="modal-header-button">
-                    <a href="@Url.Content("~/")DocumentSell/Quotation" class="btn btn-inverse-light btn-fw aksorn f-1-2" onclick="onclickclose()">ปิดหน้าต่าง</a>
+                    <a href="@Url.Content("~/")DocumentSell/CashSale" class="btn btn-inverse-light btn-fw aksorn f-1-2" onclick="onclickclose()">ปิดหน้าต่าง</a>
                     <div class="btn-group">
                         <button type="button" class="btn btn-success  aksorn f-1-2">บันทึกเอกสาร</button>
                         <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" id="dropdownMenuSplitButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -152,14 +156,6 @@
                                                 <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn pl-0 f-1-0">วันที่ : </label>
                                                 <div class="col-sm-8">
                                                     <input type="email" class="form-control" id="exampleInputEmail2" value="01-01-2020" placeholder="DD/MM/YYYY">
-                                                </div>
-                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn pl-0 f-1-0">เครดิต (วัน) : </label>
-                                                <div class="col-sm-8">
-                                                    <input type="email" class="form-control" id="exampleInputEmail2" value="0" placeholder="">
-                                                </div>
-                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn pl-0 f-1-0">ครบกำหนด : </label>
-                                                <div class="col-sm-8">
-                                                    <input type="email" class="form-control" id="exampleInputEmail2" value="01-01-2020" placeholder="">
                                                 </div>
                                                 <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn pl-0 f-1-0">พนักงานขาย : </label>
                                                 <div class="col-sm-8">
@@ -442,13 +438,72 @@
                                         <hr class=" hr-subtitle">
                                         <div class="form-check aksorn text-primary f-1-2">
                                             <label class="form-check-label f-1-0">
-                                                <input type="checkbox" class="form-check-input">
-                                                หักภาษี ณ ที่จ่าย
+                                                <input type="checkbox" class="form-check-input" checked>
+                                                เพิ่มรายการปรับลด
                                             </label>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail2" class="col-sm-2 col-form-label aksorn f-1-0  text-primary">ประเภท</label>
+                                            <div class="col-sm-5 text-right">
+                                                <select class="form-control" id="exampleFormControlSelect2">
+                                                    <option>ส่วนลดพิเศษ</option>
+                                                    <option>ค่านายหน้า/ส่วนแบ่งการขาย</option>
+                                                    <option>ค่าดำเนินการ</option>
+                                                    <option>ปัดเศษ</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2 text-right">
+                                            </div>
+                                            <div class="col-sm-3 text-right">
+                                                <input type="email" class="form-control text-right" value="0.00" id="exampleInputEmail2" placeholder="0.00">
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group row ">
+                                            <div class="form-check aksorn text-primary  f-1-2 col-sm-4">
+                                                <label class="form-check-label f-1-0">
+                                                    <input type="checkbox" class="form-check-input" checked>
+                                                    หักภาษี ณ ที่จ่าย
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-3 text-right">
+                                                <select class="form-control" id="exampleFormControlSelect2">
+                                                    <option>3%</option>
+                                                    <option>5%</option>
+                                                    <option>0.5%</option>
+                                                    <option>0.75%</option>
+                                                    <option>1%</option>
+                                                    <option>1.5%</option>
+                                                    <option>2%</option>
+                                                    <option>10%</option>
+                                                    <option>15%</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4 text-right ml-auto">
+                                                <label for="exampleInputEmail2" class="col-sm-12 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">ยอดชำระ</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn-Bold f-1-0">10,000.00</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Footer End-->
+                                <!-- Receipt Start-->
+                                <div class="card card-weaccount border-fix-table">
+                                    <div class="card-table search-table-outter p-4 pb-5">
+                                        <div class="row-modal">
+                                            <label for="exampleInputEmail2" class="col-sm-3  col-form-label aksorn f-1-6 text-success">บันทึกการรับชำระเงิน</label>
+                                            <div class="col-sm-3">
+                                                <button type="button" class="btn btn-success btn-receipt aksorn f-1-0 btn-fw" onclick="modalreceipt()">เพิ่มการรับชำระเงิน</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Receipt End -->
                             </div>
                         </div>
                     </div>
@@ -1199,7 +1254,7 @@
                                                         <p class="f-0-8 text-muted mb-0">ราคาขาย: 100.00</p>
                                                     </div>
                                                 </div>
-                                                
+
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
@@ -1266,3 +1321,88 @@
     </div>
 </div>
 <!-- Customer Ends -->
+<!-- Receipt Modal starts -->
+<div class="modal fade" id="exampleModal-7" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">
+                    บันทึกการรับชำระเงิน
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row-modal pl-2 mb-4">
+                    <div class="col-lg-12 pl-0">
+                        <div class="row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">เลขที่เอกสาร: </label>
+                            <label for="exampleInputEmail2" class="col-sm-8 pl-0 col-form-label aksorn f-1-0"> RE2020060004 (บริษัท เมืองไทยประกันภัย จำกัด (มหาชน))</label>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ยอดที่ต้องชำระ:</label>
+                            <label for="exampleInputEmail2" class="col-sm-8 pl-0 col-form-label aksorn f-1-0"> 10,000.00 บาท </label>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">วันที่รับชำระ:</label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="03-06-2020">
+                            </div>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ยอดรับสุทธิ:</label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="0.00">
+                            </div>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">หัก ณ ที่จ่าย:</label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="0.00">
+                            </div>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">วีธีการชำระ:</label>
+                            <div class="col-sm-7 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>เงินสด</option>
+                                    <option>โอนเงิน</option>
+                                    <option>เช็ค</option>
+                                    <option>บัตรเครดิต</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-modal pl-2 mb-4">
+                    <div class="col-lg-12 pl-0" style="position:relative;">
+                        <h5 class="modal-subtitle-full text-primary pl-0 f-1-2  aksorn">
+                            รายละเอียดเพิ่มเติม
+                        </h5>
+                    </div>
+                    <div class="col-lg-12 pl-0">
+                        <div class="row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">หมายเหตุ: </label>
+                            <div class="col-sm-7 pl-0">
+                                <textarea rows="4" class="form-control form-textarea" id="exampleInputEmail2" placeholder=""></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="hr-subtitle" />
+                <div class="row-modal pl-2 mb-4">
+                    <div class="col-lg-12 pl-0">
+                        <div class="row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ยอดคงเหลือ: </label>
+                            <label for="exampleInputEmail2" class="col-sm-7 pl-0 col-form-label aksorn f-1-0">0.00 บาท </label>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ระบุสาเหตุ: </label>
+                            <div class="col-sm-7 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>กรุณาเลือกสาเหตุ</option>
+                                    <option>ค่าธรรมเนียมธนาคาร</option>
+                                    <option>เงินขาด/เงินเกิน</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-inverse-light btn-fw aksorn f-1-0" data-dismiss="modal" aria-label="Close">ยกเลิก</button>
+                <button type="button" class="btn btn-success btn-fw aksorn f-1-0">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Receipt Ends -->

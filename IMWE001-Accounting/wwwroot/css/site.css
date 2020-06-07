@@ -163,6 +163,10 @@ tbody tr td {
     vertical-align:top !important;
 }
 
+tfoot tr td {
+    vertical-align: top !important;
+}
+
 table.scroll tbody {
     height: calc((var(--vh,1vh) * 100) - 292px - 40px) !important;
     overflow-y: auto;
@@ -268,6 +272,15 @@ hr {
     border: 0;
     border-top: 1px solid #eee;
     margin: 20px 0;
+    background: #e6e9ee;
+    height: 1px;
+}
+.hr-subtitle {
+    box-sizing: content-box;
+    height: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
     background: #e6e9ee;
     height: 1px;
 }
@@ -484,3 +497,51 @@ hr {
     flex-wrap: wrap;
 }
 /*************/
+/*Button Status*/
+.btn-yellow {
+    color: #fea000 !important;
+    background: rgba(255,207,85,.2) !important;
+}
+.btn-blue {
+    color: #2898cb;
+    background: rgba(79,192,232,.15);
+}
+    .btn-blue:disabled {
+        color: #2898cb !important;
+        background: rgba(79,192,232,.15) !important;
+        opacity: 1 !important;
+    }
+.btn-red {
+    color: #ed5564;
+    background: rgba(237,85,100,.1);
+}
+    .btn-red:disabled {
+        color: #ed5564 !important;
+        background: rgba(237,85,100,.1) !important;
+        opacity:1 !important;
+    }
+.btn-gray {
+    color: #434a54;
+    background: rgba(170,178,189,.15);
+}
+.btn-green {
+    color: #4cb050;
+    background: rgba(136,196,38,.15);
+}
+.pull-right {
+    float:right;
+}
+.btn-radius-5 {
+    border-radius: 5px !important;
+}
+/**************/
+.text-success {
+    color: #74ac18 !important;
+}
+.btn-receipt {
+    background-color: #74ac18 !important;
+}
+.btn-category {
+    color: rgb(220, 57, 112);
+    background: rgba(220, 57, 112, 0.05);
+}

@@ -215,12 +215,12 @@
                         <div class="collapse" id="ui-sell">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")DocumentSell/Quotation">ใบเสนอราคา</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">ใบวางบิล</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">ใบแจ้งหนี้</a></li>
-                                <li class="nav-item nav-border-bottom"> <a class="nav-link" href="#">ใบเสร็จรับเงิน</a></li>
-                                <li class="nav-item nav-border-bottom my-2"> <a class="nav-link" href="#">ขายเงินสด</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">ใบลดหนี้</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">ใบเพิ่มหนี้</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")DocumentSell/BillingNote">ใบวางบิล</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")DocumentSell/Invoice">ใบแจ้งหนี้</a></li>
+                                <li class="nav-item nav-border-bottom"> <a class="nav-link" href="@Url.Content("~/")DocumentSell/Receipt">ใบเสร็จรับเงิน</a></li>
+                                <li class="nav-item nav-border-bottom my-2"> <a class="nav-link" href="@Url.Content("~/")DocumentSell/CashSale">ขายเงินสด</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")DocumentSell/CreditNote">ใบลดหนี้</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")DocumentSell/DebitNote">ใบเพิ่มหนี้</a></li>
                             </ul>
                         </div>
                     </li>
@@ -235,8 +235,8 @@
                         </a>
                         <div class="collapse" id="ui-buy">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#">ใบสั่งซื้อ</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">ใบรับสินค้า</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")DocumentBuy/PurchaseOrder">ใบสั่งซื้อ</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")DocumentBuy/ReceivingInventory">ใบรับสินค้า</a></li>
                             </ul>
                         </div>
                     </li>
@@ -251,8 +251,8 @@
                         </a>
                         <div class="collapse" id="ui-expand">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#">ค่าใช้จ่าย</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">หัก ณ ที่จ่าย</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")DocumentExpenses/Expenses">ค่าใช้จ่าย</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")DocumentExpenses/WithholdingTax">หัก ณ ที่จ่าย</a></li>
                             </ul>
                         </div>
                     </li>
@@ -260,7 +260,7 @@
                         <span class="nav-link">สินค้า / บริการ</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="@Url.Content("~/")Product/Products">
                             <i class="ti-package menu-icon"></i>
                             <span class="menu-title">สินค้า / บริการ</span>
                         </a>

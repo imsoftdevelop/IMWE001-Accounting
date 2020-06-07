@@ -12772,6 +12772,7 @@ tbody.collapse.show {
 .dropdown-toggle-split {
     padding-right: 1.03125rem;
     padding-left: 1.03125rem;
+    border-radius:5px;
 }
 
     .dropdown-toggle-split::after {
@@ -15222,7 +15223,7 @@ button.close {
         z-index: 1070;
         display: block;
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-family: 'Aksorn';
         font-style: normal;
         font-weight: 400;
         line-height: 1.5;
@@ -15335,7 +15336,7 @@ button.close {
         z-index: 1060;
         display: block;
         max-width: 276px;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-family: 'Aksorn';
         font-style: normal;
         font-weight: 400;
         line-height: 1.5;
@@ -15494,16 +15495,16 @@ button.close {
                 border-left-color: #f4f4f8;
             }
 
-    .popover-header {
-        padding: 0.5rem 0.75rem;
-        margin-bottom: 0;
-        font-size: 1rem;
-        color: inherit;
-        background-color: #09b76b;
-        border-bottom: 1px solid #089f5d;
-        border-top-left-radius: calc(0.3rem - 1px);
-        border-top-right-radius: calc(0.3rem - 1px);
-    }
+.popover-header {
+    padding: 0.5rem 3rem .5rem 1rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: inherit;
+    background-color: #09b76b;
+    border-bottom: 1px solid #089f5d;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+}
 
         .popover-header:empty {
             display: none;
@@ -23163,8 +23164,8 @@ button.close {
     }
 
         .form-check .form-check-label input:checked + .input-helper:before {
-            background-color: #d9d9d9;
-            border-color: #b3b3b3;
+            background-color: #fff;
+            border-color: #ccd0d9;
         }
 
         .form-check .form-check-label input:checked + .input-helper:after {
@@ -23196,7 +23197,7 @@ button.close {
             background: #e6e6e6;
             border-radius: 3px;
             left: 0;
-            border: 2px solid #e6e6e6;
+            border: 1px solid #e6e6e6;
             -webkit-transition: all;
             -o-transition: all;
             transition: all;
@@ -24853,6 +24854,7 @@ button.close {
         }
 
         .popover .popover-header {
+            font-family:'Aksorn' !important;
             font-size: 0.9375rem;
             border-bottom: 0;
             color: #ffffff;
@@ -26915,7 +26917,7 @@ button.close {
             background: #1094f7;
             color: #ffffff;
             font-size: 0.8125rem;
-            font-family: "opensans-regular", sans-serif;
+            font-family: 'Aksorn';
             font-weight: 500;
             padding: 0.75rem;
         }

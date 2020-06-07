@@ -78,7 +78,7 @@
 }
 
 <link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
-<title>ใบเสนอราคา | WeAccount</title>
+<title>ใบแจ้งหนี้ | WeAccount</title>
 <!-- Dummy Modal Ends -->
 <!-- Main Modal starts -->
 <div class="modal fade pr-0 modal-noscroll" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -86,12 +86,11 @@
         <div class="modal-content-full">
             <div class="modal-header-full d-flex">
                 <div class="modal-header-title">
-                    <h5 class="modal-title-full"><i class="fa fa-file-text-o f-1-0 mr-2 text-primary"></i>สร้างใบเสนอราคา</h5>
-                    <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">QT20200600001</h5>
-                    <button type="button" class="btn btn-gray btn-fw aksorn f-1-0 px-3" style="cursor:default">รออนุมัติ</button>
+                    <h5 class="modal-title-full"><i class="fa fa-file-text-o f-1-0 mr-2 text-primary"></i> สร้างใบแจ้งหนี้</h5>
+                    <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">INV20200600001</h5>
                 </div>
                 <div class="modal-header-button">
-                    <a href="@Url.Content("~/")DocumentSell/Quotation" class="btn btn-inverse-light btn-fw aksorn f-1-2" onclick="onclickclose()">ปิดหน้าต่าง</a>
+                    <a href="@Url.Content("~/")DocumentSell/Invoice" class="btn btn-inverse-light btn-fw aksorn f-1-2" >ปิดหน้าต่าง</a>
                     <div class="btn-group">
                         <button type="button" class="btn btn-success  aksorn f-1-2">บันทึกเอกสาร</button>
                         <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" id="dropdownMenuSplitButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -207,116 +206,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="">
-                                                    <tr>
-                                                        <td width="10%" class="text-center">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <p class="f-1-0">1</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="50%">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <p class="f-1-0">ค่าอาหารกลางวัน</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%" class="text-center">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <input type="email" class="form-control  text-right" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%" class="text-right">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%" class="text-left">
-                                                            <div class="row">
-                                                                <div class="col-12 ">
-                                                                    <input type="text" class="form-control text-right" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%" class="text-right">
-                                                            <div class="row">
-                                                                <div class="col-12 ">
-                                                                    <p class="f-1-0">0.00</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="5%" class="text-center">
-                                                            <div class="row">
-                                                                <div class="col-12 ">
-                                                                    <div class="dropdown">
-                                                                        <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3">
-                                                                            <i class="fa fa-trash-o"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td width="10%" class="text-center">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <p class="f-1-0">1</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="50%">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <p class="f-1-0">ค่าอาหารกลางวัน</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%" class="text-center">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <input type="email" class="form-control  text-right" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%" class="text-right">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%" class="text-left">
-                                                            <div class="row">
-                                                                <div class="col-12 ">
-                                                                    <input type="text" class="form-control text-right" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%" class="text-right">
-                                                            <div class="row">
-                                                                <div class="col-12 ">
-                                                                    <p class="f-1-0">0.00</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="5%" class="text-center">
-                                                            <div class="row">
-                                                                <div class="col-12 ">
-                                                                    <div class="dropdown">
-                                                                        <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3">
-                                                                            <i class="fa fa-trash-o"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                  
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
@@ -414,6 +304,7 @@
                                                 ลายเซ็นอิเล็กทรอนิกส์และตรายาง
                                             </label>
                                         </div>
+
                                     </div>
                                     <div class="col-lg-5 col-md-6 col-sm-12 col-12 ml-auto">
                                         <div class="form-group row ">
@@ -431,20 +322,41 @@
                                             </div>
                                             <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">ราคาหลังหักส่วนลด</label>
                                             <div class="col-sm-6 text-right">
-                                                <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                                <label for="exampleInputEmail2" class="col-sm-12 col-form-label aksorn-Bold f-1-0">0.00</label>
                                             </div>
                                             <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">จำนวนเงินรวมทั้งสิ้น</label>
                                             <div class="col-sm-6 text-right">
-                                                <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                                <label for="exampleInputEmail2" class="col-sm-12 col-form-label aksorn-Bold f-1-0">0.00</label>
                                             </div>
-
                                         </div>
                                         <hr class=" hr-subtitle">
-                                        <div class="form-check aksorn text-primary f-1-2">
-                                            <label class="form-check-label f-1-0">
-                                                <input type="checkbox" class="form-check-input">
-                                                หักภาษี ณ ที่จ่าย
-                                            </label>
+                                        <div class="form-group row ">
+                                            <div class="form-check aksorn text-primary  f-1-2 col-sm-4">
+                                                <label class="form-check-label f-1-0">
+                                                    <input type="checkbox" class="form-check-input" checked>
+                                                    หักภาษี ณ ที่จ่าย
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-3 text-right">
+                                                <select class="form-control" id="exampleFormControlSelect2">
+                                                    <option>3%</option>
+                                                    <option>5%</option>
+                                                    <option>0.5%</option>
+                                                    <option>0.75%</option>
+                                                    <option>1%</option>
+                                                    <option>1.5%</option>
+                                                    <option>2%</option>
+                                                    <option>10%</option>
+                                                    <option>15%</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4 text-right ml-auto">
+                                                <label for="exampleInputEmail2" class="col-sm-12 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">ยอดชำระ</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -935,6 +847,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <div class="col-lg-5  col-md-12 col-sm-12 col-12 col-12 pl-0">
                         <div class="row-modal">

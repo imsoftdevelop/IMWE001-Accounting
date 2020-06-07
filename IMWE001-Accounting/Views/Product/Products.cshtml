@@ -1,0 +1,677 @@
+﻿
+@section RenderScriptWithPage
+    {
+    <script src="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/lib/dropify/dropify.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.dropdown-menu select.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+
+        (function ($) {
+            'use strict';
+            $('.dropify').dropify();
+        })(jQuery);
+
+        (function ($) {
+            if ($("#datepicker-popup").length) {
+                $('#datepicker-popup').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+            if ($("#datepicker-popup-1").length) {
+                $('#datepicker-popup-1').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+        })(jQuery);
+
+        var $table = $('table.scroll'),
+            $bodyCells = $table.find('tbody tr:first').children(),
+            colWidth;
+
+        // Adjust the width of thead cells when window resizes
+        $(window).resize(function () {
+            // Get the tbody columns width array
+            colWidth = $bodyCells.map(function () {
+                return $(this).width();
+            }).get();
+
+            // Set the width of thead columns
+            $table.find('thead tr').children().each(function (i, v) {
+                $(v).width(colWidth[i]);
+            });
+        }).resize(); // Trigger resize handler
+
+        function modaladd() {
+            $('#exampleModal-5').modal('show');
+        }
+    </script>
+
+}
+
+<link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+<title>สินค้า | WeAccount</title>
+<div class="row">
+    <div class="col-md-12 ">
+        <div class="d-flex">
+            <h5 class="title-page-1">
+                รายการสินค้าทั้งหมด
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb pl-0">
+                        <li class="breadcrumb-item" aria-current="page">รายการสินค้า</li>
+                        <li class="breadcrumb-item active">แสดงทั้งหมด</li>
+                    </ol>
+                </nav>
+            </h5>
+            <div class="h-25 ml-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success px-4 aksorn f-1-2" onclick="modaladd()">สร้างใหม่</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 ">
+        <nav>
+            <ul class="pagination rounded aksorn f-1-0 ">
+                <li class="page-item border-paiging text-center"><a class="page-link paging-active-subtitle">แสดงทั้งหมด</a></li>
+                <li class="page-item border-paiging text-center"><a class="page-link"> <i class="ti-hummer f-0-8 mr-2"></i>บริการ</a></li>
+                <li class="page-item border-paiging text-center"><a class="page-link"> <i class="ti-package f-0-8 mr-2"></i>สินค้า</a></li>
+                <li class="page-item mega-dropdown border-paiging text-center">
+                    <a class="page-link paging-non-active-subtitle" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ค้นหา <i class="ml-3 f-0-6  icon-arrow-down"></i></a>
+                    <div class="dropdown-menu dropdown-menu-search  border-fix" aria-labelledby="dropdownMenuButton1">
+                        <h6 class="dropdown-header aksorn f-1-0">ค้นหา : </h6>
+                        <div class="form-group px-4  pb-0 mb-0 pt-1">
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
+                        </div>
+                        <h6 class="dropdown-header text-muted aksorn f-0-8">ค้นหาจากชื่อ , รหัสสินค้า หรือบาร์โค้ด</h6>
+                        <div class="dropdown-divider"></div>
+                        <div class="form-group px-4  pb-0 mb-0 pt-1 text-right">
+                            <button type="button" class="btn btn-primary btn-fw aksorn f-1-0 p-1">ค้นหา</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card card-weaccount border-fix-table">
+            <div class="card-table search-table-outter table-responsive">
+                <table class="table table-hover  aksorn scroll s-table">
+                    <thead class="table-softyellow">
+                        <tr>
+                            <th width="15%" class="aksorn f-1-0">รหัสสินค้า</th>
+                            <th width="40%" class="aksorn f-1-0">ชื่อสินค้า</th>
+                            <th width="20%" class="aksorn f-1-0">ราคาต่อหน่วย</th>
+                            <th width="10%" class="aksorn f-1-0">หน่วย</th>
+                            <th width="12%" class="aksorn f-1-0">หมวดสินค้า</th>
+                            <th width="3%" class="aksorn f-1-0"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="">
+                        <tr>
+                            <td width="ๅถ%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0"><i class="ti-package mr-2"></i>P001-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="40%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">รายการสินค้าทดสอบ</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">100.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="10%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ครั้ง</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="12%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ทั่วไป</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="3%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="icon-options"></i>
+                                            </button>
+                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไข</a>
+                                                <a class="dropdown-item py-2"><i class="fa fa-files-o mr-2 "></i>สร้างซ้ำ</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบสินค้า</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="ๅถ%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0"><i class="ti-hummer mr-2"></i>P001-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="40%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">บริการขนส่ง</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">100.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="10%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ครั้ง</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="12%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ทั่วไป</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="3%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="icon-options"></i>
+                                            </button>
+                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไข</a>
+                                                <a class="dropdown-item py-2"><i class="fa fa-files-o mr-2 "></i>สร้างซ้ำ</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบสินค้า</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="ๅถ%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0"><i class="ti-package mr-2"></i>P001-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="40%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">รายการสินค้าทดสอบ</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">100.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="10%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ครั้ง</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="12%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ทั่วไป</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="3%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="icon-options"></i>
+                                            </button>
+                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไข</a>
+                                                <a class="dropdown-item py-2"><i class="fa fa-files-o mr-2 "></i>สร้างซ้ำ</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบสินค้า</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="ๅถ%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0"><i class="ti-package mr-2"></i>P001-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="40%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">รายการสินค้าทดสอบ</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">100.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="10%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ครั้ง</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="12%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ทั่วไป</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="3%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="icon-options"></i>
+                                            </button>
+                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไข</a>
+                                                <a class="dropdown-item py-2"><i class="fa fa-files-o mr-2 "></i>สร้างซ้ำ</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบสินค้า</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="ๅถ%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0"><i class="ti-package mr-2"></i>P001-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="40%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">รายการสินค้าทดสอบ</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">100.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="10%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ครั้ง</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="12%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ทั่วไป</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="3%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="icon-options"></i>
+                                            </button>
+                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไข</a>
+                                                <a class="dropdown-item py-2"><i class="fa fa-files-o mr-2 "></i>สร้างซ้ำ</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบสินค้า</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="ๅถ%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0"><i class="ti-hummer mr-2"></i>P001-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="40%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">บริการขนส่ง</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">100.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="10%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ครั้ง</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="12%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ทั่วไป</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="3%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="icon-options"></i>
+                                            </button>
+                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไข</a>
+                                                <a class="dropdown-item py-2"><i class="fa fa-files-o mr-2 "></i>สร้างซ้ำ</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบสินค้า</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="ๅถ%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0"><i class="ti-hummer mr-2"></i>P001-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="40%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">บริการขนส่ง</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">100.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="10%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ครั้ง</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="12%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ทั่วไป</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="3%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="icon-options"></i>
+                                            </button>
+                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไข</a>
+                                                <a class="dropdown-item py-2"><i class="fa fa-files-o mr-2 "></i>สร้างซ้ำ</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบสินค้า</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ProductAdd Modal starts -->
+<div class="modal fade" id="exampleModal-5" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-text" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">
+                    สร้างบริการหรือสินค้า
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row-modal pl-2 mb-4">
+                    <div class="col-lg-7 pl-0">
+                        <div class="row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ประเภทสินค้า: </label>
+                            <div class="col-sm-7 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>บริการ</option>
+                                    <option>สินค้า</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">รหัสสินค้า: </label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ชื่อสินค้า: </label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">รายละเอียดสินค้า: </label>
+                            <div class="col-sm-7 pl-0">
+                                <textarea rows="4" class="form-control form-textarea" id="exampleInputEmail2" placeholder=""></textarea>
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">หน่วยสินค้า:</label>
+                            <div class="col-sm-7 pl-0">
+                                <div class=" pl-0">
+                                    <select class="form-control" id="exampleFormControlSelect2">
+                                        <option>กก.</option>
+                                        <option>กล่อง</option>
+                                        <option>ครั้ง</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0 mt-2">หมวดสินค้า:</label>
+                            <div class="col-sm-7 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>ทั่วไป</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 pl-0">
+                        <div class=" row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ราคาขาย: </label>
+                            <div class="col-sm-8 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ภาษีมูลค่าเพิ่ม: </label>
+                            <div class="col-sm-8 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>ราคาไม่รวม VAT</option>
+                                    <option>ราคารวม VAT แล้ว</option>
+                                    <option>VAT 0%</option>
+                                    <option>สินค้าได้รับยกเว้นภาษี (N/A)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-modal pl-2 mb-4">
+                    <div class="col-lg-12 pl-0" style="position:relative;">
+                        <h5 class="modal-subtitle-full text-primary pl-0 f-1-2  aksorn">
+                            รายละเอียดการซื้อ
+                        </h5>
+                        <div class="hr-title">&nbsp;</div>
+                    </div>
+                    <div class="col-lg-7 pl-0">
+                        <div class=" row-modal text-left ">
+
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">
+                                รายละเอียดการซื้อ:
+                            </label>
+                            <div class="col-sm-7 pl-0">
+                                <textarea rows="4" class="form-control form-textarea" id="exampleInputEmail2" placeholder=""></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 pl-0">
+                        <div class=" row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ราคาซื้อ: </label>
+                            <div class="col-sm-8 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ภาษีมูลค่าเพิ่ม: </label>
+                            <div class="col-sm-8 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>ราคาไม่รวม VAT</option>
+                                    <option>ราคารวม VAT แล้ว</option>
+                                    <option>VAT 0%</option>
+                                    <option>สินค้าได้รับยกเว้นภาษี (N/A)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-modal pl-2 mb-4">
+                    <div class="col-lg-12 pl-0" style="position:relative;">
+                        <h5 class="modal-subtitle-full text-primary pl-0 f-1-2  aksorn">
+                            รายละเอียดเพิ่มเติม
+                        </h5>
+                        <div class="hr-title">&nbsp;</div>
+                    </div>
+                    <div class="col-lg-7 pl-0">
+                        <div class="row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">รหัสบาร์โค้ด: </label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">รูปสินค้า: </label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="file" class="dropify " />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-inverse-light btn-fw aksorn f-1-0" data-dismiss="modal" aria-label="Close">ยกเลิก</button>
+                <button type="button" class="btn btn-success btn-fw aksorn f-1-0">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ProductAdd Ends -->

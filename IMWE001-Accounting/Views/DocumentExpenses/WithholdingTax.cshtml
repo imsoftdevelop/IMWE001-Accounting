@@ -1,0 +1,371 @@
+﻿
+@section RenderScriptWithPage
+    {
+    <script src="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-menu select.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+
+        (function ($) {
+            if ($("#datepicker-popup").length) {
+                $('#datepicker-popup').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+            if ($("#datepicker-popup-1").length) {
+                $('#datepicker-popup-1').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+        })(jQuery);
+
+        var $table = $('table.scroll'),
+            $bodyCells = $table.find('tbody tr:first').children(),
+            colWidth;
+
+        // Adjust the width of thead cells when window resizes
+        $(window).resize(function () {
+            // Get the tbody columns width array
+            colWidth = $bodyCells.map(function () {
+                return $(this).width();
+            }).get();
+
+            // Set the width of thead columns
+            $table.find('thead tr').children().each(function (i, v) {
+                $(v).width(colWidth[i]);
+            });
+        }).resize(); // Trigger resize handler
+    </script>
+
+}
+
+<link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+<title>หัก ณ ที่จ่าย | WeAccount</title>
+<div class="row">
+    <div class="col-md-12 ">
+        <div class="d-flex">
+            <h5 class="title-page-1">
+                หัก ณ ที่จ่าย
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb pl-0">
+                        <li class="breadcrumb-item" aria-current="page">หัก ณ ที่จ่าย</li>
+                        <li class="breadcrumb-item active">แสดงทั้งหมด</li>
+                    </ol>
+                </nav>
+            </h5>
+            <div class="h-25 ml-auto">
+                <a href="@Url.Content("~/")DocumentExpenses/WithholdingTaxAdd" class="btn btn-success btn-fw px-5 aksorn f-1-2">สร้างใหม่</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 ">
+        <nav>
+            <ul class="pagination rounded aksorn f-1-0 ">
+                <li class="page-item border-paiging  text-center"><a class="page-link paging-active-subtitle">แสดงทั้งหมด</a></li>
+                <li class="page-item mega-dropdown border-paiging text-center">
+                    <a class="page-link paging-non-active-subtitle" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ค้นหา <i class="ml-3 f-0-6  icon-arrow-down"></i></a>
+                    <div class="dropdown-menu dropdown-menu-search  border-fix" aria-labelledby="dropdownMenuButton1">
+                        <h6 class="dropdown-header aksorn f-1-0">ค้นหา : </h6>
+                        <div class="form-group px-4  pb-0 mb-0 pt-1">
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
+                        </div>
+                        <h6 class="dropdown-header text-muted aksorn f-0-8">ค้นหาจากชื่อผู้ติดต่อ , เลขที่เอกสาร</h6>
+                        <div class="dropdown-divider"></div>
+                        <h6 class="dropdown-header aksorn f-1-0">สถานะเอกสาร : </h6>
+                        <div class="form-group px-4  pb-1 mb-0 pt-1">
+                            <select class="test form-control form-control-sm" id="exampleFormControlSelect3">
+                                <option>สถานะทั้งหมด</option>
+                                <option>รอดำเนินการ</option>
+                                <option>ดำเนินการแล้ว</option>
+                                <option>ยกเลิก</option>
+                            </select>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <h6 class="dropdown-header aksorn f-1-0">ช่วงวันที่เริ่มต้น : </h6>
+                        <div class="form-group px-4  pb-1 mb-0 pt-1">
+                            <div id="datepicker-popup" class="input-group date datepicker">
+                                <input type="text" class="form-control">
+                                <span class="input-group-addon input-group-append border-left">
+                                    <span class="mdi mdi-calendar input-group-text"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <h6 class="dropdown-header aksorn f-1-0">ช่วงวันที่สิ้นสุด : </h6>
+                        <div class="form-group px-4  pb-1 mb-0 pt-1">
+                            <div id="datepicker-popup-1" class="input-group date datepicker">
+                                <input type="text" class="form-control">
+                                <span class="input-group-addon input-group-append border-left">
+                                    <span class="mdi mdi-calendar input-group-text"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="form-group px-4  pb-0 mb-0 pt-1 text-right">
+                            <button type="button" class="btn btn-primary btn-fw aksorn f-1-0 p-1">ค้นหา</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card card-weaccount border-fix-table">
+            <div class="card-table search-table-outter table-responsive">
+                <table class="table table-hover  aksorn scroll s-table">
+                    <thead class="table-softyellow">
+                        <tr>
+                            <th width="17%" class="aksorn f-1-0">วันที่</th>
+                            <th width="20%" class="aksorn f-1-0">เลขที่เอกสาร</th>
+                            <th width="18%" class="aksorn f-1-0">ชื่อผู้ถูกหัก ณ ที่จ่าย</th>
+                            <th width="17%" class="aksorn f-1-0">แบบฟอร์ม/ภาษี</th>
+                            <th width="12%" class="aksorn f-1-0">ยอดรวมสุทธิ</th>
+                            <th width="15%" class="aksorn f-1-0">สถานะ</th>
+                            <th width="3%" class="aksorn f-1-0"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="">
+                        <tr>
+                            <td width="17%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">02-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">WT2020060001 <i class="fa fa-file-text-o f-1-0 ml-2 text-primary" data-toggle="popover" title="เอกสารอ้างอิง" data-content="PO2020060001" data-custom-class="popover-primary"></i></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="18%">
+                                <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                            </td>
+                            <td width="17%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ภงด 1ก (พิเศษ)</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">3%</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="12%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">10,000.00</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">300.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <div class="dropdown">
+                                            <button class="btn btn-gray btn-block f-1-0 pr-0 text-left mb-2 aksorn text-left" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                รอดำเนินการ  <i class="mt-1 f-0-6 pull-right icon-arrow-down"></i>
+                                            </button>
+                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuButton2">
+                                                <a class="dropdown-item py-2">ดำเนินการแล้ว</a>
+                                                <a class="dropdown-item">ยกเลิก</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="3%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="icon-options"></i>
+                                            </button>
+                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขเอกสาร</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item py-2"><i class="fa fa-print mr-2 "></i>พิมพ์เอกสาร</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบเอกสาร</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="17%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">02-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">WT2020060001 <i class="fa fa-file-text-o f-1-0 ml-2 text-primary" data-toggle="popover" title="เอกสารอ้างอิง" data-content="PO2020060001" data-custom-class="popover-primary"></i></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="18%">
+                                <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                            </td>
+                            <td width="17%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ภงด 1ก (พิเศษ)</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">3%</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="12%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">10,000.00</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">300.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <div class="dropdown">
+                                            <button class="btn btn-blue btn-block f-1-0 pr-0 text-left mb-2 aksorn text-left" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                ดำเนินการแล้ว  <i class="mt-1 f-0-6 pull-right icon-arrow-down"></i>
+                                            </button>
+                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuButton2">
+                                                <a class="dropdown-item">ยกเลิก</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="3%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="icon-options"></i>
+                                            </button>
+                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขเอกสาร</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item py-2"><i class="fa fa-print mr-2 "></i>พิมพ์เอกสาร</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบเอกสาร</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="17%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">02-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">WT2020060001 <i class="fa fa-file-text-o f-1-0 ml-2 text-primary" data-toggle="popover" title="เอกสารอ้างอิง" data-content="PO2020060001" data-custom-class="popover-primary"></i></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="18%">
+                                <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                            </td>
+                            <td width="17%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">ภงด 1ก (พิเศษ)</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">3%</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="12%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">10,000.00</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">300.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <div class="dropdown">
+                                            <button class="btn btn-red btn-block f-1-0 pr-0 text-left mb-2 aksorn text-left" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
+                                                ยกเลิก  <i class="mt-1 f-0-6 pull-right icon-arrow-down display-none"></i>
+                                            </button>
+                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuButton2">
+                                                <a class="dropdown-item py-2">ดำเนินการแล้ว</a>
+                                                <a class="dropdown-item">ยกเลิก</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="3%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="icon-options"></i>
+                                            </button>
+                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขเอกสาร</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item py-2"><i class="fa fa-print mr-2 "></i>พิมพ์เอกสาร</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบเอกสาร</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6">
+                                <div class="row">
+                                    <div class="col-11 text-right">
+                                        <h5 class="card-title aksorn f-1-0 mb-0"> ยอดรวมทั้งหมด : <label class="text-primary">500,000.00</label> </h5>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

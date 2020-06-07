@@ -73,12 +73,15 @@
         function modalproductsearch() {
             $('#exampleModal-6').modal('show');
         }
+        function modalreceipt() {
+            $('#exampleModal-7').modal('show');
+        }
     </script>
 
 }
 
 <link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
-<title>ใบเสนอราคา | WeAccount</title>
+<title>หัก ณ ที่จ่าย | WeAccount</title>
 <!-- Dummy Modal Ends -->
 <!-- Main Modal starts -->
 <div class="modal fade pr-0 modal-noscroll" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -86,12 +89,12 @@
         <div class="modal-content-full">
             <div class="modal-header-full d-flex">
                 <div class="modal-header-title">
-                    <h5 class="modal-title-full"><i class="fa fa-file-text-o f-1-0 mr-2 text-primary"></i>สร้างใบเสนอราคา</h5>
-                    <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">QT20200600001</h5>
-                    <button type="button" class="btn btn-gray btn-fw aksorn f-1-0 px-3" style="cursor:default">รออนุมัติ</button>
+                    <h5 class="modal-title-full"><i class="fa fa-file-text-o f-1-0 mr-2 text-primary"></i>สร้างหัก ณ ที่จ่าย</h5>
+                    <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">EXP20200600001</h5>
+                    <button type="button" class="btn btn-gray btn-fw aksorn f-1-0 px-3" style="cursor:default">รอดำเนินการ</button>
                 </div>
                 <div class="modal-header-button">
-                    <a href="@Url.Content("~/")DocumentSell/Quotation" class="btn btn-inverse-light btn-fw aksorn f-1-2" onclick="onclickclose()">ปิดหน้าต่าง</a>
+                    <a href="@Url.Content("~/")DocumentExpenses/Expenses" class="btn btn-inverse-light btn-fw aksorn f-1-2" onclick="onclickclose()">ปิดหน้าต่าง</a>
                     <div class="btn-group">
                         <button type="button" class="btn btn-success  aksorn f-1-2">บันทึกเอกสาร</button>
                         <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" id="dropdownMenuSplitButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -112,12 +115,12 @@
                                 <div class="row-modal">
                                     <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1" class="aksorn f-1-0">ชื่อลูกค้า</label>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control aksorn f-1-0" placeholder="เลือกรายชื่อลูกค้า" aria-label="Username" disabled>
-                                                <div class="dropdown ">
+                                            <label for="exampleInputEmail1" class="aksorn f-1-0">ชื่อผู้จำหน่าย</label>
+                                            <div class="input-group ">
+                                                <input type="text" class="form-control aksorn f-1-0" placeholder="เลือกรายชื่อผู้จำหน่าย" aria-label="Username" disabled>
+                                                <div class="dropdown">
                                                     <div class="input-group-append bg-primary cursor-pointer " id="dropdownMenuIconButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <span class="input-group-text bg-transparent px-2"><i class="  icon-user-follow text-white"></i></span>
+                                                        <span class="input-group-text bg-transparent px-2 "><i class="  icon-user-follow text-white"></i></span>
                                                         <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton6">
                                                             <a class="dropdown-item aksorn f-1-0 text-primary" onclick="modalcustom()"><i class="icon-magnifier mr-2 "></i>ค้นหาจากสมุดรายชื่อ</a>
                                                             <a class="dropdown-item aksorn f-1-0 text-primary" onclick="modaladd()"><i class="icon-user-follow mr-2 "></i>เพิ่มรายชื่อผู้ติดต่อ</a>
@@ -142,28 +145,22 @@
                                             </a>
                                         </button>
                                         <div class="form-group text-left">
-                                            <div class="  row ">
-                                                <label for="exampleInputEmail1" class="aksorn f-1-0">จำนวนเงินรวมทั้งสิ้น</label>
+                                            <div class="  row my-2 ">
+                                                <label for="exampleInputEmail1" class="aksorn-Bold f-1-0">จำนวนเงิน (ไม่รวมภาษี)</label>
                                             </div>
-                                            <div class=" row ">
+                                            <div class=" row my-2">
+                                                <h5 class="modal-subtitle-full f-2-0 aksorn">0.00</h5>
+                                            </div>
+                                            <div class="  row my-2 ">
+                                                <label for="exampleInputEmail1" class="aksorn-Bold f-1-0">ภาษีที่หัก</label>
+                                            </div>
+                                            <div class=" row my-2">
                                                 <h5 class="modal-subtitle-full text-primary f-2-0 aksorn">0.00</h5>
                                             </div>
-                                            <div class="form-group row ">
+                                            <div class="form-group row my-2 ">
                                                 <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn pl-0 f-1-0">วันที่ : </label>
                                                 <div class="col-sm-8">
                                                     <input type="email" class="form-control" id="exampleInputEmail2" value="01-01-2020" placeholder="DD/MM/YYYY">
-                                                </div>
-                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn pl-0 f-1-0">เครดิต (วัน) : </label>
-                                                <div class="col-sm-8">
-                                                    <input type="email" class="form-control" id="exampleInputEmail2" value="0" placeholder="">
-                                                </div>
-                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn pl-0 f-1-0">ครบกำหนด : </label>
-                                                <div class="col-sm-8">
-                                                    <input type="email" class="form-control" id="exampleInputEmail2" value="01-01-2020" placeholder="">
-                                                </div>
-                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn pl-0 f-1-0">พนักงานขาย : </label>
-                                                <div class="col-sm-8">
-                                                    <input type="email" class="form-control" value="นายทดสอบ ระบบยอดเยี่ยม" id="exampleInputEmail2" placeholder="">
                                                 </div>
                                             </div>
                                         </div>
@@ -173,19 +170,28 @@
                                 <hr>
                                 <!-- Detail Start-->
                                 <div class="row-modal">
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-4">
                                         <div class="form-group row ">
-                                            <label for="exampleInputEmail2" class="col-sm-2 col-form-label aksorn f-1-0">ชื่อโปรเจค : </label>
-                                            <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                                            <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn f-1-0">แบบฟอร์ม : </label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control" id="exampleFormControlSelect2">
+                                                    <option>-- กรุณาเลือก --</option>
+                                                    <option>ภงด 3</option>
+                                                    <option>ภงด 53</option>
+                                                    <option>ภงด 1ก</option>
+                                                    <option>ภงด 1ก (พิเศษ)</option>
+                                                    <option>ภงด 2</option>
+                                                    <option>ภงด 2ก</option>
+                                                    <option>ภงด 3ก</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 ml-auto">
+                                    <div class="col-lg-2">
                                         <div class="form-group row ">
-                                            <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn f-1-0">เลขที่อ้างอิง : </label>
-                                            <div class="col-sm-8">
-                                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                                            <label for="exampleInputEmail2" class="col-sm-5 col-form-label aksorn f-1-0">ระบุปี : </label>
+                                            <div class="col-sm-7">
+                                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="โปรดระบุ">
                                             </div>
                                         </div>
                                     </div>
@@ -198,112 +204,43 @@
                                                 <thead class="badge-softblue">
                                                     <tr>
                                                         <th width="5%" class="aksorn f-1-0 text-center">ลำดับ</th>
-                                                        <th width="50%" class="aksorn f-1-0">ชื่อสินค้า/รายละเอียด</th>
-                                                        <th width="10%" class="aksorn text-center f-1-0">จำนวน</th>
-                                                        <th width="10%" class="aksorn text-center f-1-0">หน่วย</th>
-                                                        <th width="10%" class="aksorn text-right f-1-0">ราคาต่อหน่วย</th>
-                                                        <th width="10%" class="aksorn text-right f-1-0">ราคารวม</th>
+                                                        <th width="40%" class="aksorn f-1-0">ประเภทเงินได้ที่จ่าย</th>
+                                                        <th width="10%" class="aksorn text-center f-1-0">อัตราภาษีที่หัก</th>
+                                                        <th width="10%" class="aksorn text-center f-1-0">จำนวนเงิน</th>
+                                                        <th width="20%" class="aksorn text-left f-1-0">ภาษีมูลค่าเพิ่ม</th>
                                                         <th width="5%" class="aksorn f-1-0"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="">
                                                     <tr>
                                                         <td width="10%" class="text-center">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <p class="f-1-0">1</p>
-                                                                </div>
-                                                            </div>
+                                                            <p class="f-1-0">1</p>
                                                         </td>
-                                                        <td width="50%">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <p class="f-1-0">ค่าอาหารกลางวัน</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%" class="text-center">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <input type="email" class="form-control  text-right" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
+                                                        <td width="40%">
+                                                            <p class="f-1-0">1. เงินเดือน ค่าจ้าง เบี้ยเลี้ยง โบนัส ฯลฯ ตามมาตรา 40 (1)</p>
                                                         </td>
                                                         <td width="10%" class="text-right">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
+                                                            <select class="form-control" id="exampleFormControlSelect2">
+                                                                <option>5%</option>
+                                                                <option>3%</option>
+                                                                <option>0.5%</option>
+                                                                <option>0.75%</option>
+                                                                <option>1%</option>
+                                                                <option>1.5%</option>
+                                                                <option>2%</option>
+                                                                <option>10%</option>
+                                                                <option>15%</option>
+                                                            </select>
                                                         </td>
                                                         <td width="10%" class="text-left">
-                                                            <div class="row">
-                                                                <div class="col-12 ">
-                                                                    <input type="text" class="form-control text-right" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
+                                                            <input type="text" class="form-control text-right" id="exampleInputEmail2" placeholder="" value="0.00">
                                                         </td>
-                                                        <td width="10%" class="text-right">
-                                                            <div class="row">
-                                                                <div class="col-12 ">
-                                                                    <p class="f-1-0">0.00</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="5%" class="text-center">
-                                                            <div class="row">
-                                                                <div class="col-12 ">
-                                                                    <div class="dropdown">
-                                                                        <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3">
-                                                                            <i class="fa fa-trash-o"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td width="10%" class="text-center">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <p class="f-1-0">1</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="50%">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <p class="f-1-0">ค่าอาหารกลางวัน</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%" class="text-center">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <input type="email" class="form-control  text-right" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%" class="text-right">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%" class="text-left">
-                                                            <div class="row">
-                                                                <div class="col-12 ">
-                                                                    <input type="text" class="form-control text-right" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%" class="text-right">
-                                                            <div class="row">
-                                                                <div class="col-12 ">
-                                                                    <p class="f-1-0">0.00</p>
-                                                                </div>
-                                                            </div>
+                                                        <td width="20%" class="text-right">
+                                                            <select class="form-control" id="exampleFormControlSelect2">
+                                                                <option>ไม่รวมภาษีมูลค่าเพิ่ม</option>
+                                                                <option>รวมภาษีมูลค่าเพิ่ม</option>
+                                                                <option>ไม่มี/ยกเว้นภาษีมูลค่าเพิ่ม</option>
+                                                            </select>
                                                         </td>
                                                         <td width="5%" class="text-center">
                                                             <div class="row">
@@ -327,21 +264,26 @@
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td width="50%">
+                                                        <td width="40%">
                                                             <div class="row">
                                                                 <div class="col-12">
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control aksorn f-1-0" placeholder="เลือกรายการสินค้า/บริการ" aria-label="Username" disabled>
-                                                                        <div class="dropdown ">
-                                                                            <div class="input-group-append bg-primary cursor-pointer " id="dropdownMenuIconButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                                <span class="input-group-text bg-transparent px-2"><i class="  icon-plus text-white"></i></span>
-                                                                                <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton6">
-                                                                                    <a class="dropdown-item aksorn f-1-0 text-primary" onclick="modalproductsearch()"><i class="icon-magnifier mr-2 "></i>ค้นหาจากรายการสินค้า</a>
-                                                                                    <a class="dropdown-item aksorn f-1-0 text-primary" onclick="modalproductadd()"><i class="ti-package mr-2 "></i>เพิ่มรายการสินค้า</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                                    <select class="form-control" id="exampleFormControlSelect2">
+                                                                        <option>-- กรุณาเลือก --</option>
+                                                                        <option>1. เงินเดือน ค่าจ้าง เบี้ยเลี้ยง โบนัส ฯลฯ ตามมาตรา 40 (1)</option>
+                                                                        <option>2. ค่าธรรมเนียม ค่านายหน้า ฯลฯ ตามมาตรา 40 (2)</option>
+                                                                        <option>3. ค่าแห่งลิขสิทธิ์ ฯลฯ ตามมาตรา 40(3)</option>
+                                                                        <option>4. (ก) ค่าดอกเบี้ย ฯลฯ ตามมาตรา 40(4) (ก)</option>
+                                                                        <option>4. (ข)(1.1) กิจการที่ต้องเสียภาษีเงินได้นิติบุคคลในอัตราร้อยละ 25 ของกำไรสุทธิ</option>
+                                                                        <option>4. (ข)(1.2) กิจการที่ต้องเสียภาษีเงินได้นิติบุคคลในอัตราร้อยละ 20 ของกำไรสุทธิ</option>
+                                                                        <option>4. (ข)(1.3) กิจการที่ต้องเสียภาษีเงินได้นิติบุคคลในอัตราอื่น ของกำไรสุทธิ (กรุณาระบุ)</option>
+                                                                        <option>4. (ข)(2.1) กำไรสุทธิของกิจการที่ได้รับยกเว้นเงินได้นิติบุคคล</option>
+                                                                        <option>4. (ข)(2.2) เงินปันผลหรือเงินส่วนแบ่งของกำไรที่ได้รับยกเว้น...</option>
+                                                                        <option>4. (ข)(2.3) กำไรสุทธิส่วนที่ได้หักผลขาดทุนสิทธิยกมาไม่เกิน 5 ปี...</option>
+                                                                        <option>4. (ข)(2.4) กำไรที่รับรู้ทางบัญชีโดยวิธีส่วนได้เสีย (equity method)</option>
+                                                                        <option>4. (ข)(2.5) อื่นๆ (กรุณาระบุ)</option>
+                                                                        <option>5. การจ่ายเงินได้ที่ต้องหักภาษี ณ ที่จ่ายตามคำสั่งกรมสรรพากร....</option>
+                                                                        <option>6. อื่นๆ (กรุณาระบุ)</option>
+                                                                    </select>
                                                                 </div>
                                                                 <div class="col-12">
                                                                     <div class="input-group">
@@ -349,34 +291,30 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+
                                                         </td>
                                                         <td width="10%" class="text-center">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <input type="email" class="form-control  text-right" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
+                                                            <select class="form-control" id="exampleFormControlSelect2">
+                                                                <option>5%</option>
+                                                                <option>3%</option>
+                                                                <option>0.5%</option>
+                                                                <option>0.75%</option>
+                                                                <option>1%</option>
+                                                                <option>1.5%</option>
+                                                                <option>2%</option>
+                                                                <option>10%</option>
+                                                                <option>15%</option>
+                                                            </select>
                                                         </td>
                                                         <td width="10%" class="text-right">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
+                                                            <input type="email" class="form-control text-right" id="exampleInputEmail2" placeholder="" value="0.00">
                                                         </td>
-                                                        <td width="10%" class="text-left">
-                                                            <div class="row">
-                                                                <div class="col-12 ">
-                                                                    <input type="text" class="form-control text-right" id="exampleInputEmail2" placeholder="" value="0.00">
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%" class="text-right">
-                                                            <div class="row">
-                                                                <div class="col-12 ">
-                                                                    <p class="f-1-0">0.00</p>
-                                                                </div>
-                                                            </div>
+                                                        <td width="20%" class="text-left">
+                                                            <select class="form-control" id="exampleFormControlSelect2">
+                                                                <option>ไม่รวมภาษีมูลค่าเพิ่ม</option>
+                                                                <option>รวมภาษีมูลค่าเพิ่ม</option>
+                                                                <option>ไม่มี/ยกเว้นภาษีมูลค่าเพิ่ม</option>
+                                                            </select>
                                                         </td>
                                                         <td width="5%" class="text-center">
                                                             <div class="row">
@@ -399,6 +337,107 @@
                                 <!-- Detail End-->
                                 <!-- Footer Start-->
                                 <div class="row-modal mt-5">
+                                    <div class="col-lg-5 col-md-6 col-sm-12 col-12 ml-auto">
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0 text-primary">จำนวนเงิน (ไม่รวมภาษี)</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">ภาษีมูลค่าเพิ่ม 7%</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">จำนวนเงิน</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">ภาษีที่หัก</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">ยอดชำระ</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                            </div>
+                                        </div>
+                                        <hr class=" hr-subtitle">
+                                    </div>
+                                </div>
+                                <!-- Footer End-->
+                                <!-- Payer Start-->
+                                <div class="card card-weaccount border-fix-table mt-5">
+                                    <div class="card-table search-table-outter px-4 pt-1 pb-0">
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail2" class="col-sm-12 col-form-label aksorn f-1-0">ผู้จ่ายเงิน:</label>
+                                            <div class="col-sm-12">
+                                                <div class="row-modal">
+                                                    <div class="col-sm-2 pl-0">
+                                                        <div class="form-radio aksorn">
+                                                            <label class="form-check-label f-1-0">
+                                                                <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked="">
+                                                                ภาษีหัก ณ ที่จ่าย
+                                                                <i class="input-helper"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2 pl-0">
+                                                        <div class="form-radio aksorn">
+                                                            <label class="form-check-label f-1-0">
+                                                                <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked="">
+                                                                ออกภาษีให้ตลอดไป
+                                                                <i class="input-helper"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2 pl-0">
+                                                        <div class="form-radio aksorn">
+                                                            <label class="form-check-label f-1-0">
+                                                                <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked="">
+                                                                ออกภาษีให้ครั้งเดียว
+                                                                <i class="input-helper"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1 pl-0">
+                                                        <div class="form-radio aksorn">
+                                                            <label class="form-check-label f-1-0">
+                                                                <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked="">
+                                                                อื่นๆ
+                                                                <i class="input-helper"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2 pl-0 mt-2">
+                                                        <input type="text" class="form-control aksorn f-1-0" placeholder="โปรดระบุ" aria-label="Username">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- PayerEnd -->
+                                <!-- Provident Fund Start-->
+                                <div class="card card-weaccount border-fix-table">
+                                    <div class="card-table search-table-outter px-4 pt-1 pb-0">
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail2" class="col-sm-12 col-form-label aksorn f-1-0">เงินที่ต้องจ่ายเข้ากองทุนสำรองเลี้ยงชีพ</label>
+                                                <label for="exampleInputEmail2" class="col-sm-2 col-form-label aksorn f-1-0  ">ใบอนุญาตเลขที่:</label>
+                                                <div class="col-sm-2 text-right">
+                                                    <input type="text" class="form-control aksorn f-1-0" placeholder="" aria-label="Username">
+                                                </div>
+                                                <label for="exampleInputEmail2" class="col-sm-2 col-form-label aksorn f-1-0  ">จำนวนเงิน:</label>
+                                                <div class="col-sm-2 text-right">
+                                                    <input type="text" class="form-control aksorn f-1-0" placeholder="0.00 บาท" aria-label="Username">
+                                                </div>
+                                                <label for="exampleInputEmail2" class="col-sm-2 col-form-label aksorn f-1-0  ">กองทุนประกันสังคม:</label>
+                                                <div class="col-sm-2 text-right">
+                                                    <input type="text" class="form-control aksorn f-1-0" placeholder="0.00 บาท" aria-label="Username">
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Provident Fund -->
+                                <div class="row-modal mt-5">
                                     <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                         <div class="form-group row ">
                                             <label for="exampleInputEmail1" class="aksorn f-1-0">หมายเหตุ</label>
@@ -415,40 +454,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-lg-5 col-md-6 col-sm-12 col-12 ml-auto">
-                                        <div class="form-group row ">
-                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0 text-primary">รวมเป็นเงิน</label>
-                                            <div class="col-sm-6 text-right">
-                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn-Bold f-1-0">0.00</label>
-                                            </div>
-                                            <label for="exampleInputEmail2" class="col-sm-2 col-form-label aksorn f-1-0  text-primary">ส่วนลด </label>
-                                            <div class="col-sm-3 text-right">
-                                                <input type="email" class="form-control" id="exampleInputEmail2" value="0.00" placeholder="0.00">
-                                            </div>
-                                            <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn f-1-0  text-primary">% </label>
-                                            <div class="col-sm-3 text-right">
-                                                <input type="email" class="form-control text-right" value="0.00" id="exampleInputEmail2" placeholder="0.00">
-                                            </div>
-                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">ราคาหลังหักส่วนลด</label>
-                                            <div class="col-sm-6 text-right">
-                                                <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn-Bold f-1-0">0.00</label>
-                                            </div>
-                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">จำนวนเงินรวมทั้งสิ้น</label>
-                                            <div class="col-sm-6 text-right">
-                                                <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn-Bold f-1-0">0.00</label>
-                                            </div>
-
-                                        </div>
-                                        <hr class=" hr-subtitle">
-                                        <div class="form-check aksorn text-primary f-1-2">
-                                            <label class="form-check-label f-1-0">
-                                                <input type="checkbox" class="form-check-input">
-                                                หักภาษี ณ ที่จ่าย
-                                            </label>
-                                        </div>
-                                    </div>
                                 </div>
-                                <!-- Footer End-->
                             </div>
                         </div>
                     </div>
@@ -474,7 +480,7 @@
                         <div class="form-group row-modal text-left ">
                             <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ค้นหา : </label>
                             <div class="col-sm-10 pl-0">
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="พิมพ์รหัสลูกค้า , ชื่อลูกค้า , เลขประจำตัวผู้เสียภาษี ตัวอย่างเช่น 'We Develop หรือ 00177422145'">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="พิมพ์รหัสผู้จำหน่าย , ชื่อผู้จำหน่าย , เลขประจำตัวผู้เสียภาษี ตัวอย่างเช่น 'We Develop หรือ 00177422145'">
                             </div>
                         </div>
                     </div>
@@ -491,8 +497,8 @@
                                     <thead class="badge-softblue">
                                         <tr>
                                             <th width="15%" class="aksorn f-1-0">เลขที่ผู้เสียภาษี</th>
-                                            <th width="10%" class="aksorn f-1-0">รหัสลูกค้า</th>
-                                            <th width="20%" class="aksorn f-1-0">ชื่อลูกค้า</th>
+                                            <th width="10%" class="aksorn f-1-0">รหัสผู้จำหน่าย</th>
+                                            <th width="20%" class="aksorn f-1-0">ชื่อผู้จำหน่าย</th>
                                             <th width="10%" class="aksorn f-1-0">สาขา</th>
                                             <th width="20%" class="aksorn f-1-0">ที่อยู่</th>
                                             <th width="15%" class="aksorn f-1-0"></th>
@@ -942,7 +948,7 @@
                             <div class="col-sm-4 pl-0">
                                 <div class="form-check aksorn">
                                     <label class="form-check-label f-1-0">
-                                        <input type="checkbox" class="form-check-input" checked>
+                                        <input type="checkbox" class="form-check-input">
                                         ลูกค้า
                                     </label>
                                 </div>
@@ -950,7 +956,7 @@
                             <div class="col-sm-4 pl-0">
                                 <div class="form-check aksorn">
                                     <label class="form-check-label f-1-0">
-                                        <input type="checkbox" class="form-check-input">
+                                        <input type="checkbox" class="form-check-input" checked>
                                         ผู้จำหน่าย
                                     </label>
                                 </div>
@@ -1001,268 +1007,3 @@
     </div>
 </div>
 <!-- Customer Add Ends -->
-<!-- ProductAdd Modal starts -->
-<div class="modal fade" id="exampleModal-5" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog modal-text" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">
-                    รายการสินค้า
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row-modal pl-2 mb-4">
-                    <div class="col-lg-7 pl-0">
-                        <div class="row-modal text-left ">
-                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ประเภทสินค้า: </label>
-                            <div class="col-sm-7 pl-0">
-                                <select class="form-control" id="exampleFormControlSelect2">
-                                    <option>บริการ</option>
-                                    <option>สินค้า</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row-modal text-left ">
-                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">รหัสสินค้า: </label>
-                            <div class="col-sm-7 pl-0">
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
-                            </div>
-                        </div>
-                        <div class=" row-modal text-left ">
-                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ชื่อสินค้า: </label>
-                            <div class="col-sm-7 pl-0">
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
-                            </div>
-                        </div>
-                        <div class=" row-modal text-left ">
-                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">รายละเอียดสินค้า: </label>
-                            <div class="col-sm-7 pl-0">
-                                <textarea rows="4" class="form-control form-textarea" id="exampleInputEmail2" placeholder=""></textarea>
-                            </div>
-                        </div>
-                        <div class=" row-modal text-left ">
-                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">หน่วยสินค้า:</label>
-                            <div class="col-sm-7 pl-0">
-                                <div class=" pl-0">
-                                    <select class="form-control" id="exampleFormControlSelect2">
-                                        <option>กก.</option>
-                                        <option>กล่อง</option>
-                                        <option>ครั้ง</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0 mt-2">หมวดสินค้า:</label>
-                            <div class="col-sm-7 pl-0">
-                                <select class="form-control" id="exampleFormControlSelect2">
-                                    <option>ทั่วไป</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 pl-0">
-                        <div class=" row-modal text-left ">
-                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ราคาขาย: </label>
-                            <div class="col-sm-8 pl-0">
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
-                            </div>
-                        </div>
-                        <div class=" row-modal text-left ">
-                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ภาษีมูลค่าเพิ่ม: </label>
-                            <div class="col-sm-8 pl-0">
-                                <select class="form-control" id="exampleFormControlSelect2">
-                                    <option>ราคาไม่รวม VAT</option>
-                                    <option>ราคารวม VAT แล้ว</option>
-                                    <option>VAT 0%</option>
-                                    <option>สินค้าได้รับยกเว้นภาษี (N/A)</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row-modal pl-2 mb-4">
-                    <div class="col-lg-12 pl-0" style="position:relative;">
-                        <h5 class="modal-subtitle-full text-primary pl-0 f-1-2  aksorn">
-                            รายละเอียดการซื้อ
-                        </h5>
-                        <div class="hr-title">&nbsp;</div>
-                    </div>
-                    <div class="col-lg-7 pl-0">
-                        <div class=" row-modal text-left ">
-
-                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">
-                                รายละเอียดการซื้อ:
-                            </label>
-                            <div class="col-sm-7 pl-0">
-                                <textarea rows="4" class="form-control form-textarea" id="exampleInputEmail2" placeholder=""></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 pl-0">
-                        <div class=" row-modal text-left ">
-                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ราคาซื้อ: </label>
-                            <div class="col-sm-8 pl-0">
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
-                            </div>
-                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ภาษีมูลค่าเพิ่ม: </label>
-                            <div class="col-sm-8 pl-0">
-                                <select class="form-control" id="exampleFormControlSelect2">
-                                    <option>ราคาไม่รวม VAT</option>
-                                    <option>ราคารวม VAT แล้ว</option>
-                                    <option>VAT 0%</option>
-                                    <option>สินค้าได้รับยกเว้นภาษี (N/A)</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row-modal pl-2 mb-4">
-                    <div class="col-lg-12 pl-0" style="position:relative;">
-                        <h5 class="modal-subtitle-full text-primary pl-0 f-1-2  aksorn">
-                            รายละเอียดเพิ่มเติม
-                        </h5>
-                        <div class="hr-title">&nbsp;</div>
-                    </div>
-                    <div class="col-lg-7 pl-0">
-                        <div class="row-modal text-left ">
-                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">รหัสบาร์โค้ด: </label>
-                            <div class="col-sm-7 pl-0">
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
-                            </div>
-                        </div>
-                        <div class="row-modal text-left ">
-                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">รูปสินค้า: </label>
-                            <div class="col-sm-7 pl-0">
-                                <input type="file" class="dropify " />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-inverse-light btn-fw aksorn f-1-0" data-dismiss="modal" aria-label="Close">ยกเลิก</button>
-                <button type="button" class="btn btn-success btn-fw aksorn f-1-0">บันทึก</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- ProductAdd Ends -->
-<!-- Customer Modal starts -->
-<div class="modal fade" id="exampleModal-6" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">ค้นหารายละเอียดสินค้า/บริการ</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row-modal mb-3">
-                    <div class="col-lg-9 pl-0">
-                        <div class="form-group row-modal text-left ">
-                            <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-1-0">ค้นหา : </label>
-                            <div class="col-sm-9 pl-0">
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="พิมพ์ รหัสสินค้า, ชื่อสินค้า ">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 pl-0">
-                        <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block"><i class="fa fa-search f-0-8"></i>ค้นหา</button>
-                    </div>
-                </div>
-                <div class="row-modal ">
-                    <div class="col-lg-12  grid-margin stretch-card pl-0 ">
-                        <!-- Table Start-->
-                        <div class="card card-weaccount border-fix-table w-100 ">
-                            <div class="card-table search-table-outter table-responsive h-500px">
-                                <table class="table aksorn  s-table">
-                                    <thead class="badge-softblue">
-                                        <tr>
-                                            <th width="80%" class="aksorn f-1-0">ชื่อสินค้า</th>
-                                            <th width="20%" class="aksorn f-1-0"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="">
-                                        <tr>
-                                            <td>
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-12">
-                                                        <p class="f-1-0">บริการพัฒนาระบบ</p>
-                                                    </div>
-                                                    <div class="col-lg-6 col-6">
-                                                        <p class="f-0-8 text-muted mb-0">รหัสสินค้า: S001</p>
-                                                    </div>
-                                                    <div class="col-lg-6 col-6 text-right">
-                                                        <p class="f-0-8 text-muted mb-0">ราคาขาย: 100.00</p>
-                                                    </div>
-                                                </div>
-                                                
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-12">
-                                                        <p class="f-1-0">บริการพัฒนาระบบ</p>
-                                                    </div>
-                                                    <div class="col-lg-6 col-6">
-                                                        <p class="f-0-8 text-muted mb-0">รหัสสินค้า: S001</p>
-                                                    </div>
-                                                    <div class="col-lg-6 col-6 text-right">
-                                                        <p class="f-0-8 text-muted mb-0">ราคาขาย: 100.00</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-12">
-                                                        <p class="f-1-0">บริการพัฒนาระบบ</p>
-                                                    </div>
-                                                    <div class="col-lg-6 col-6">
-                                                        <p class="f-0-8 text-muted mb-0">รหัสสินค้า: S001</p>
-                                                    </div>
-                                                    <div class="col-lg-6 col-6 text-right">
-                                                        <p class="f-0-8 text-muted mb-0">ราคาขาย: 100.00</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <!-- Table End-->
-
-                    </div>
-                    <div class="col-lg-12  grid-margin stretch-card pb-0 pl-0 mb-0">
-                        <nav>
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-left"></i></a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-right"></i></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Customer Ends -->

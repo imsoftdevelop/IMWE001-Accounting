@@ -25,7 +25,18 @@ namespace IMWE001_Accounting.Controllers
             return View();
         }
 
+        public IActionResult BillingNoteAdd()
+        {
+            return View();
+        }
+
+
         public IActionResult Invoice()
+        {
+            return View();
+        }
+
+        public IActionResult InvoiceAdd()
         {
             return View();
         }
@@ -35,7 +46,17 @@ namespace IMWE001_Accounting.Controllers
             return View();
         }
 
+        public IActionResult ReceiptAdd()
+        {
+            return View();
+        }
+
         public IActionResult CashSale()
+        {
+            return View();
+        }
+
+        public IActionResult CashSaleAdd()
         {
             return View();
         }
@@ -45,7 +66,17 @@ namespace IMWE001_Accounting.Controllers
             return View();
         }
 
+        public IActionResult CreditNoteAdd()
+        {
+            return View();
+        }
+
         public IActionResult DebitNote()
+        {
+            return View();
+        }
+
+        public IActionResult DebitNoteAdd()
         {
             return View();
         }

@@ -49,21 +49,21 @@
 }
 
 <link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
-<title>ใบเสนอราคา | WeAccount</title>
+<title>ใบเพิ่มหนี้ | WeAccount</title>
 <div class="row">
     <div class="col-md-12 ">
         <div class="d-flex">
             <h5 class="title-page-1">
-                ใบเสนอราคา
+                ใบเพิ่มหนี้
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb pl-0">
-                        <li class="breadcrumb-item" aria-current="page">ใบเสนอราคา</li>
+                        <li class="breadcrumb-item" aria-current="page">ใบเพิ่มหนี้</li>
                         <li class="breadcrumb-item active">แสดงทั้งหมด</li>
                     </ol>
                 </nav>
             </h5>
             <div class="h-25 ml-auto">
-                <a href="@Url.Content("~/")DocumentSell/QuotationAdd" class="btn btn-success btn-fw px-5 aksorn f-1-2">สร้างใหม่</a>
+                <a href="@Url.Content("~/")DocumentSell/DebitNoteAdd" class="btn btn-success btn-fw px-5 aksorn f-1-2">สร้างใหม่</a>
             </div>
         </div>
     </div>
@@ -86,11 +86,10 @@
                         <div class="form-group px-4  pb-1 mb-0 pt-1">
                             <select class="test form-control form-control-sm" id="exampleFormControlSelect3">
                                 <option>สถานะทั้งหมด</option>
-                                <option>รออนุมัติ</option>
-                                <option>อนุมัติแล้ว</option>
-                                <option>ดำเนินการแล้ว</option>
-                                <option>ไม่อนุมัติ</option>
+                                <option>รอดำเนินการ</option>
+                                <option>รอเก็บเงิน</option>
                                 <option>ยกเลิก</option>
+                                <option>เปิดใบเสร็จแล้ว</option>
                             </select>
                         </div>
                         <div class="dropdown-divider"></div>
@@ -123,22 +122,23 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-12 grid-margin stretch-card" >
-        <div class="card card-weaccount border-fix-table" >
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card card-weaccount border-fix-table">
             <div class="card-table search-table-outter table-responsive">
-                <table class="table table-hover  aksorn scroll s-table"  >
+                <table class="table table-hover  aksorn scroll s-table">
                     <thead class="table-softyellow">
-                        <tr >
+                        <tr>
                             <th width="17%" class="aksorn f-1-0">วันที่</th>
                             <th width="20%" class="aksorn f-1-0">เลขที่เอกสาร</th>
-                            <th width="35%" class="aksorn f-1-0">ชื่อลูกค้า/ชื่อโปรเจ็ค</th>
+                            <th width="18%" class="aksorn f-1-0">ชื่อลูกค้า/ชื่อโปรเจ็ค</th>
+                            <th width="17%" class="aksorn f-1-0">วันครบกำหนด</th>
                             <th width="12%" class="aksorn f-1-0">ยอดรวมสุทธิ</th>
                             <th width="15%" class="aksorn f-1-0">สถานะ</th>
                             <th width="3%" class="aksorn f-1-0"></th>
                         </tr>
                     </thead>
                     <tbody class="">
-                        <tr >
+                        <tr>
                             <td width="17%">
                                 <div class="row">
                                     <div class="col-12">
@@ -149,17 +149,24 @@
                             <td width="20%">
                                 <div class="row">
                                     <div class="col-12">
-                                        <p class="f-1-0">QT2020060002 <i class="fa fa-file-text-o f-1-0 ml-2 text-primary"></i></p>
+                                        <p class="f-1-0">DN2020060001 <i class="fa fa-file-text-o f-1-0 ml-2 text-primary" data-toggle="popover" title="เอกสารอ้างอิง" data-content="BL2020060001" data-custom-class="popover-primary"></i></p>
                                     </div>
                                 </div>
                             </td>
-                            <td width="35%">
+                            <td width="18%">
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
                                     </div>
                                     <div class="col-12">
                                         <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="17%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">02-06-2020</p>
                                     </div>
                                 </div>
                             </td>
@@ -174,18 +181,14 @@
                                 <div class="row">
                                     <div class="col-12 ">
                                         <div class="dropdown">
-                                            <button class="btn btn-gray btn-block f-1-0 mb-2 pr-0 aksorn text-left" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                รออนุมัติ <i class="mt-1 pull-right f-0-6 text-right  icon-arrow-down"></i>
+                                            <button class="btn btn-gray btn-block f-1-0 pr-0 text-left mb-2 aksorn text-left" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                รอดำเนินการ  <i class="mt-1 f-0-6 pull-right icon-arrow-down"></i>
                                             </button>
                                             <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuButton2">
-                                                <a class="dropdown-item">อนุมัติ</a>
+                                                <a class="dropdown-item py-2">สร้างใบเสร็จรวม</a>
+                                                <a class="dropdown-item py-2">สร้างใบวางบิลรวม</a>
                                                 <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2">สร้างใบวางบิล</a>
-                                                <a class="dropdown-item py-2">สร้างใบแจ้งหนี้</a>
-                                                <a class="dropdown-item py-2">สร้างใบเสร็จรับเงิน</a>
-                                                <a class="dropdown-item py-2">สร้างใบสั่งซื้อ</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item">ไม่อนุมัติ</a>
+                                                <a class="dropdown-item">ยกเลิก</a>
                                             </div>
                                         </div>
                                     </div>
@@ -202,7 +205,6 @@
                                                 <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขเอกสาร</a>
                                                 <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item py-2"><i class="fa fa-print mr-2 "></i>พิมพ์เอกสาร</a>
-                                                <a class="dropdown-item py-2"><i class="fa fa-files-o mr-2 "></i>สร้างซ้ำ</a>
                                                 <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบเอกสาร</a>
                                             </div>
@@ -212,21 +214,21 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td width="17%">
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="f-1-0">02-06-2020</p>
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="20%">
                                 <div class="row">
                                     <div class="col-12">
-                                        <p class="f-1-0">QT2020060002 <i class="fa fa-file-text-o f-1-0 ml-2 text-primary"></i></p>
+                                        <p class="f-1-0">DN2020060001 <i class="fa fa-file-text-o f-1-0 ml-2 text-primary" data-toggle="popover" title="เอกสารอ้างอิง" data-content="BL2020060001" data-custom-class="popover-primary"></i></p>
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="18%">
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
@@ -236,35 +238,38 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="17%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">02-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="12%">
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="f-1-0">100,000.00</p>
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="15%">
                                 <div class="row">
                                     <div class="col-12 ">
                                         <div class="dropdown">
-                                            <button class="btn btn-gray btn-block f-1-0 mb-2 pr-0 aksorn text-left" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                รออนุมัติ <i class="mt-1 pull-right f-0-6 text-right  icon-arrow-down"></i>
+                                            <button class="btn btn-yellow btn-block f-1-0 pr-0 text-left mb-2 aksorn text-left" disabled type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                รอเก็บเงิน  <i class="mt-1 f-0-6 pull-right icon-arrow-down display-none"></i>
                                             </button>
                                             <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuButton2">
-                                                <a class="dropdown-item">อนุมัติ</a>
+                                                <a class="dropdown-item py-2">สร้างใบเสร็จรวม</a>
+                                                <a class="dropdown-item py-2">สร้างใบวางบิลรวม</a>
                                                 <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2">สร้างใบวางบิล</a>
-                                                <a class="dropdown-item py-2">สร้างใบแจ้งหนี้</a>
-                                                <a class="dropdown-item py-2">สร้างใบเสร็จรับเงิน</a>
-                                                <a class="dropdown-item py-2">สร้างใบสั่งซื้อ</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item">ไม่อนุมัติ</a>
+                                                <a class="dropdown-item">ยกเลิก</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="3%">
                                 <div class="row">
                                     <div class="col-12 ">
                                         <div class="dropdown">
@@ -275,7 +280,6 @@
                                                 <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขเอกสาร</a>
                                                 <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item py-2"><i class="fa fa-print mr-2 "></i>พิมพ์เอกสาร</a>
-                                                <a class="dropdown-item py-2"><i class="fa fa-files-o mr-2 "></i>สร้างซ้ำ</a>
                                                 <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบเอกสาร</a>
                                             </div>
@@ -285,21 +289,21 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td width="17%">
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="f-1-0">02-06-2020</p>
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="20%">
                                 <div class="row">
                                     <div class="col-12">
-                                        <p class="f-1-0">QT2020060002<i class="fa fa-file-text-o f-1-0 ml-2 text-primary"></i></p>
+                                        <p class="f-1-0">DN2020060001 <i class="fa fa-file-text-o f-1-0 ml-2 text-primary" data-toggle="popover" title="เอกสารอ้างอิง" data-content="BL2020060001" data-custom-class="popover-primary"></i></p>
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="18%">
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
@@ -309,35 +313,38 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="17%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">02-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="12%">
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="f-1-0">100,000.00</p>
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="15%">
                                 <div class="row">
                                     <div class="col-12 ">
                                         <div class="dropdown">
-                                            <button class="btn btn-gray btn-block f-1-0 pr-0 mb-2 aksorn text-left" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                รออนุมัติ  <i class="mt-1 pull-right f-0-6 text-right  icon-arrow-down" ></i>
+                                            <button class="btn btn-blue btn-block f-1-0 pr-0 text-left mb-2 aksorn text-left" disabled type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                เปิดใบเสร็จแล้ว  <i class="mt-1 f-0-6 pull-right icon-arrow-down display-none"></i>
                                             </button>
                                             <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuButton2">
-                                                <a class="dropdown-item">อนุมัติ</a>
+                                                <a class="dropdown-item py-2">สร้างใบเสร็จรวม</a>
+                                                <a class="dropdown-item py-2">สร้างใบวางบิลรวม</a>
                                                 <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2">สร้างใบวางบิล</a>
-                                                <a class="dropdown-item py-2">สร้างใบแจ้งหนี้</a>
-                                                <a class="dropdown-item py-2">สร้างใบเสร็จรับเงิน</a>
-                                                <a class="dropdown-item py-2">สร้างใบสั่งซื้อ</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item">ไม่อนุมัติ</a>
+                                                <a class="dropdown-item">ยกเลิก</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="3%">
                                 <div class="row">
                                     <div class="col-12 ">
                                         <div class="dropdown">
@@ -348,7 +355,6 @@
                                                 <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขเอกสาร</a>
                                                 <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item py-2"><i class="fa fa-print mr-2 "></i>พิมพ์เอกสาร</a>
-                                                <a class="dropdown-item py-2"><i class="fa fa-files-o mr-2 "></i>สร้างซ้ำ</a>
                                                 <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบเอกสาร</a>
                                             </div>
@@ -358,21 +364,21 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td width="17%">
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="f-1-0">02-06-2020</p>
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="20%">
                                 <div class="row">
                                     <div class="col-12">
-                                        <p class="f-1-0">QT2020060002</p>
+                                        <p class="f-1-0">DN2020060001 <i class="fa fa-file-text-o f-1-0 ml-2 text-primary" data-toggle="popover" title="เอกสารอ้างอิง" data-content="BL2020060001" data-custom-class="popover-primary"></i></p>
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="18%">
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
@@ -382,35 +388,38 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="17%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">02-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="12%">
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="f-1-0">100,000.00</p>
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="15%">
                                 <div class="row">
                                     <div class="col-12 ">
                                         <div class="dropdown">
-                                            <button class="btn btn-gray btn-block pr-0 f-1-0 mb-2 aksorn text-left" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                รออนุมัติ <i class="mt-1 pull-right f-0-6 text-right  icon-arrow-down"></i>
+                                            <button class="btn btn-red btn-block f-1-0 pr-0 text-left mb-2 aksorn text-left" disabled type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                ยกเลิก  <i class="mt-1 f-0-6 pull-right icon-arrow-down display-none"></i>
                                             </button>
                                             <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuButton2">
-                                                <a class="dropdown-item">อนุมัติ</a>
+                                                <a class="dropdown-item py-2">สร้างใบเสร็จรวม</a>
+                                                <a class="dropdown-item py-2">สร้างใบวางบิลรวม</a>
                                                 <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2">สร้างใบวางบิล</a>
-                                                <a class="dropdown-item py-2">สร้างใบแจ้งหนี้</a>
-                                                <a class="dropdown-item py-2">สร้างใบเสร็จรับเงิน</a>
-                                                <a class="dropdown-item py-2">สร้างใบสั่งซื้อ</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item">ไม่อนุมัติ</a>
+                                                <a class="dropdown-item">ยกเลิก</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td width="3%">
                                 <div class="row">
                                     <div class="col-12 ">
                                         <div class="dropdown">
@@ -421,226 +430,6 @@
                                                 <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขเอกสาร</a>
                                                 <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item py-2"><i class="fa fa-print mr-2 "></i>พิมพ์เอกสาร</a>
-                                                <a class="dropdown-item py-2"><i class="fa fa-files-o mr-2 "></i>สร้างซ้ำ</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบเอกสาร</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="f-1-0">02-06-2020</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="f-1-0">QT2020060002</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
-                                    </div>
-                                    <div class="col-12">
-                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="f-1-0">100,000.00</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12 ">
-                                        <div class="dropdown">
-                                            <button class="btn btn-blue btn-block pr-0 f-1-0 mb-2 aksorn text-left" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                ดำเนินการแล้ว  <i class="mt-1 pull-right f-0-6 text-right  icon-arrow-down"></i>
-                                            </button>
-                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuButton2">
-                                                <a class="dropdown-item">อนุมัติ</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2">สร้างใบวางบิล</a>
-                                                <a class="dropdown-item py-2">สร้างใบแจ้งหนี้</a>
-                                                <a class="dropdown-item py-2">สร้างใบเสร็จรับเงิน</a>
-                                                <a class="dropdown-item py-2">สร้างใบสั่งซื้อ</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item">ไม่อนุมัติ</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12 ">
-                                        <div class="dropdown">
-                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="icon-options"></i>
-                                            </button>
-                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
-                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขเอกสาร</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2"><i class="fa fa-print mr-2 "></i>พิมพ์เอกสาร</a>
-                                                <a class="dropdown-item py-2"><i class="fa fa-files-o mr-2 "></i>สร้างซ้ำ</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบเอกสาร</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="f-1-0">02-06-2020</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="f-1-0">QT2020060002</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
-                                    </div>
-                                    <div class="col-12">
-                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="f-1-0">100,000.00</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12 ">
-                                        <div class="dropdown">
-                                            <button class="btn btn-green btn-block f-1-0 pr-0 mb-2 aksorn text-left" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                อนุมัติ  <i class="mt-1 pull-right f-0-6 text-right  icon-arrow-down"></i>
-                                            </button>
-                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuButton2">
-                                                <a class="dropdown-item">อนุมัติ</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2">สร้างใบวางบิล</a>
-                                                <a class="dropdown-item py-2">สร้างใบแจ้งหนี้</a>
-                                                <a class="dropdown-item py-2">สร้างใบเสร็จรับเงิน</a>
-                                                <a class="dropdown-item py-2">สร้างใบสั่งซื้อ</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item">ไม่อนุมัติ</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12 ">
-                                        <div class="dropdown">
-                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="icon-options"></i>
-                                            </button>
-                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
-                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขเอกสาร</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2"><i class="fa fa-print mr-2 "></i>พิมพ์เอกสาร</a>
-                                                <a class="dropdown-item py-2"><i class="fa fa-files-o mr-2 "></i>สร้างซ้ำ</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบเอกสาร</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="f-1-0">02-06-2020</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="f-1-0">QT2020060002</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
-                                    </div>
-                                    <div class="col-12">
-                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="f-1-0">100,000.00</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12 ">
-                                        <div class="dropdown">
-                                            <button class="btn btn-red btn-block f-1-0 pr-0 mb-2 aksorn text-left" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                ไม่อนุมัติ <i class="mt-1 pull-right f-0-6 text-right  icon-arrow-down"></i>
-                                            </button>
-                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuButton2">
-                                                <a class="dropdown-item">อนุมัติ</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2">สร้างใบวางบิล</a>
-                                                <a class="dropdown-item py-2">สร้างใบแจ้งหนี้</a>
-                                                <a class="dropdown-item py-2">สร้างใบเสร็จรับเงิน</a>
-                                                <a class="dropdown-item py-2">สร้างใบสั่งซื้อ</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item">ไม่อนุมัติ</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-12 ">
-                                        <div class="dropdown">
-                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="icon-options"></i>
-                                            </button>
-                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
-                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขเอกสาร</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item py-2"><i class="fa fa-print mr-2 "></i>พิมพ์เอกสาร</a>
-                                                <a class="dropdown-item py-2"><i class="fa fa-files-o mr-2 "></i>สร้างซ้ำ</a>
                                                 <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบเอกสาร</a>
                                             </div>

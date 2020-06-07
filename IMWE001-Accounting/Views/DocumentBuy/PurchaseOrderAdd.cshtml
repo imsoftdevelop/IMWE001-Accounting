@@ -78,7 +78,7 @@
 }
 
 <link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
-<title>ใบเสนอราคา | WeAccount</title>
+<title>ใบสั่งซื้อ | WeAccount</title>
 <!-- Dummy Modal Ends -->
 <!-- Main Modal starts -->
 <div class="modal fade pr-0 modal-noscroll" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -86,12 +86,12 @@
         <div class="modal-content-full">
             <div class="modal-header-full d-flex">
                 <div class="modal-header-title">
-                    <h5 class="modal-title-full"><i class="fa fa-file-text-o f-1-0 mr-2 text-primary"></i>สร้างใบเสนอราคา</h5>
-                    <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">QT20200600001</h5>
+                    <h5 class="modal-title-full"><i class="fa fa-file-text-o f-1-0 mr-2 text-primary"></i>สร้างใบสั่งซื้อ</h5>
+                    <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">PO20200600001</h5>
                     <button type="button" class="btn btn-gray btn-fw aksorn f-1-0 px-3" style="cursor:default">รออนุมัติ</button>
                 </div>
                 <div class="modal-header-button">
-                    <a href="@Url.Content("~/")DocumentSell/Quotation" class="btn btn-inverse-light btn-fw aksorn f-1-2" onclick="onclickclose()">ปิดหน้าต่าง</a>
+                    <a href="@Url.Content("~/")DocumentBuy/PurchaseOrder" class="btn btn-inverse-light btn-fw aksorn f-1-2" onclick="onclickclose()">ปิดหน้าต่าง</a>
                     <div class="btn-group">
                         <button type="button" class="btn btn-success  aksorn f-1-2">บันทึกเอกสาร</button>
                         <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" id="dropdownMenuSplitButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -112,9 +112,9 @@
                                 <div class="row-modal">
                                     <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1" class="aksorn f-1-0">ชื่อลูกค้า</label>
+                                            <label for="exampleInputEmail1" class="aksorn f-1-0">ชื่อผู้จำหน่าย</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control aksorn f-1-0" placeholder="เลือกรายชื่อลูกค้า" aria-label="Username" disabled>
+                                                <input type="text" class="form-control aksorn f-1-0" placeholder="เลือกรายชื่อผู้จำหน่าย" aria-label="Username" disabled>
                                                 <div class="dropdown ">
                                                     <div class="input-group-append bg-primary cursor-pointer " id="dropdownMenuIconButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <span class="input-group-text bg-transparent px-2"><i class="  icon-user-follow text-white"></i></span>
@@ -173,7 +173,7 @@
                                 <hr>
                                 <!-- Detail Start-->
                                 <div class="row-modal">
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-6">
                                         <div class="form-group row ">
                                             <label for="exampleInputEmail2" class="col-sm-2 col-form-label aksorn f-1-0">ชื่อโปรเจค : </label>
                                             <div class="col-sm-10">
@@ -181,11 +181,22 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 ml-auto">
+                                    <div class="col-lg-3 ml-auto">
                                         <div class="form-group row ">
                                             <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn f-1-0">เลขที่อ้างอิง : </label>
                                             <div class="col-sm-8">
                                                 <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 ml-auto">
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn f-1-0">เลขที่อ้างอิง : </label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control" id="exampleFormControlSelect2">
+                                                    <option>ราคารวมภาษี</option>
+                                                    <option>ราคาไม่รวมภาษี</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -440,6 +451,24 @@
 
                                         </div>
                                         <hr class=" hr-subtitle">
+                                        <div class="form-group row ">
+                                            <div class="col-sm-6">
+                                                <div class="form-check aksorn text-primary f-1-2">
+                                                    <label class="form-check-label f-1-0">
+                                                        <input type="checkbox" class="form-check-input" checked>
+                                                        ภาษีมูลค่าเพิ่ม 7%
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">ราคาไม่รวมภาษีมูลค่าเพิ่ม</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-12 col-form-label aksorn-Bold f-1-0">10,000.00</label>
+                                            </div>
+                                        </div>
+                                        <hr class=" hr-subtitle">
                                         <div class="form-check aksorn text-primary f-1-2">
                                             <label class="form-check-label f-1-0">
                                                 <input type="checkbox" class="form-check-input">
@@ -474,7 +503,7 @@
                         <div class="form-group row-modal text-left ">
                             <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ค้นหา : </label>
                             <div class="col-sm-10 pl-0">
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="พิมพ์รหัสลูกค้า , ชื่อลูกค้า , เลขประจำตัวผู้เสียภาษี ตัวอย่างเช่น 'We Develop หรือ 00177422145'">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="พิมพ์รหัสผู้จำหน่าย , ชื่อผู้จำหน่าย , เลขประจำตัวผู้เสียภาษี ตัวอย่างเช่น 'We Develop หรือ 00177422145'">
                             </div>
                         </div>
                     </div>
@@ -491,8 +520,8 @@
                                     <thead class="badge-softblue">
                                         <tr>
                                             <th width="15%" class="aksorn f-1-0">เลขที่ผู้เสียภาษี</th>
-                                            <th width="10%" class="aksorn f-1-0">รหัสลูกค้า</th>
-                                            <th width="20%" class="aksorn f-1-0">ชื่อลูกค้า</th>
+                                            <th width="10%" class="aksorn f-1-0">รหัสผู้จำหน่าย</th>
+                                            <th width="20%" class="aksorn f-1-0">ชื่อผู้จำหน่าย</th>
                                             <th width="10%" class="aksorn f-1-0">สาขา</th>
                                             <th width="20%" class="aksorn f-1-0">ที่อยู่</th>
                                             <th width="15%" class="aksorn f-1-0"></th>
@@ -942,7 +971,7 @@
                             <div class="col-sm-4 pl-0">
                                 <div class="form-check aksorn">
                                     <label class="form-check-label f-1-0">
-                                        <input type="checkbox" class="form-check-input" checked>
+                                        <input type="checkbox" class="form-check-input">
                                         ลูกค้า
                                     </label>
                                 </div>
@@ -950,7 +979,7 @@
                             <div class="col-sm-4 pl-0">
                                 <div class="form-check aksorn">
                                     <label class="form-check-label f-1-0">
-                                        <input type="checkbox" class="form-check-input">
+                                        <input type="checkbox" class="form-check-input" checked>
                                         ผู้จำหน่าย
                                     </label>
                                 </div>
@@ -1149,7 +1178,7 @@
     </div>
 </div>
 <!-- ProductAdd Ends -->
-<!-- Customer Modal starts -->
+<!-- ProductSearch Modal starts -->
 <div class="modal fade" id="exampleModal-6" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -1199,7 +1228,7 @@
                                                         <p class="f-0-8 text-muted mb-0">ราคาขาย: 100.00</p>
                                                     </div>
                                                 </div>
-                                                
+
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-outline-primary aksorn f-1-0 btn-block">เลือก</button>
@@ -1265,4 +1294,4 @@
         </div>
     </div>
 </div>
-<!-- Customer Ends -->
+<!-- ProductSearch Ends -->

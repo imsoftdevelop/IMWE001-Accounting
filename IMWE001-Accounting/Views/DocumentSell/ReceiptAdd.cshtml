@@ -1,0 +1,663 @@
+﻿
+@section RenderScriptWithPage
+    {
+    <script src="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/lib/dropify/dropify.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("body").addClass("noscroll");
+
+            $('.dropdown-menu select.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+
+        (function ($) {
+            'use strict';
+            $('.dropify').dropify();
+        })(jQuery);
+
+        (function ($) {
+            if ($("#datepicker-popup").length) {
+                $('#datepicker-popup').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+            if ($("#datepicker-popup-1").length) {
+                $('#datepicker-popup-1').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+        })(jQuery);
+
+        var $table = $('table.scroll'),
+            $bodyCells = $table.find('tbody tr:first').children(),
+            colWidth;
+
+        // Adjust the width of thead cells when window resizes
+        $(window).resize(function () {
+            // Get the tbody columns width array
+            colWidth = $bodyCells.map(function () {
+                return $(this).width();
+            }).get();
+
+            // Set the width of thead columns
+            $table.find('thead tr').children().each(function (i, v) {
+                $(v).width(colWidth[i]);
+            });
+        }).resize(); // Trigger resize handler
+
+        $('#exampleModal').modal('show');
+
+        function modaldocument() {
+            $('#exampleModal-2').modal('show');
+        }
+
+        function modaladd() {
+            $('#exampleModal-6').modal('show');
+        }
+
+    </script>
+
+}
+
+<link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+<title>ใบเสร็จรับเงิน | WeAccount</title>
+<!-- Dummy Modal Ends -->
+<!-- Main Modal starts -->
+<div class="modal fade pr-0 modal-noscroll" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog-full modal-full" role="document">
+        <div class="modal-content-full">
+            <div class="modal-header-full d-flex">
+                <div class="modal-header-title">
+                    <h5 class="modal-title-full"><i class="fa fa-file-text-o f-1-0 mr-2 text-primary"></i>สร้างใบเสร็จรับเงิน</h5>
+                    <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">RE2020060001</h5>
+                </div>
+                <div class="modal-header-button">
+                    <a href="@Url.Content("~/")DocumentSell/Receipt" class="btn btn-inverse-light btn-fw aksorn f-1-2" onclick="onclickclose()">ปิดหน้าต่าง</a>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success  aksorn f-1-2">บันทึกเอกสาร</button>
+                        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" id="dropdownMenuSplitButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuSplitButton3">
+                            <a class="dropdown-item  aksorn f-1-0">บันทึกแล้วปิด</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body-full">
+                <div class="row ">
+                    <div class="col-lg-12  grid-margin stretch-card ">
+                        <div class="card card-weaccount border-fix-table scroll-modal  ">
+                            <div class="card-table search-table-outter p-4 pb-5">
+                                <!-- Hedear Start-->
+                                <div class="row-modal">
+                                    <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1" class="aksorn f-1-0">ชื่อลูกค้า</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control aksorn f-1-0" placeholder="เลือกรายชื่อลูกค้า" value="บริษัท เมืองไทยประกันภัย  จำกัด (มหาชน)" aria-label="Username" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1" class="aksorn f-1-0">รายละเอียด</label>
+                                            <textarea rows="4" class="form-control h-25 mb-1" id="exampleInputEmail1" placeholder="รายละเอียดที่อยู่">84/9,84/39 หมู่3 ถนนลพบุรีราเมศวร์ ตำบลคลองแห  อำเภอหาดใหญ่ สงขลา 90110</textarea>
+                                            <input type="text" class="form-control mb-1" id="exampleInputEmail1" value="0107551000151" disabled placeholder="เลขที่ประจำตัวผู้เสียภาษี">
+                                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="สำนักงาน/สาขาเลขที่" value="0001">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4  col-md-6 col-sm-12 col-12 ml-auto text-right">
+                                        <button class="modal-option-item  cursor-pointer">
+                                            <a class="modal-option-link ">
+                                                <i aria-hidden="true" class="fa fa-print"></i>
+                                                <span class="aksorn f-0-8">พิมพ์เอกสาร</span>
+                                            </a>
+                                        </button>
+                                        <div class="form-group text-left">
+                                            <div class="  row ">
+                                                <label for="exampleInputEmail1" class="aksorn f-1-0">จำนวนเงินรวมทั้งสิ้น</label>
+                                            </div>
+                                            <div class=" row ">
+                                                <h5 class="modal-subtitle-full text-primary f-2-0 aksorn">99,000.00</h5>
+                                            </div>
+                                            <div class="form-group row ">
+                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn pl-0 f-1-0">วันที่ : </label>
+                                                <div class="col-sm-8">
+                                                    <input type="email" class="form-control" id="exampleInputEmail2" value="01-01-2020" placeholder="DD/MM/YYYY">
+                                                </div>
+                                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn pl-0 f-1-0">พนักงานขาย : </label>
+                                                <div class="col-sm-8">
+                                                    <input type="email" class="form-control" value="นายทดสอบ ระบบยอดเยี่ยม" id="exampleInputEmail2" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Hedear End-->
+                                <hr>
+                                <!-- Detail Start-->
+                                <div class="row-modal">
+                                    <div class="col-lg-8">
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail2" class="col-sm-2 col-form-label aksorn f-1-0">ชื่อโปรเจค : </label>
+                                            <div class="col-sm-10">
+                                                <input type="email" class="form-control" id="exampleInputEmail2" value="Project1" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 ml-auto">
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail2" class="col-sm-4 col-form-label aksorn f-1-0">เลขที่อ้างอิง : </label>
+                                            <div class="col-sm-8">
+                                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="BL2020060009">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Table Start-->
+                                <div class="row-modal">
+                                    <div class="card card-weaccount border-fix-table w-100 ">
+                                        <div class="card-table search-table-outter table-responsive ">
+                                            <table class="table aksorn s-table">
+                                                <thead class="badge-softblue">
+                                                    <tr>
+                                                        <th width="5%" class="aksorn f-1-0 text-center">ลำดับ</th>
+                                                        <th width="30%" class="aksorn f-1-0">เลขที่เอกสาร</th>
+                                                        <th width="20%" class="aksorn text-left f-1-0">วันที่เอกสาร</th>
+                                                        <th width="20%" class="aksorn text-left f-1-0">วันครบกำหนด</th>
+                                                        <th width="15%" class="aksorn text-right f-1-0">ยอดรวมก่อนภาษี</th>
+                                                        <th width="15%" class="aksorn text-right f-1-0">ยอดชำระ</th>
+                                                        <th width="5%" class="aksorn f-1-0"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="">
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            1
+                                                        </td>
+                                                        <td>
+                                                            INV2020060014
+                                                        </td>
+                                                        <td>
+                                                            03-06-2020
+                                                        </td>
+                                                        <td>
+                                                            03-06-2020
+                                                        </td>
+                                                        <td class="aksorn text-right f-1-0">
+                                                            10,000.00
+                                                        </td>
+                                                        <td class="aksorn text-right f-1-0">
+                                                            10,000.00
+                                                        </td>
+                                                        <td>
+                                                            <div class="row">
+                                                                <div class="col-12 ">
+                                                                    <div class="dropdown">
+                                                                        <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3">
+                                                                            <i class="fa fa-trash-o"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            1
+                                                        </td>
+                                                        <td>
+                                                            CN2020060014
+                                                        </td>
+                                                        <td>
+                                                            03-06-2020
+                                                        </td>
+                                                        <td>
+                                                            03-06-2020
+                                                        </td>
+                                                        <td class="aksorn text-right f-1-0">
+                                                            (999.00)
+                                                        </td>
+                                                        <td class="aksorn text-right f-1-0">
+                                                            (999.00)
+                                                        </td>
+                                                        <td>
+                                                            <div class="row">
+                                                                <div class="col-12 ">
+                                                                    <div class="dropdown">
+                                                                        <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3">
+                                                                            <i class="fa fa-trash-o"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 pl-0 mt-3">
+                                        <button type="button" onclick="modaldocument()" class="btn btn-outline-primary btn-radius-5 aksorn f-1-0"><i aria-hidden="true" class="fa fa-plus"></i>เพิ่มรายการเอกสาร</button>
+                                    </div>
+                                </div>
+                                <!-- Table End-->
+                                <!-- Detail End-->
+                                <!-- Footer Start-->
+                                <div class="row-modal mt-5">
+                                    <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail1" class="aksorn f-1-0">หมายเหตุ</label>
+                                            <textarea rows="4" class="form-control h-25" id="exampleInputEmail1" placeholder=""></textarea>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail1" class="aksorn f-1-0">โน้ตภายในบริษัท</label>
+                                            <textarea rows="4" class="form-control h-25" id="exampleInputEmail1" placeholder=""></textarea>
+                                        </div>
+                                        <div class="form-check aksorn text-primary f-1-2">
+                                            <label class="form-check-label f-1-0">
+                                                <input type="checkbox" class="form-check-input" checked>
+                                                ลายเซ็นอิเล็กทรอนิกส์และตรายาง
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-md-6 col-sm-12 col-12 ml-auto">
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0 text-primary">รวมรายการ</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-12 col-form-label aksorn-Bold f-1-0">2 รายการ</label>
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0 text-primary">รวมเป็นเงิน</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-12 col-form-label aksorn-Bold f-1-0">10,000</label>
+                                            </div>
+                                        </div>
+                                        <hr class=" hr-subtitle">
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">มูลค่าที่ไม่มี/ยกเว้นภาษี </label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-12 col-form-label aksorn-Bold f-1-0">10,000</label>
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">มูลค่าที่คำนวณภาษี</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-12 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">ภาษีมูลค่าเพิ่ม</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-12 col-form-label aksorn-Bold f-1-0">0.00</label>
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">จำนวนเงินรวมทั้งสิ้น</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-12 col-form-label aksorn-Bold f-1-0">10,000.00</label>
+                                            </div>
+                                        </div>
+                                        <hr class=" hr-subtitle">
+                                        <div class="form-check aksorn text-primary f-1-2">
+                                            <label class="form-check-label f-1-0">
+                                                <input type="checkbox" class="form-check-input" checked>
+                                                เพิ่มรายการปรับลด
+                                            </label>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <label for="exampleInputEmail2" class="col-sm-2 col-form-label aksorn f-1-0  text-primary">ประเภท</label>
+                                            <div class="col-sm-5 text-right">
+                                                <select class="form-control" id="exampleFormControlSelect2">
+                                                    <option>ส่วนลดพิเศษ</option>
+                                                    <option>ค่านายหน้า/ส่วนแบ่งการขาย</option>
+                                                    <option>ค่าดำเนินการ</option>
+                                                    <option>ปัดเศษ</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2 text-right">
+                                            </div>
+                                            <div class="col-sm-3 text-right">
+                                                <input type="email" class="form-control text-right" value="0.00" id="exampleInputEmail2" placeholder="0.00">
+                                            </div>
+                                            <label for="exampleInputEmail2" class="col-sm-6 col-form-label aksorn f-1-0  text-primary">ยอดชำระ</label>
+                                            <div class="col-sm-6 text-right">
+                                                <label for="exampleInputEmail2" class="col-sm-12 col-form-label aksorn-Bold f-1-0">10,000.00</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Footer End-->
+                                <!-- Receipt Start-->
+                                <div class="card card-weaccount border-fix-table">
+                                    <div class="card-table search-table-outter p-4 pb-5">
+                                        <div class="row-modal">
+                                            <label for="exampleInputEmail2" class="col-sm-3  col-form-label aksorn f-1-6 text-success">บันทึกการรับชำระเงิน</label>
+                                            <div class="col-sm-3">
+                                                <button type="button" class="btn btn-success btn-receipt aksorn f-1-0 btn-fw" onclick="modaladd()">เพิ่มการรับชำระเงิน</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Receipt End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Modal Ends -->
+<!-- Invoice Modal starts -->
+<div class="modal fade" id="exampleModal-2" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">กรุณาเลือกชื่อลูกค้าและเอกสาร</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row-modal mb-3">
+                    <div class="col-lg-6 pl-0">
+                        <div class="form-group row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-12 pl-0 col-form-label aksorn f-1-0">ค้นหาชื่อลูกค้า : </label>
+                            <div class="col-sm-12 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>กรุณาเลือกลูกค้า</option>
+                                    <option>ลูกค้า1</option>
+                                    <option>ลูกค้า2</option>
+                                    <option>ลูกค้า3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 pl-0 ">
+                    </div>
+                    <div class="col-lg-2 pl-0 " style="border-right:1px solid #e6e9ee;">
+                        <div class="form-group row-modal text-right ">
+                            <label for="exampleInputEmail2" class="col-sm-12 pl-0 col-form-label aksorn-Bold f-1-2 ">รายการ</label>
+                            <label for="exampleInputEmail2" class="col-sm-12 pl-0 text-primary col-form-label aksorn-Bold f-1-4 ">2</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 pl-4 ">
+                        <div class="form-group row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-12 pl-0 col-form-label aksorn-Bold f-1-2 ">รวมทั้งสิ้น</label>
+                            <label for="exampleInputEmail2" class="col-sm-12 pl-0 text-primary col-form-label aksorn-Bold f-1-4 ">100,000.00</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-modal ">
+                    <div class="col-lg-12  grid-margin stretch-card pl-0 ">
+                        <!-- Table Start-->
+                        <div class="card card-weaccount border-fix-table w-100 ">
+                            <div class="card-table search-table-outter table-responsive h-500px">
+                                <table class="table aksorn  s-table">
+                                    <thead class="badge-softblue">
+                                        <tr>
+                                            <th width="5%" class="aksorn f-1-0"></th>
+                                            <th width="15%" class="aksorn f-1-0">เลขที่เอกสาร</th>
+                                            <th width="40%" class="aksorn f-1-0">ชื่อลูกค้า/ชื่อโปรเจ็ค</th>
+                                            <th width="20%" class="aksorn f-1-0">วันครบกำหนด</th>
+                                            <th width="20%" class="aksorn f-1-0">จำนวนเงิน</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <tr>
+                                            <td>
+                                                <div class="form-check aksorn text-primary f-1-2 mt-0">
+                                                    <label class="form-check-label f-1-0">
+
+                                                        <input type="checkbox" class="form-check-input" checked>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">INV2020060016</p>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">07-06-2020</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">100,000.00</p>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check aksorn text-primary f-1-2 mt-0">
+                                                    <label class="form-check-label f-1-0">
+                                                        <input type="checkbox" class="form-check-input" checked>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">INV2020060016</p>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">07-06-2020</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">100,000.00</p>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check aksorn text-primary f-1-2 mt-0">
+                                                    <label class="form-check-label f-1-0">
+                                                        <input type="checkbox" class="form-check-input">
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">INV2020060016</p>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">07-06-2020</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">100,000.00</p>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check aksorn text-primary f-1-2 mt-0">
+                                                    <label class="form-check-label f-1-0">
+                                                        <input type="checkbox" class="form-check-input">
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">INV2020060016</p>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">07-06-2020</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">100,000.00</p>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check aksorn text-primary f-1-2 mt-0">
+                                                    <label class="form-check-label f-1-0">
+                                                        <input type="checkbox" class="form-check-input">
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">INV2020060016</p>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">07-06-2020</p>
+                                            </td>
+                                            <td>
+                                                <p class="f-1-0">100,000.00</p>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Table End-->
+
+                    </div>
+                    <div class="col-lg-12  grid-margin stretch-card pb-0 pl-0 mb-0">
+                        <nav>
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-left"></i></a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-right"></i></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Invoice Ends -->
+<!-- Receipt Modal starts -->
+<div class="modal fade" id="exampleModal-6" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-subtitle-full text-primary f-1-6 aksorn">
+                    บันทึกการรับชำระเงิน
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row-modal pl-2 mb-4">
+                    <div class="col-lg-12 pl-0">
+                        <div class="row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">เลขที่เอกสาร: </label>
+                            <label for="exampleInputEmail2" class="col-sm-8 pl-0 col-form-label aksorn f-1-0"> RE2020060004 (บริษัท เมืองไทยประกันภัย จำกัด (มหาชน))</label>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ยอดที่ต้องชำระ:</label>
+                            <label for="exampleInputEmail2" class="col-sm-8 pl-0 col-form-label aksorn f-1-0"> 10,000.00 บาท </label>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">วันที่รับชำระ:</label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="03-06-2020">
+                            </div>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ยอดรับสุทธิ:</label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="0.00">
+                            </div>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">หัก ณ ที่จ่าย:</label>
+                            <div class="col-sm-7 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="" value="0.00">
+                            </div>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">วีธีการชำระ:</label>
+                            <div class="col-sm-7 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>เงินสด</option>
+                                    <option>โอนเงิน</option>
+                                    <option>เช็ค</option>
+                                    <option>บัตรเครดิต</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-modal pl-2 mb-4">
+                    <div class="col-lg-12 pl-0" style="position:relative;">
+                        <h5 class="modal-subtitle-full text-primary pl-0 f-1-2  aksorn">
+                            รายละเอียดเพิ่มเติม
+                        </h5>
+                    </div>
+                    <div class="col-lg-12 pl-0">
+                        <div class="row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">หมายเหตุ: </label>
+                            <div class="col-sm-7 pl-0">
+                                <textarea rows="4" class="form-control form-textarea" id="exampleInputEmail2" placeholder=""></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="hr-subtitle" />
+                <div class="row-modal pl-2 mb-4">
+                    <div class="col-lg-12 pl-0">
+                        <div class="row-modal text-left ">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ยอดคงเหลือ: </label>
+                            <label for="exampleInputEmail2" class="col-sm-7 pl-0 col-form-label aksorn f-1-0">0.00 บาท </label>
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ระบุสาเหตุ: </label>
+                            <div class="col-sm-7 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>กรุณาเลือกสาเหตุ</option>
+                                    <option>ค่าธรรมเนียมธนาคาร</option>
+                                    <option>เงินขาด/เงินเกิน</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-inverse-light btn-fw aksorn f-1-0" data-dismiss="modal" aria-label="Close">ยกเลิก</button>
+                <button type="button" class="btn btn-success btn-fw aksorn f-1-0">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Receipt Ends -->

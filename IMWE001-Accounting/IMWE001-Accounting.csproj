@@ -15,8 +15,6 @@
 
 
   <ItemGroup>
-    <Folder Include="Views\DocumentBuy\" />
-    <Folder Include="Views\DocumentExpenses\" />
     <Folder Include="Views\ContactBook\" />
     <Folder Include="Views\Setting\" />
   </ItemGroup>
