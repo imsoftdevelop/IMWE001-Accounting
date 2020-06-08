@@ -1,0 +1,171 @@
+﻿
+@section RenderScriptWithPage
+    {
+    <script src="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/lib/dropify/dropify.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.dropdown-menu select.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+
+        (function ($) {
+            'use strict';
+            $('.dropify').dropify();
+        })(jQuery);
+
+        (function ($) {
+            if ($("#datepicker-popup").length) {
+                $('#datepicker-popup').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+            if ($("#datepicker-popup-1").length) {
+                $('#datepicker-popup-1').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+        })(jQuery);
+
+        var $table = $('table.scroll'),
+            $bodyCells = $table.find('tbody tr:first').children(),
+            colWidth;
+
+        // Adjust the width of thead cells when window resizes
+        $(window).resize(function () {
+            // Get the tbody columns width array
+            colWidth = $bodyCells.map(function () {
+                return $(this).width();
+            }).get();
+
+            // Set the width of thead columns
+            $table.find('thead tr').children().each(function (i, v) {
+                $(v).width(colWidth[i]);
+            });
+        }).resize(); // Trigger resize handler
+
+        function modaladd() {
+            $('#exampleModal-5').modal('show');
+        }
+        function modaletax() {
+            $('#exampleModal-3').modal('show');
+        }
+
+        $(this).popover({
+            html: true
+        });
+    </script>
+
+}
+
+<link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+<title>ข้อมูลธุรกิจ | WeAccount</title>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card card-weaccount">
+            <div class="card-body ">
+                <div class="row mb-3">
+                    <div class="col-md-12 ">
+                        <div class="d-flex">
+                            <h4 class="f-1-6 aksorn">
+                                ข้อมูลส่วนตัว
+                            </h4>
+                            <div class="h-25 ml-auto">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary px-4 aksorn f-1-0 px-3">บันทึกข้อมูล</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pl-3 mb-2">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn-Bold f-1-0">ข้อมูลส่วนตัว </label>
+                </div>
+                <div class="row pl-3 mb-2">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ชื่อ: </label>
+                    <div class="col-sm-5 col-12 col-lg-4 col-md-5 pl-0">
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                    </div>
+                </div>
+                <div class="row pl-3 mb-2">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">นามสกุล: </label>
+                    <div class="col-sm-5 col-12 col-lg-4 col-md-5 pl-0">
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                    </div>
+                </div>
+                <div class="row pl-3 mb-2">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">เบอร์ติดต่อ: </label>
+                    <div class="col-sm-5 col-12 col-lg-4 col-md-5 pl-0">
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                    </div>
+                </div>
+                <div class="row pl-3 mb-2">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">อีเมล(ผู้ใช้ระบบ): </label>
+                    <div class="col-sm-5 col-12 col-lg-4 col-md-5 pl-0">
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                    </div>
+                </div>
+                <div class="row pl-3 mb-2">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ตำแหน่ง: </label>
+                    <div class="col-sm-5 col-12 col-lg-4 col-md-5 pl-0">
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                    </div>
+                </div>
+                <div class="row pl-3">
+                    <div class="col-md-6 pl-0">
+                        <hr class="hr-subtitle" />
+                    </div>
+                </div>
+                <div class="row pl-3 mb-2">
+                    <label for="exampleInputEmail2" class="col-sm-6 pl-0 pb-0 col-form-label aksorn-Bold f-1-0">ลายเซ็นอิเล็กทรอนิกส์ </label>
+                </div>
+                <div class="row pl-3">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 pb-0 col-form-label aksorn f-1-0">แนบไฟล์ลายเซ็น: </label>
+                    <div class="col-sm-5 col-12 col-lg-4 col-md-5 pl-0">
+                        <input type="file" class="dropify " />
+                    </div>
+                </div>
+                <div class="row pl-3 mb-2">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0"></label>
+                    <div class="col-sm-5 col-12 col-lg-4 col-md-5 pl-0">
+                        <label for="exampleInputEmail2" class="col-sm-12 text-muted pl-0 col-form-label aksorn f-0-8">*ขนาดภาพที่แนะนำ 400*140 px และขนาดไม่เกิน 3MB</label>
+                    </div>
+                </div>
+                <div class="row pl-3">
+                    <div class="col-md-6 pl-0">
+                        <hr class="hr-subtitle" />
+                    </div>
+                </div>
+                <div class="row pl-3 mb-2">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 pb-0 col-form-label aksorn-Bold f-1-0">แก้ไขรหัสผ่าน </label>
+                </div>
+                <div class="row pl-3 mb-2">
+                    <label for="exampleInputEmail2" class="col-sm-2 pb-0 pl-0 col-form-label aksorn f-1-0">รหัสผ่านเดิม: </label>
+                    <div class="col-sm-5 col-12 col-lg-4 col-md-5 pl-0">
+                        <input type="password" class="form-control" id="exampleInputEmail2" placeholder="">
+                    </div>
+                </div>
+                <div class="row pl-3 mb-2">
+                    <label for="exampleInputEmail2" class="col-sm-2 pb-0 pl-0 col-form-label aksorn f-1-0">รหัสผ่านใหม่: </label>
+                    <div class="col-sm-5 col-12 col-lg-4 col-md-5 pl-0">
+                        <input type="password" class="form-control" id="exampleInputEmail2" placeholder="">
+                    </div>
+                </div>
+                <div class="row pl-3 mb-2">
+                    <label for="exampleInputEmail2" class="col-sm-2 pb-0 pl-0 col-form-label aksorn f-1-0">ยืนยันรหัสผ่าน:</label>
+                    <div class="col-sm-5 col-12 col-lg-4 col-md-5 pl-0">
+                        <input type="password" class="form-control" id="exampleInputEmail2" placeholder="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

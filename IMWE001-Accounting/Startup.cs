@@ -57,7 +57,7 @@ namespace IMWE001_Accounting
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=DashBoard}/{id?}");
+                    template: "{controller=Home}/{action=Login}/{id?}");
             });
         }
     }

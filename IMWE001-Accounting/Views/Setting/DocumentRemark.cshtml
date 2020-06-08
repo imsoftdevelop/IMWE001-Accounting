@@ -1,0 +1,287 @@
+﻿
+@section RenderScriptWithPage
+    {
+    <script src="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/lib/dropify/dropify.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.dropdown-menu select.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+
+        (function ($) {
+            'use strict';
+            $('.dropify').dropify();
+        })(jQuery);
+
+        (function ($) {
+            if ($("#datepicker-popup").length) {
+                $('#datepicker-popup').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+            if ($("#datepicker-popup-1").length) {
+                $('#datepicker-popup-1').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+        })(jQuery);
+
+        var $table = $('table.scroll'),
+            $bodyCells = $table.find('tbody tr:first').children(),
+            colWidth;
+
+        // Adjust the width of thead cells when window resizes
+        $(window).resize(function () {
+            // Get the tbody columns width array
+            colWidth = $bodyCells.map(function () {
+                return $(this).width();
+            }).get();
+
+            // Set the width of thead columns
+            $table.find('thead tr').children().each(function (i, v) {
+                $(v).width(colWidth[i]);
+            });
+        }).resize(); // Trigger resize handler
+        function modaladd() {
+            $('#exampleModal-5').modal('show');
+        }
+
+        $(this).popover({
+            html: true
+        });
+    </script>
+
+}
+
+<link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+<title>หมายเหตุเอกสาร | WeAccount</title>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card card-weaccount">
+            <div class="card-body ">
+                <div class="row mb-3">
+                    <div class="col-md-12 ">
+                        <div class="d-flex">
+                            <h4 class="f-1-6 aksorn">
+                                หมายเหตุเอกสาร
+                            </h4>
+                            <div class="h-25 ml-auto">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary px-4 aksorn f-1-0 px-3" onclick="modaladd()">เพิ่มหมายเหตุเอกสาร</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-0">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 pb-0 text-primary col-form-label aksorn-Bold f-1-2">ระบุหมายเหตุแยกตามเอกสาร </label>
+                </div>
+                <div class="row pl-3 mb-2 mt-0 pt-0">
+                    <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">หมายเหตุจะระบุในท้ายเอกสารตามเอกสารที่กำหนด </label>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card card-weaccount border-fix-table">
+                            <div class="card-table search-table-outter table-responsive">
+                                <table class="table table-hover-gray  aksorn scroll s-table">
+                                    <thead class="table-softgray">
+                                        <tr>
+                                            <th width="22%" class="aksorn f-1-0">เอกสาร</th>
+                                            <th width="75%" class="aksorn f-1-0">หมายเหตุ</th>
+                                            <th width="3%" class="aksorn f-1-0"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <tr>
+                                            <td width="22%">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p class="f-1-0">ใบแจ้งหนี้</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td width="75%">
+                                                <p class="f-1-0">หมายเหตุจะระบุในท้ายเอกสารตามเอกสารที่กำหนด </p>
+                                            </td>
+                                            <td width="3%">
+                                                <div class="row">
+                                                    <div class="col-12 ">
+                                                        <div class="dropdown">
+                                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="icon-options"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขหมายเหตุ</a>
+                                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบเอกสาร</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="22%">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p class="f-1-0">ใบแจ้งหนี้</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td width="75%">
+                                                <p class="f-1-0">หมายเหตุจะระบุในท้ายเอกสารตามเอกสารที่กำหนด </p>
+                                            </td>
+                                            <td width="3%">
+                                                <div class="row">
+                                                    <div class="col-12 ">
+                                                        <div class="dropdown">
+                                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="icon-options"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขหมายเหตุ</a>
+                                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบเอกสาร</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="22%">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p class="f-1-0">ใบแจ้งหนี้</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td width="75%">
+                                                <p class="f-1-0">หมายเหตุจะระบุในท้ายเอกสารตามเอกสารที่กำหนด </p>
+                                            </td>
+                                            <td width="3%">
+                                                <div class="row">
+                                                    <div class="col-12 ">
+                                                        <div class="dropdown">
+                                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="icon-options"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขหมายเหตุ</a>
+                                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบเอกสาร</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="22%">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p class="f-1-0">ใบแจ้งหนี้</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td width="75%">
+                                                <p class="f-1-0">หมายเหตุจะระบุในท้ายเอกสารตามเอกสารที่กำหนด </p>
+                                            </td>
+                                            <td width="3%">
+                                                <div class="row">
+                                                    <div class="col-12 ">
+                                                        <div class="dropdown">
+                                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="icon-options"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขหมายเหตุ</a>
+                                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบเอกสาร</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Remark Modal starts -->
+<div class="modal fade" id="exampleModal-5" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-text-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-subtitle-full f-1-6 aksorn">สร้างหมายเหตุเอกสาร</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row-modal pl-0 mb-4">
+                    <div class="col-lg-12 pl-0">
+                        <div class=" row-modal text-left  my-2">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">เอกสาร: </label>
+                            <div class="col-sm-8 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>ใบเสนอราคา</option>
+                                    <option>
+                                        ใบวางบิล
+                                    </option>
+                                    <option>
+                                        ใบแจ้งหนี้
+                                    </option>
+                                    <option>
+                                        ใบเสร็จรับเงิน
+                                    </option>
+                                    <option>
+                                        ใบเสร็จรับเงิน (เงินสด)
+                                    </option>
+                                    <option>
+                                        ใบลดหนี้
+                                    </option>
+                                    <option>
+                                        ใบเพิ่มหนี้
+                                    </option>
+                                    <option>เอกสารซื้ัอ</option>
+                                    <option>
+                                        ใบสั่งซื้อ
+                                    </option>
+                                    <hr />
+                                    <option>
+                                        ใบรับสินค้า
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left my-2">
+                            <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">หมายเหตุ: </label>
+                            <div class="col-sm-8 pl-0">
+                                <textarea rows="6" class="form-control form-textarea-1" id="exampleInputEmail2" placeholder=""></textarea>
+                            </div>
+                        </div>
+                        <hr class="hr-subtitle" />
+                        <div class=" row-modal text-left">
+                            <button type="button" class="btn btn-inverse-light btn-fw ml-auto mr-3 aksorn f-1-0" data-dismiss="modal" aria-label="Close">ยกเลิก</button>
+                            <button type="button" class="btn btn-primary btn-fw aksorn f-1-0">บันทึกหมายเหตุ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Remark Ends -->

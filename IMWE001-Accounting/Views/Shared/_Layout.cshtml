@@ -191,6 +191,9 @@
                                 <p class="designation aksorn">
                                     เจ้าของบริษัท
                                 </p>
+                                <a class="aksorn text-primary f-0-8 mb-0 cursor-pointer" href="@Url.Content("~/")Home/Login" style=" text-decoration: none;">
+                                    <i class="ti-share-alt text-primary f-0-6 mr-1"></i>ออกจาระบบ
+                                </a>
                             </div>
                         </div>
                     </li>
@@ -199,7 +202,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Content("~/")Home/DashBoard">
-                            <i class="icon-layout menu-icon"></i>
+                            <i class=" icon-chart menu-icon"></i>
                             <span class="menu-title">ภาพรวมบริษัท</span>
                         </a>
                     </li>
@@ -208,7 +211,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-sell" aria-expanded="false" aria-controls="page-layouts">
-                            <i class="icon-box menu-icon"></i>
+                            <i class="ti-money menu-icon"></i>
                             <span class="menu-title">เอกสารขาย</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -229,7 +232,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-buy" aria-expanded="false" aria-controls="ui-basic">
-                            <i class="icon-layers menu-icon"></i>
+                            <i class="ti-shopping-cart menu-icon"></i>
                             <span class="menu-title">เอกสารซื้อ</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -269,25 +272,17 @@
                         <span class="nav-link">สมุดรายชื่อ</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-listname" aria-expanded="false" aria-controls="ui-advanced">
-                            <i class="icon-speech-bubble menu-icon"></i>
+                        <a class="nav-link" href="@Url.Content("~/")ContactBook/Contacts">
+                            <i class=" fa fa-address-book-o menu-icon"></i>
                             <span class="menu-title">สมุดรายชื่อ</span>
-                            <i class="menu-arrow"></i>
                         </a>
-                        <div class="collapse" id="ui-listname">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#">ลูกค้า</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">ผู้จำหน่าย</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">ลูกค้า / ผู้จำหน่าย</a></li>
-                            </ul>
-                        </div>
                     </li>
                     <li class="nav-item nav-category">
                         <span class="nav-link">รายงาน</span>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-reportsell" aria-expanded="false" aria-controls="ui-advanced">
-                            <i class="icon-bell menu-icon"></i>
+                            <i class="ti-image menu-icon"></i>
                             <span class="menu-title">รายงานขาย</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -300,7 +295,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-reportbuy" aria-expanded="false" aria-controls="icons">
-                            <i class="icon-eye menu-icon"></i>
+                            <i class="ti-image menu-icon"></i>
                             <span class="menu-title">รายงานซื้อ</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -313,7 +308,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-reportexpand" aria-expanded="false" aria-controls="icons">
-                            <i class="icon-eye menu-icon"></i>
+                            <i class="ti-image menu-icon"></i>
                             <span class="menu-title">รายงานค่าใช้จ่าย</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -325,7 +320,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-reporttax" aria-expanded="false" aria-controls="icons">
-                            <i class="icon-eye menu-icon"></i>
+                            <i class="ti-image menu-icon"></i>
                             <span class="menu-title">รายงานภาษี</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -339,7 +334,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-reportacct" aria-expanded="false" aria-controls="icons">
-                            <i class="icon-eye menu-icon"></i>
+                            <i class="ti-image menu-icon"></i>
                             <span class="menu-title">รายงานบัญชี</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -354,42 +349,42 @@
                         <span class="nav-link">ตั้งค่า</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="icon-bell menu-icon"></i>
+                        <a class="nav-link" href="@Url.Content("~/")Setting/CompanyProfile">
+                            <i class="fa fa-building menu-icon"></i>
                             <span class="menu-title">ตั้งค่าบริษัท</span>
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="@Url.Content("~/")Setting/BankAccount">
+                            <i class="fa fa-bank menu-icon"></i>
+                            <span class="menu-title">บัญชีธนาคาร</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-settingdoc" aria-expanded="false" aria-controls="icons">
-                            <i class="icon-eye menu-icon"></i>
+                            <i class="fa fa-clipboard menu-icon"></i>
                             <span class="menu-title">ตั้งค่าเอกสาร</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="ui-settingdoc">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#">เลขรันและหัวเอกสาร</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">หมายเหตุเอกสาร</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")Setting/DocumentRuning">เลขรันและหัวเอกสาร</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")Setting/DocumentRemark">หมายเหตุเอกสาร</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-settingprofile" aria-expanded="false" aria-controls="icons">
-                            <i class="icon-eye menu-icon"></i>
+                            <i class="icon-people menu-icon"></i>
                             <span class="menu-title">ตั้งค่าผู้ใช้งาน</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="ui-settingprofile">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#">เพิ่มผู้ใช้งาน</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">ข้อมูลส่วนตัว</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")Setting/ManageUser">เพิ่มผู้ใช้งาน</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")Setting/UserProfile">ข้อมูลส่วนตัว</a></li>
                             </ul>
                         </div>
-                    </li>
-                    <li class="nav-item nav-doc">
-                        <a class="nav-link bg-primary" href="@Url.Content("~/")Home/Login">
-                            <i class="icon-book menu-icon"></i>
-                            <span class="menu-title aksorn">ออกจากระบบ</span>
-                        </a>
                     </li>
                 </ul>
             </nav>

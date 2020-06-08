@@ -1,0 +1,277 @@
+﻿
+@section RenderScriptWithPage
+    {
+    <script src="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/lib/dropify/dropify.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.dropdown-menu select.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+
+        (function ($) {
+            'use strict';
+            $('.dropify').dropify();
+        })(jQuery);
+
+        (function ($) {
+            if ($("#datepicker-popup").length) {
+                $('#datepicker-popup').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+            if ($("#datepicker-popup-1").length) {
+                $('#datepicker-popup-1').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+        })(jQuery);
+
+        var $table = $('table.scroll'),
+            $bodyCells = $table.find('tbody tr:first').children(),
+            colWidth;
+
+        // Adjust the width of thead cells when window resizes
+        $(window).resize(function () {
+            // Get the tbody columns width array
+            colWidth = $bodyCells.map(function () {
+                return $(this).width();
+            }).get();
+
+            // Set the width of thead columns
+            $table.find('thead tr').children().each(function (i, v) {
+                $(v).width(colWidth[i]);
+            });
+        }).resize(); // Trigger resize handler
+        function modaladd() {
+            $('#exampleModal-5').modal('show');
+        }
+        //$('#exmaple-Modal-Del').modal('show');
+        
+        $(this).popover({
+            html: true
+        });
+    </script>
+
+}
+
+<link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+<title>บัญชีธนาคาร | WeAccount</title>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card card-weaccount">
+            <div class="card-body ">
+                <div class="row mb-3">
+                    <div class="col-md-12 ">
+                        <div class="d-flex">
+                            <h4 class="f-1-6 aksorn">
+                                บัญชีธนาคาร
+                            </h4>
+                            <div class="h-25 ml-auto">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary px-4 aksorn f-1-0 px-3" onclick="modaladd()">เพิ่มบัญชีธนาคาร</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pl-3 mb-3">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 pb-0  col-form-label aksorn-Bold f-1-2">บัญชีธนาคารในธุรกิจของคุณ </label>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card card-weaccount border-fix-table">
+                            <div class="card-table search-table-outter table-responsive">
+                                <table class="table table-hover-gray  aksorn scroll s-table">
+                                    <thead class="table-softgray">
+                                        <tr>
+                                            <th width="30%" class="aksorn f-1-0">ธนาคาร/สาขาธนาคาร</th>
+                                            <th width="30%" class="aksorn f-1-0">ชื่อบัญชี / ประเภทบัญชี</th>
+                                            <th width="30%" class="aksorn f-1-0">เลขที่บัญชี</th>
+                                            <th width="3%" class="aksorn f-1-0"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <tr>
+                                            <td width="30%">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p class="f-1-0">ธนาคารกสิกรไทย</p>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <p class="f-0-8 text-muted mb-0">พระราม 9</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td width="30%">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p class="f-1-0">นายทดสอบ ระบบธนาคาร</p>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <p class="f-0-8 text-muted mb-0">ออมทรัพย์</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td width="30%">
+                                                <p class="f-1-0">100-2-5567-0</p>
+                                            </td>
+                                            <td width="3%">
+                                                <div class="row">
+                                                    <div class="col-12 ">
+                                                        <div class="dropdown">
+                                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="icon-options"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไขบัญชีธนาคาร</a>
+                                                                <a class="dropdown-item py-2"><i class="fa fa-trash-o mr-2 "></i>ลบบัญชีธนาคาร</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Account Modal starts -->
+<div class="modal fade" id="exampleModal-5" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-text-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-subtitle-full f-1-6 aksorn">สร้างบัญชีธนาคาร</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row-modal pl-0 mb-4">
+                    <div class="col-lg-12 pl-0">
+                        <div class=" row-modal text-left  my-2">
+                            <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-1-0">ธนาคาร: </label>
+                            <div class="col-sm-9 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>
+                                        ธ.กสิกรไทย
+                                    </option>
+                                    <option>
+
+                                        ธ.ไทยพาณิชย์
+
+                                    </option>
+                                    <option>
+
+                                        ธ.กรุงเทพ
+
+                                    </option>
+                                    <option>
+
+                                        ธ.กรุงไทย
+
+                                    </option>
+                                    <option>
+
+                                        ธ.ทหารไทย
+
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left my-2">
+                            <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-1-0">เลขที่บัญชี: </label>
+                            <div class="col-sm-9 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left my-2">
+                            <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-1-0">สาขาธนาคาร:</label>
+                            <div class="col-sm-9 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left my-2">
+                            <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-1-0">ชื่อบัญชี:</label>
+                            <div class="col-sm-9 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left my-2">
+                            <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-1-0">ประเภทบัญชี:</label>
+                            <div class="col-sm-3 pl-0">
+                                <div class="form-radio aksorn">
+                                    <label class="form-check-label f-1-0">
+                                        <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked="">
+                                        ออมทรัพย์
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 pl-0">
+                                <div class="form-radio aksorn">
+                                    <label class="form-check-label f-1-0">
+                                        <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked="">
+                                        กระแสรายวัน
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 pl-0">
+                                <div class="form-radio aksorn">
+                                    <label class="form-check-label f-1-0">
+                                        <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked="">
+                                        ฝากประจำ
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hr-subtitle" />
+                        <div class=" row-modal text-left">
+                            <button type="button" class="btn btn-inverse-light btn-fw ml-auto mr-3 aksorn f-1-0" data-dismiss="modal" aria-label="Close">ยกเลิก</button>
+                            <button type="button" class="btn btn-primary btn-fw aksorn f-1-0">บันทึกบัญชีธนาคาร</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Account Ends -->
+<div class="modal fade" id="exmaple-Modal-Del" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-del modal-del" role="document">
+        <div class="modal-content modal-content-del">
+            <div class="modal-header-del">
+                <h5 class="modal-subtitle-full text-center f-1-6 aksorn">ยืนยันการลบบัญชีธนาคารนี้</h5>
+                <button type="button" class="close-del" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body-del">
+                <div>
+                    <p class="f-1-0 aksorn">คุณกำลังลบบัญชีธนาคาร, ต้องการดำเนินการต่อหรือไม่?</p>
+                </div>
+            </div>
+            <div class="modal-footer-del">
+                <button type="button" class="flowbtnsm close-btn mr-3">ปิด</button>
+                <button type="button" class="flowbtnsm dialog-red-btn">ลบข้อมูล</button>
+            </div>
+        </div>
+    </div>
+</div>
