@@ -1,0 +1,374 @@
+﻿
+@section RenderScriptWithPage
+    {
+    <script src="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-menu select.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+
+        (function ($) {
+            if ($("#datepicker-popup").length) {
+                $('#datepicker-popup').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+            if ($("#datepicker-popup-1").length) {
+                $('#datepicker-popup-1').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+        })(jQuery);
+
+        var $table = $('table.scroll'),
+            $bodyCells = $table.find('tbody tr:first').children(),
+            colWidth;
+
+        // Adjust the width of thead cells when window resizes
+        $(window).resize(function () {
+            // Get the tbody columns width array
+            colWidth = $bodyCells.map(function () {
+                return $(this).width();
+            }).get();
+
+            // Set the width of thead columns
+            $table.find('thead tr').children().each(function (i, v) {
+                $(v).width(colWidth[i]);
+            });
+        }).resize(); // Trigger resize handler
+    </script>
+
+}
+
+<link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+<title>การเก็บเงิน | WeAccount</title>
+<div class="row mb-4">
+    <div class="col-md-12 ">
+        <div class="d-flex">
+            <h5 class="title-page-1">
+                รายงานการเก็บเงิน
+            </h5>
+            <div class="h-25 ml-auto">
+                <button type="button" class="btn btn-primary btn-fw px-5 aksorn f-1-2">ดาวน์โหลดเป็น Excel</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card card-weaccount border-fix-table  pt-4 px-4 pb-1">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="aksorn f-1-0">ช่วงเวลา:</label>
+                        <select class="form-control" id="exampleFormControlSelect2">
+                            <option>
+                                เดือนปัจจุบัน
+                            </option>
+                            <option>
+                                เดือนก่อน
+                            </option>
+                            <option>
+                                เลือกช่วงวันที่
+                            </option>
+                            <option>
+                                ปีปัจจุบัน
+                            </option>
+                            <option>
+                                ปีก่อน
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="aksorn f-1-0">สถานะ:</label>
+                        <select class="form-control" id="exampleFormControlSelect2">
+                            <option>
+                                แสดงทั้งหมด
+                            </option>
+                            <option>
+                                รอดำเนินการ
+                            </option>
+                            <option>
+                                รอเก็บเงิน
+                            </option>
+                            <option>
+                                เก็บเงินแล้ว / ดำเนินการแล้ว
+                            </option>
+                            <option>
+                                ยกเลิก
+                            </option>
+                            <option>
+                                เปิดใบเสร็จแล้ว
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card card-weaccount border-fix-table scroll-card">
+            <div class="card-table search-table-outter table-responsive p-4">
+                <div class="row mb-4">
+                    <div class="col-md-12 ">
+                        <div class="d-flex">
+                            <h5 class="title-page-1 text-primary f-2-0">
+                                รายงานการเก็บเงิน
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-6 ">
+                        <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn-Bold f-1-0">ณ วันที่ </label>
+                        <label for="exampleInputEmail2" class="col-sm-8 pl-0 col-form-label aksorn f-1-0">ณ วันที่ 9 มิถุนายน 2020</label>
+                        <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn-Bold f-1-0">ช่วงเวลา</label>
+                        <label for="exampleInputEmail2" class="col-sm-8 pl-0 col-form-label aksorn f-1-0">ช่วงเวลา 1 มิ.ย 2020 - 30 มิ.ย. 2020</label>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <label for="exampleInputEmail2" class="col-sm-12 pl-0 col-form-label aksorn-Bold f-1-0">มูลค่ารวม</label>
+                        <label for="exampleInputEmail2" class="col-sm-12 pl-0 col-form-label aksorn f-1-8 text-primary">681,000.00</label>
+                    </div>
+                </div>
+                <table class="table s-report table-hover-blue  aksorn s-table">
+                    <thead class="table-report">
+                        <tr>
+                            <th width="15%" class="aksorn f-1-0">เลขที่เอกสาร</th>
+                            <th width="15%" class="aksorn f-1-0">วันที่</th>
+                            <th width="15%" class="aksorn f-1-0">ชื่อลูกค้า/ชื่อโปรเจ็ค</th>
+                            <th width="15%" class="aksorn text-right f-1-0">ช่องทางรับชำระ</th>
+                            <th width="15%" class="aksorn text-right f-1-0">ยอดรวมสุทธิ</th>
+                            <th width="10%" class="aksorn f-1-0">สถานะ</th>
+                        </tr>
+                    </thead>
+                    <tbody class="">
+                        <tr>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">CA2020060002</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">02-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <p class="f-1-0">เงินสด</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <p class="f-1-0">100,000.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <span class="btn btn-gray btn-block f-1-0 px-2 aksorn text-left" id="dropdownMenuButton2">
+                                            รอดำเนินการ
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">CA2020060002</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">02-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <p class="f-1-0">เงินสด</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <p class="f-1-0">100,000.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <span class="btn btn-gray btn-block f-1-0 px-2 aksorn text-left" id="dropdownMenuButton2">
+                                            รอดำเนินการ
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">CA2020060002</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">02-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <p class="f-1-0">เงินสด</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <p class="f-1-0">100,000.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <span class="btn btn-gray btn-block f-1-0 px-2 aksorn text-left" id="dropdownMenuButton2">
+                                            รอดำเนินการ
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">CA2020060002</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">02-06-2020</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="f-1-0">บริษัททดสอบ จำกัด มหาชน.</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="f-0-8 text-muted mb-0">Project-1</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <p class="f-1-0">เงินสด</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <p class="f-1-0">100,000.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="15%">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <span class="btn btn-gray btn-block f-1-0 px-2 aksorn text-left" id="dropdownMenuButton2">
+                                            รอดำเนินการ
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr >
+                            <td colspan="7">
+                                <nav>
+                                    <ul class="pagination pt-2">
+                                        <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-left"></i></a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                        <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-right"></i></a></li>
+                                    </ul>
+                                </nav>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

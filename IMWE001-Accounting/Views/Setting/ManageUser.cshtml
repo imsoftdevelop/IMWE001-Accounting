@@ -1,0 +1,476 @@
+﻿
+@section RenderScriptWithPage
+    {
+    <script src="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/lib/dropify/dropify.min.js"></script>
+    <script src="~/lib/jquery.toast/toastDemo.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.dropdown-menu select.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+
+        (function ($) {
+            'use strict';
+            $('.dropify').dropify();
+        })(jQuery);
+
+        (function ($) {
+            if ($("#datepicker-popup").length) {
+                $('#datepicker-popup').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+            if ($("#datepicker-popup-1").length) {
+                $('#datepicker-popup-1').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+        })(jQuery);
+
+        var $table = $('table.scroll'),
+            $bodyCells = $table.find('tbody tr:first').children(),
+            colWidth;
+
+        // Adjust the width of thead cells when window resizes
+        $(window).resize(function () {
+            // Get the tbody columns width array
+            colWidth = $bodyCells.map(function () {
+                return $(this).width();
+            }).get();
+
+            // Set the width of thead columns
+            $table.find('thead tr').children().each(function (i, v) {
+                $(v).width(colWidth[i]);
+            });
+        }).resize(); // Trigger resize handler
+
+        function modaladd() {
+            $('#exampleModal-5').modal('show');
+
+        }
+        function modaldel() {
+            $('#exmaple-Modal-Del').modal('show');
+        }
+
+        $(this).popover({
+            html: true
+        });
+    </script>
+
+}
+
+<link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+<title>ผู้ใช้งานในระบบ | WeAccount</title>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card card-weaccount">
+            <div class="card-body ">
+                <div class="row mb-3">
+                    <div class="col-md-12 ">
+                        <div class="d-flex">
+                            <h4 class="f-1-6 aksorn">
+                                ผู้ใช้งานในระบบ
+                            </h4>
+                            <div class="h-25 ml-auto">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary px-4 aksorn f-1-0 px-3" onclick="modaladd()">เพิ่มผู้ใช้งาน</button>
+                                    @*<button type="button" class="btn btn-inverse-success btn-fw" onclick="showWariningToast()">Warning notification</button>
+                                    <button type="button" class="btn btn-inverse-success btn-fw" onclick="showSuccessToast()">Success notification</button>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pl-3 mb-3">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 pb-0  col-form-label aksorn-Bold f-1-2">ผู้ใช้งานในบริษัท </label>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card ">
+                            <div class="card-table search-table-outter table-responsive">
+                                <table class="table table-hover-gray  aksorn scroll s-table">
+                                    <thead class="card-bodygray">
+                                        <tr>
+                                            <th width="50%" class="aksorn f-1-0">อีเมลที่ใช้งานในระบบ/ชื่อนามสกุล</th>
+                                            <th width="20%" class="aksorn f-1-0">ตำแหน่ง</th>
+                                            <th width="20%" class="aksorn f-1-0">สถานะ</th>
+                                            <th width="3%" class="aksorn f-1-0"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <tr>
+                                            <td width="30%">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p class="f-1-0">im.training@gmail.com</p>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <p class="f-0-8 text-muted mb-0">นายทดสอบ ระบบ</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td width="30%">
+                                                <p class="f-1-0">เจ้าของกิจการ</p>
+                                            </td>
+                                            <td width="30%">
+                                                <p class="f-1-0">ปกติ</p>
+                                            </td>
+                                            <td width="3%">
+                                                <div class="row">
+                                                    <div class="col-12 ">
+                                                        <div class="dropdown">
+                                                            <button type="button" class="btn btn-light mb-2 icon-btn dropdown-toggle-split p-2" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="icon-options"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu border-fix" aria-labelledby="dropdownMenuIconButton3">
+                                                                <a class="dropdown-item"><i class="fa fa-edit mr-2 "></i>แก้ไข</a>
+                                                                <a class="dropdown-item py-2" onclick="modaldel()"><i class="fa fa-trash-o mr-2 "></i>ลบผู้ใช้งาน</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Account Modal starts -->
+<div class="modal fade" id="exampleModal-5" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-text" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-subtitle-full f-1-6 aksorn">สร้างผู้ใช้งานในระบบ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row-modal pl-0 mb-4">
+                    <div class="col-lg-6 pl-0">
+                        <div class=" row-modal text-left my-2">
+                            <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-1-0">ชื่อ: </label>
+                            <div class="col-sm-9 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left my-2">
+                            <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-1-0">นามสกุล: </label>
+                            <div class="col-sm-9 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left my-2">
+                            <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-1-0">เบอร์ติดต่อ: </label>
+                            <div class="col-sm-9 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left my-2">
+                            <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-1-0">อีเมลผู้ใช้งาน: </label>
+                            <div class="col-sm-9 pl-0">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left  my-2">
+                            <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-1-0">ตำแหน่ง:</label>
+                            <div class="col-sm-9 pl-0">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>
+                                        กรุณาเลือกตำแหน่ง
+                                    </option>
+                                    <option>
+
+                                        เจ้าของกิจการ
+
+                                    </option>
+                                    <option>
+
+                                        สำนักงานบัญชี
+
+                                    </option>
+                                    <option>
+
+                                        ผู้จัดการฝ่ายขาย
+
+                                    </option>
+                                    <option>
+
+                                        พนักงานขาย
+
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class=" row-modal text-left my-2">
+                            <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-1-0">สถานะใช้งาน:</label>
+                            <div class="form-check aksorn text-primary f-1-2">
+                                <label class="form-check-label f-1-0">
+                                    <input type="checkbox" class="form-check-input" checked>
+                                    เปิดใช้งาน
+                                </label>
+                            </div>
+                        </div>
+                        <hr class="hr-subtitle" />
+
+                        <div class=" row-modal text-left">
+                            <button type="button" class="btn btn-inverse-light btn-fw ml-auto mr-3 aksorn f-1-0" data-dismiss="modal" aria-label="Close">ยกเลิก</button>
+                            <button type="button" class="btn btn-primary btn-fw aksorn f-1-0">บันทึกบัญชีธนาคาร</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 pl-0">
+                        <div class=" row-modal text-left my-2">
+                            <div class="col-lg-12 pl-0 text-center">
+                                <h5 class="modal-subtitle-full f-1-4  aksorn">สิทธิ์ของตำแหน่งผู้ใช้งานในระบบ</h5>
+                            </div>
+
+                            <div class="col-lg-12 pl-0 text-center">
+                                <table class="table">
+                                    <thead class="card-bodygray">
+                                        <tr>
+                                            <th width="20%" class="aksorn f-0-8"></th>
+                                            <th width="20%" class="aksorn f-0-8">เจ้าของกิจการ</th>
+                                            <th width="20%" class="aksorn f-0-8">สำนักงานบัญชี</th>
+                                            <th width="20%" class="aksorn f-0-8">ผู้จัดการฝ่ายขาย</th>
+                                            <th width="20%" class="aksorn f-0-8">พนักงานขาย</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <tr>
+                                            <td width="20%" class="text-left">
+                                                <p class="f-0-8 aksorn">เอกสารขาย</p>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-org f-1-2"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20%" class="text-left">
+                                                <p class="f-0-8 aksorn">เอกสารซื้อ</p>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-lock fa-gray f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-lock fa-gray f-1-2"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20%" class="text-left">
+                                                <p class="f-0-8 aksorn">ใบลดหนี้/เพิ่มหนี้</p>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-lock fa-gray f-1-2"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20%" class="text-left">
+                                                <p class="f-0-8 aksorn">ค่าใช้จ่าย</p>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-org f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-org f-1-2"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20%" class="text-left">
+                                                <p class="f-0-8 aksorn">หัก ณ ที่จ่าย</p>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-lock fa-gray f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-lock fa-gray f-1-2"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20%" class="text-left">
+                                                <p class="f-0-8 aksorn">รายงานและภาพรวม</p>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-lock fa-gray f-1-2"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20%" class="text-left">
+                                                <p class="f-0-8 aksorn">เมนูสินค้า</p>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-org f-1-2"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20%" class="text-left">
+                                                <p class="f-0-8 aksorn">สมุดรายชื่อ</p>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-org f-1-2"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20%" class="text-left">
+                                                <p class="f-0-8 aksorn">การตั้งค่าธุรกิจ</p>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-lock fa-gray f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-lock fa-gray f-1-2"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20%" class="text-left">
+                                                <p class="f-0-8 aksorn">เพิ่มผู้ใช้งาน</p>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-check-circle fa-blue f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-lock fa-gray f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-lock fa-gray f-1-2"></i>
+                                            </td>
+                                            <td width="20%">
+                                                <i class="fa fa-lock fa-gray f-1-2"></i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-lg-12 pl-0">
+                                <hr class="hr-subtitle" />
+                                <div class=" row-modal text-left my-2 pb-0">
+                                    <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-0-8 pl-3">*หมายเหตุ</label>
+
+                                    <label for="exampleInputEmail2" class="col-sm-9 pl-0 col-form-label aksorn f-0-8">  <i class="fa fa-check-circle fa-blue pr-2 f-1-2"></i>สามารถสร้าง แก้ไข และลบได้</label>
+                                </div>
+                                <div class=" row-modal text-left my-2 pb-0">
+                                    <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-0-8"></label>
+                                    <label for="exampleInputEmail2" class="col-sm-9 pl-0 col-form-label aksorn f-0-8"> <i class="fa fa-check-circle fa-org pr-2 f-1-2"></i>เห็นเฉพาะเอกสารของตัวเอง</label>
+                                </div>
+                                <div class=" row-modal text-left my-2 pb-0">
+                                    <label for="exampleInputEmail2" class="col-sm-3 pl-0 col-form-label aksorn f-0-8"></label>
+                                    <label for="exampleInputEmail2" class="col-sm-9 pl-0 col-form-label aksorn f-0-8">     <i class="fa fa-lock fa-gray pr-2 f-1-2"></i>ไม่สามารถเห็นและใช้งานฟังก์ชั่นได้</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Account Ends -->
+<!-- Delete starts -->
+<div class="modal fade" id="exmaple-Modal-Del" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-del modal-del" role="document">
+        <div class="modal-content modal-content-del">
+            <div class="modal-header-del">
+                <h5 class="modal-subtitle-full text-center pr-0 f-1-6 aksorn">ยืนยันการลบบัญชีธนาคารนี้</h5>
+                <button type="button" class="close-del" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body-del">
+                <div>
+                    <p class="f-1-0 aksorn">คุณกำลังลบข้อมูล, ต้องการดำเนินการต่อหรือไม่?</p>
+                </div>
+            </div>
+            <div class="modal-footer-del">
+                <button type="button" class="flowbtnsm close-btn mr-3">ปิด</button>
+                <button type="button" class="flowbtnsm dialog-red-btn">ลบข้อมูล</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Delete Ends -->

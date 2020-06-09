@@ -1,0 +1,408 @@
+﻿
+@section RenderScriptWithPage
+    {
+    <script src="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/lib/dropify/dropify.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.dropdown-menu select.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+
+        (function ($) {
+            'use strict';
+            $('.dropify').dropify();
+        })(jQuery);
+
+        (function ($) {
+            if ($("#datepicker-popup").length) {
+                $('#datepicker-popup').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+            if ($("#datepicker-popup-1").length) {
+                $('#datepicker-popup-1').datepicker({
+                    enableOnReadonly: true,
+                    todayHighlight: true,
+                    autoclose: true
+                });
+            }
+        })(jQuery);
+
+        var $table = $('table.scroll'),
+            $bodyCells = $table.find('tbody tr:first').children(),
+            colWidth;
+
+        // Adjust the width of thead cells when window resizes
+        $(window).resize(function () {
+            // Get the tbody columns width array
+            colWidth = $bodyCells.map(function () {
+                return $(this).width();
+            }).get();
+
+            // Set the width of thead columns
+            $table.find('thead tr').children().each(function (i, v) {
+                $(v).width(colWidth[i]);
+            });
+        }).resize(); // Trigger resize handler
+        function modaladd() {
+            $('#exampleModal-5').modal('show');
+        }
+
+        $(this).popover({
+            html: true
+        });
+    </script>
+
+}
+
+<link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+<title>หมายเหตุเอกสาร | WeAccount</title>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card card-weaccount">
+            <div class="card-body ">
+                <div class="row mb-3">
+                    <div class="col-md-12 ">
+                        <div class="d-flex">
+                            <h4 class="f-1-6 aksorn">
+                                แก้ไขข้อมูลเอกสาร
+                            </h4>
+                            <div class="h-25 ml-auto">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success px-4 aksorn f-1-0 px-3">บันทึกข้อมูล</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pl-3 ">
+                    <div class="col-lg-6 pl-0" style="position:relative;">
+                        <h5 class="modal-subtitle-full text-primary pl-0 f-1-2  aksorn">
+                            รูปแบบการรันเลขเอกสาร
+                        </h5>
+                        <div class="hr-title">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3">
+                    <div class="col-sm-3 pl-0">
+                        <div class="form-radio aksorn">
+                            <label class="form-check-label f-1-0">
+                                <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked="">
+                                ปี/เดือน 2020060001
+                                <i class="input-helper"></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pl-0">
+                        <div class="form-radio aksorn">
+                            <label class="form-check-label f-1-0">
+                                <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="">
+                                ปี 2020000001
+                                <i class="input-helper"></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pl-0">
+                        <span class="span-a mt-2">
+                            <a class="orange-line "><i class="fa fa-refresh"></i> รีเซ็ทเลขรัน</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="row pl-3 pt-3 pb-2 ">
+                    <div class="col-lg-6 pl-0" style="position:relative;">
+                        <h5 class="modal-subtitle-full text-primary pl-0 f-1-2  aksorn">
+                            ตั้งค่าเลขเริ่มต้นเอกสาร
+                        </h5>
+                        <div class="hr-title">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3 ">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบเสนอราคา:</label>
+                    <div class="col-sm-4 pl-0">
+                        <div class="input-group-run">
+                            <div class="input-group-append-run col-3 p-0">
+                                <span class="input-group-text-first aksorn-Bold">QT</span>
+                            </div>
+                            <div class="input-group-append-run col-6 p-0">
+                                <input type="text" class="form-control input-group-text-mid aksorn-Bold" value="2020-06">
+                            </div>
+                            <div class="input-group-append-run col-3 p-0">
+                                <input type="text" class="form-control input-group-text-end aksorn-Bold" value="0001">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pl-0">
+                        <span class="span-a mt-1">
+                            <a class="red-line "><i class="fa fa-close"></i> ยกเลิกการแก้ไข</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3 ">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบวางบิล/ใบแจ้งหนี้:</label>
+                    <div class="col-sm-4 pl-0">
+                        <div class="input-group-run">
+                            <div class="input-group-append-run col-3 p-0">
+                                <span class="input-group-text-first aksorn-Bold">BL</span>
+                            </div>
+                            <div class="input-group-append-run col-6 p-0">
+                                <input type="text" class="form-control input-group-text-mid aksorn-Bold" value="2020-06" disabled>
+                            </div>
+                            <div class="input-group-append-run col-3 p-0">
+                                <input type="text" class="form-control input-group-text-end aksorn-Bold" value="0001" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pl-0">
+                        <span class="span-a mt-1">
+                            <a class="orange-line "><i class="fa fa-refresh"></i> รีเซ็ทเลขรัน</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3 ">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบกำกับภาษี/ใบเสร็จ:</label>
+                    <div class="col-sm-4 pl-0">
+                        <div class="input-group-run">
+                            <div class="input-group-append-run col-3 p-0">
+                                <span class="input-group-text-first aksorn-Bold">INV</span>
+                            </div>
+                            <div class="input-group-append-run col-6 p-0">
+                                <input type="text" class="form-control input-group-text-mid aksorn-Bold" value="2020-06" disabled>
+                            </div>
+                            <div class="input-group-append-run col-3 p-0">
+                                <input type="text" class="form-control input-group-text-end aksorn-Bold" value="0001" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pl-0">
+                        <span class="span-a mt-1">
+                            <a class="orange-line "><i class="fa fa-refresh"></i> รีเซ็ทเลขรัน</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3 ">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">เงินสด:</label>
+                    <div class="col-sm-4 pl-0">
+                        <div class="input-group-run">
+                            <div class="input-group-append-run col-3 p-0">
+                                <span class="input-group-text-first aksorn-Bold">CA</span>
+                            </div>
+                            <div class="input-group-append-run col-6 p-0">
+                                <input type="text" class="form-control input-group-text-mid aksorn-Bold" value="2020-06" disabled>
+                            </div>
+                            <div class="input-group-append-run col-3 p-0">
+                                <input type="text" class="form-control input-group-text-end aksorn-Bold" value="0001" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pl-0">
+                        <span class="span-a mt-1">
+                            <a class="orange-line "><i class="fa fa-refresh"></i> รีเซ็ทเลขรัน</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3 ">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบเสร็จรับเงิน:</label>
+                    <div class="col-sm-4 pl-0">
+                        <div class="input-group-run">
+                            <div class="input-group-append-run col-3 p-0">
+                                <span class="input-group-text-first aksorn-Bold">RE</span>
+                            </div>
+                            <div class="input-group-append-run col-6 p-0">
+                                <input type="text" class="form-control input-group-text-mid aksorn-Bold" value="2020-06" disabled>
+                            </div>
+                            <div class="input-group-append-run col-3 p-0">
+                                <input type="text" class="form-control input-group-text-end aksorn-Bold" value="0001" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pl-0">
+                        <span class="span-a mt-1">
+                            <a class="orange-line "><i class="fa fa-refresh"></i> รีเซ็ทเลขรัน</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3 ">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบลดหนี้:</label>
+                    <div class="col-sm-4 pl-0">
+                        <div class="input-group-run">
+                            <div class="input-group-append-run col-3 p-0">
+                                <span class="input-group-text-first aksorn-Bold">CN</span>
+                            </div>
+                            <div class="input-group-append-run col-6 p-0">
+                                <input type="text" class="form-control input-group-text-mid aksorn-Bold" value="2020-06" disabled>
+                            </div>
+                            <div class="input-group-append-run col-3 p-0">
+                                <input type="text" class="form-control input-group-text-end aksorn-Bold" value="0001" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pl-0">
+                        <span class="span-a mt-1">
+                            <a class="orange-line "><i class="fa fa-refresh"></i> รีเซ็ทเลขรัน</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3 ">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบเพิ่มหนี้:</label>
+                    <div class="col-sm-4 pl-0">
+                        <div class="input-group-run">
+                            <div class="input-group-append-run col-3 p-0">
+                                <span class="input-group-text-first aksorn-Bold">DN</span>
+                            </div>
+                            <div class="input-group-append-run col-6 p-0">
+                                <input type="text" class="form-control input-group-text-mid aksorn-Bold" value="2020-06" disabled>
+                            </div>
+                            <div class="input-group-append-run col-3 p-0">
+                                <input type="text" class="form-control input-group-text-end aksorn-Bold" value="0001" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pl-0">
+                        <span class="span-a mt-1">
+                            <a class="orange-line "><i class="fa fa-refresh"></i> รีเซ็ทเลขรัน</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3  mt-3">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบสั่งซื้อ:</label>
+                    <div class="col-sm-4 pl-0">
+                        <div class="input-group-run">
+                            <div class="input-group-append-run col-3 p-0">
+                                <span class="input-group-text-first aksorn-Bold">PO</span>
+                            </div>
+                            <div class="input-group-append-run col-6 p-0">
+                                <input type="text" class="form-control input-group-text-mid aksorn-Bold" value="2020-06" disabled>
+                            </div>
+                            <div class="input-group-append-run col-3 p-0">
+                                <input type="text" class="form-control input-group-text-end aksorn-Bold" value="0001" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pl-0">
+                        <span class="span-a mt-1">
+                            <a class="orange-line "><i class="fa fa-refresh"></i> รีเซ็ทเลขรัน</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3 pb-4">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบรับสินค้า:</label>
+                    <div class="col-sm-4 pl-0">
+                        <div class="input-group-run">
+                            <div class="input-group-append-run col-3 p-0">
+                                <span class="input-group-text-first aksorn-Bold">RI</span>
+                            </div>
+                            <div class="input-group-append-run col-6 p-0">
+                                <input type="text" class="form-control input-group-text-mid aksorn-Bold" value="2020-06" disabled>
+                            </div>
+                            <div class="input-group-append-run col-3 p-0">
+                                <input type="text" class="form-control input-group-text-end aksorn-Bold" value="0001" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 pl-0">
+                        <span class="span-a mt-1">
+                            <a class="orange-line "><i class="fa fa-refresh"></i> รีเซ็ทเลขรัน</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="row pl-3 pt-3 ">
+                    <div class="col-lg-6 pl-0" style="position:relative;">
+                        <h5 class="modal-subtitle-full text-primary pl-0 f-1-2  aksorn">
+                            ชื่อหัวเอกสาร
+                        </h5>
+                        <div class="hr-title">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบสั่งซื้อ:</label>
+                    <div class="col-sm-4 pl-0">
+                        <select class="form-control" id="exampleFormControlSelect2">
+                            <option>ใบสั่งซื้อ | Purchase Order</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบเสนอราคา:</label>
+                    <div class="col-sm-4 pl-0">
+                        <select class="form-control" id="exampleFormControlSelect2">
+                            <option>สัญญาโฆษณา | Advertising Contract</option>
+                            <option>ใบส่งของ | Delivery Note</option>
+                            <option>ใบสั่งงาน | Job order</option>
+                            <option>ใบสั่งงาน | Job order</option>
+                            <option>ใบเสนอราคา | Price Quotation</option>
+                            <option>ใบเสนอราคา | Quotation</option>
+                            <option>ใบสั่งขาย | Sales/Job order</option>
+                            <option>สัญญาบริการ | Sevice Contract</option>
+                            <option>ใบส่งมอบบริการ | Summary Timesheet</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3 ">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบวางบิล/ใบแจ้งหนี้:</label>
+                    <div class="col-sm-4 pl-0">
+                        <select class="form-control" id="exampleFormControlSelect2">
+                            <option>ใบวางบิล | Billing Note</option>
+                            <option>ใบส่งสินค้าชั่วคราว | Delivery Bill</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3 ">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบกำกับภาษี/ใบเสร็จ:</label>
+                    <div class="col-sm-4 pl-0">
+                        <select class="form-control" id="exampleFormControlSelect2">
+                            <option>ใบวางบิล/ใบแจ้งหนี้ | Billing Note/Invoice</option>
+                            <option>ใบวางบิล/ใบแจ้งหนี้ + ใบเสร็จรับเงิน | Billing Note/Invoice + Receipt</option>
+                            <option>ใบส่งสินค้า | Delivery Note</option>
+                            <option>ใบส่งสินค้า/ใบแจ้งหนี้ | Delivery Note/Invoice</option>
+                            <option>ใบส่งสินค้า/ใบแจ้งหนี้ + ใบเสร็จรับเงิน | Delivery Note/Invoice + Receipt</option>
+                            <option>ใบแจ้งหนี้ | Invoice</option>
+                            <option>ใบแจ้งหนี้ + ใบเสร็จรับเงิน | Invoice + Receipt</option>
+                            <option>ใบแจ้งหนี้/ใบเสร็จรับเงิน | Invoice/Receipt</option>
+                            <option>ใบเสร็จรับเงิน | Receipt</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3 ">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบเสร็จรับเงิน:</label>
+                    <div class="col-sm-4 pl-0">
+                        <select class="form-control" id="exampleFormControlSelect2">
+                            <option>ใบเสร็จรับเงิน | Receipt</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3 ">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบลดหนี้:</label>
+                    <div class="col-sm-4 pl-0">
+                        <select class="form-control" id="exampleFormControlSelect2">
+                            <option>ใบลดหนี้ | Credit Note</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3 ">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">ใบเพิ่มหนี้:</label>
+                    <div class="col-sm-4 pl-0">
+                        <select class="form-control" id="exampleFormControlSelect2">
+                            <option>ใบเพิ่มหนี้ | Debit Note</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pl-3 pb-3 ">
+                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 col-form-label aksorn f-1-0">เงินสด:</label>
+                    <div class="col-sm-4 pl-0">
+                        <select class="form-control" id="exampleFormControlSelect2">
+                            <option>ใบเสร็จรับเงิน (เงินสด) | Receipt (Cash)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
