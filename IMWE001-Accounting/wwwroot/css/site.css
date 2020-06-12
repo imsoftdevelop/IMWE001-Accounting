@@ -612,7 +612,9 @@ hr {
 }
 
 .btn-receipt {
-    background-color: #74ac18 !important;
+    color: rgba(255,255,255,.9);
+    background-color: #88c426;
+    border-color: #74ac18;
 }
 
 .btn-category {
