@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMWE001-Accounting", "IMWE001-Accounting\IMWE001-Accounting.csproj", "{FAAD63D4-F94E-4151-B5A2-D5014BA10C6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IMWE001-Accounting", "IMWE001-Accounting\IMWE001-Accounting.csproj", "{FAAD63D4-F94E-4151-B5A2-D5014BA10C6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMWE001-AccountingMicroAPI", "IMWE001-AccountingMicroAPI\IMWE001-AccountingMicroAPI.csproj", "{F5818D36-EC27-440D-A4CA-B14D3D729758}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FAAD63D4-F94E-4151-B5A2-D5014BA10C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAAD63D4-F94E-4151-B5A2-D5014BA10C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAAD63D4-F94E-4151-B5A2-D5014BA10C6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5818D36-EC27-440D-A4CA-B14D3D729758}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5818D36-EC27-440D-A4CA-B14D3D729758}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5818D36-EC27-440D-A4CA-B14D3D729758}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5818D36-EC27-440D-A4CA-B14D3D729758}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
