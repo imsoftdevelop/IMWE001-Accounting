@@ -15,8 +15,13 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.6" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IMWE001-AccountingModels\IMWE001-AccountingModels.csproj" />
+    <ProjectReference Include="..\IMWE001-AccountingRepository\IMWE001-AccountingRepository.csproj" />
   </ItemGroup>
 
 </Project>
