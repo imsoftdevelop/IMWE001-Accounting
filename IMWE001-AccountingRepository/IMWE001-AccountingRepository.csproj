@@ -6,13 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="IMauchlyCore" Version="1.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\IMWE001-AccountingModels\IMWE001-AccountingModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="IMauchlyCore">
+      <HintPath>..\IMWE001-AccountingMicroAPI\lib\IMauchlyCore.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
