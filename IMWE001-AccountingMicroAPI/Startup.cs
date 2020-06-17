@@ -41,17 +41,12 @@ namespace IMWE001_AccountingMicroAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            #region Swagger
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
-            // specifying the Swagger JSON endpoint.
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Master API V1");
-            });
-            #endregion
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("v1/swagger.json", "MyAPI V1");
+                });
 
             app.UseHttpsRedirection();
             app.UseMvc();

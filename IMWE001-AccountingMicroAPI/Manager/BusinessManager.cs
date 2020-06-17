@@ -17,10 +17,21 @@ namespace IMWE001_AccountingMicroAPI.Manager
 
         public BusinessProfile getbusinessprofilebyid(string businessid)
         {
-            BusinessProfile response = new BusinessProfile();
-            using (BusinessProfileRepository BusinessProfileRepositor = new BusinessProfileRepository())
-                response = BusinessProfileRepositor.GetDataAll().FirstOrDefault();
-            return response;
+            try
+            {
+                BusinessProfile response = new BusinessProfile();
+                using (BusinessProfileRepository BusinessProfileRepositor = new BusinessProfileRepository())
+                    response = BusinessProfileRepositor.SelectFirstDataWithCondition(a => a.UID.ToString().ToUpper() == businessid.ToString().ToUpper());
+
+                if (response == null)
+                    throw new Exception("ไม่พบข้อมูลธุรกิจ");
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

@@ -1,74 +1,30 @@
 ﻿
+@using System.Web.Optimization;
+@{
+    Random d = new Random();
+    string random = d.Next(0, 9).ToString() + d.Next(0, 9).ToString() + d.Next(0, 9).ToString() + d.Next(0, 9).ToString() + d.Next(0, 9).ToString() + d.Next(0, 9).ToString();
+}
+
 @section RenderScriptWithPage
     {
     <script src="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/js/controller/businesscontroller/businessprofilecontroller.js?nocache= + @random"></script>
     <script src="~/lib/dropify/dropify.min.js"></script>
     <script>
-        $(document).ready(function () {
-
-            $('.dropdown-menu select.test').on("click", function (e) {
-                $(this).next('ul').toggle();
-                e.stopPropagation();
-                e.preventDefault();
-            });
-        });
 
         (function ($) {
             'use strict';
             $('.dropify').dropify();
         })(jQuery);
 
-        (function ($) {
-            if ($("#datepicker-popup").length) {
-                $('#datepicker-popup').datepicker({
-                    enableOnReadonly: true,
-                    todayHighlight: true,
-                    autoclose: true
-                });
-            }
-            if ($("#datepicker-popup-1").length) {
-                $('#datepicker-popup-1').datepicker({
-                    enableOnReadonly: true,
-                    todayHighlight: true,
-                    autoclose: true
-                });
-            }
-        })(jQuery);
-
-        var $table = $('table.scroll'),
-            $bodyCells = $table.find('tbody tr:first').children(),
-            colWidth;
-
-        // Adjust the width of thead cells when window resizes
-        $(window).resize(function () {
-            // Get the tbody columns width array
-            colWidth = $bodyCells.map(function () {
-                return $(this).width();
-            }).get();
-
-            // Set the width of thead columns
-            $table.find('thead tr').children().each(function (i, v) {
-                $(v).width(colWidth[i]);
-            });
-        }).resize(); // Trigger resize handler
-
-        function modaladd() {
-            $('#exampleModal-5').modal('show');
-        }
-        function modaletax() {
-            $('#exampleModal-3').modal('show');
-        }
-
-        $(this).popover({
-            html: true
-        });
     </script>
-
 }
+@*<button type="button" class="btn btn-inverse-success btn-fw" onclick="showWariningToast()">Warning notification</button>
+    <button type="button" class="btn btn-inverse-success btn-fw" onclick="showSuccessToast()">Success notification</button>*@
 
 <link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
 <title>ข้อมูลธุรกิจ | WeAccount</title>
-<div class="row">
+<div class="row" ng-controller="businessprofilecontroller" data-ng-init="init()">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card card-weaccount">
             <div class="card-body ">
@@ -80,7 +36,7 @@
                             </h4>
                             <div class="h-25 ml-auto">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-primary px-4 aksorn f-1-0 px-3">บันทึกข้อมูล</button>
+                                    <button type="button" class="btn btn-primary px-4 aksorn f-1-0 px-3" ng-click="OnClickSave1()">บันทึกข้อมูล</button>
                                 </div>
                             </div>
                         </div>
@@ -111,30 +67,30 @@
                     </div>
                 </div>
                 <div class="row pl-3 pb-0">
-                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 pb-0 col-form-label aksorn-Bold f-1-0">รายละเอียดธุรกิจ </label>
+                    <label for="exampleInputEmail2" class="col-sm-12 pl-0 pb-0 col-form-label aksorn-Bold f-1-0">รายละเอียดธุรกิจ </label>
                 </div>
                 <div class="row pl-3 mb-2 mt-0 pt-0">
-                    <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ข้อมูลใช้สำหรับการออกเอกสาร </label>
+                    <label for="exampleInputEmail2" class="col-sm-12 pl-0 col-form-label aksorn f-1-0">ข้อมูลใช้สำหรับการออกเอกสาร </label>
                 </div>
                 <div class="row pl-3 pb-0">
                     <label for="exampleInputEmail2" class="col-sm-2 pl-0  pb-0 col-form-label aksorn f-1-0">
-                        ชื่อธุรกิจ: <i class="ti-info-alt f-1-0 ml-2 text-primary" data-html="true" data-toggle="popover" title="ตัวอย่างในการกรอกชื่อธุรกิจ" data-content="• หากเป็นประเภทบริษัท: บริษัท โฟลว์แอคเคาท์ จำกัด หรือ บจก. โฟลว์แอคเคาท์
+                        ชื่อธุรกิจ: <i class="ti-info-alt f-1-0 ml-2 text-primary" data-html="true" data-toggle="popover"  title="ตัวอย่างในการกรอกชื่อธุรกิจ" data-content="• หากเป็นประเภทบริษัท: บริษัท โฟลว์แอคเคาท์ จำกัด หรือ บจก. โฟลว์แอคเคาท์
 <br />• หากเป็นประเภทห้างหุ้นส่วน: ห้างหุ้นส่วนจำกัด โฟลว์แอคเคาท์ หรือ หจก. โฟลว์แอคเคาท์" data-custom-class="popover-primary"></i>
                     </label>
                     <div class="col-sm-5 col-12 col-lg-4 col-md-5 pl-0">
-                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="ตัวอย่างการกรอก : บริษัท วีดีเวล็อป จำกัด">
+                        <input type="email" class="form-control" id="exampleInputEmail2" ng-model="BusinessProfile.BusinessName" placeholder="ตัวอย่างการกรอก : บริษัท วีดีเวล็อป จำกัด">
                     </div>
                 </div>
                 <div class="row pl-3">
                     <label for="exampleInputEmail2" class="col-sm-2 pb-0 pl-0 col-form-label aksorn f-1-0">ที่อยู่: </label>
                     <div class="col-sm-5 col-12 col-lg-4 col-md-5 pl-0">
-                        <textarea rows="4" class="form-control form-textarea" id="exampleInputEmail2" placeholder="รายละเอียดที่อยู่"></textarea>
+                        <textarea rows="4" class="form-control form-textarea" id="exampleInputEmail2" placeholder="รายละเอียดที่อยู่"  ng-model="BusinessProfile.Address"></textarea>
                     </div>
                 </div>
                 <div class="row pl-3">
                     <label for="exampleInputEmail2" class="col-sm-2 pb-0 pl-0 col-form-label aksorn f-1-0">เลขประจำตัวผู้เสียภาษี: </label>
                     <div class="col-sm-5 col-12 col-lg-4 col-md-5 pl-0">
-                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="">
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder=""  ng-model="BusinessProfile.TaxID">
                     </div>
                 </div>
                 <div class="row pl-3">
@@ -164,10 +120,10 @@
                     </div>
                 </div>
                 <div class="row pl-3 pb-0">
-                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 pb-0 col-form-label aksorn-Bold f-1-0">ข้อมูลติดต่อ </label>
+                    <label for="exampleInputEmail2" class="col-sm-12 pl-0 pb-0 col-form-label aksorn-Bold f-1-0">ข้อมูลติดต่อ </label>
                 </div>
                 <div class="row pl-3 mb-2 mt-0 pt-0">
-                    <label for="exampleInputEmail2" class="col-sm-4 pl-0 col-form-label aksorn f-1-0">ข้อมูลใช้สำหรับการออกเอกสาร </label>
+                    <label for="exampleInputEmail2" class="col-sm-12 pl-0 col-form-label aksorn f-1-0">ข้อมูลใช้สำหรับการออกเอกสาร </label>
                 </div>
                 <div class="row pl-3 mb-2">
                     <label for="exampleInputEmail2" class="col-sm-2 pb-0 pl-0 col-form-label aksorn f-1-0">เบอร์สำนักงาน: </label>
@@ -199,7 +155,7 @@
                     </div>
                 </div>
                 <div class="row pl-3 pb-0">
-                    <label for="exampleInputEmail2" class="col-sm-2 pl-0 pb-0 col-form-label aksorn-Bold f-1-0">โลโก้และตรายาง </label>
+                    <label for="exampleInputEmail2" class="col-sm-12 pl-0 pb-0 col-form-label aksorn-Bold f-1-0">โลโก้และตรายาง </label>
                 </div>
                 <div class="row pl-3">
                     <label for="exampleInputEmail2" class="col-sm-2 pl-0 pb-0 col-form-label aksorn f-1-0">แนบไฟล์: </label>

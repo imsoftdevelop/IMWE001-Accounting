@@ -31,7 +31,7 @@
 
 
 </head>
-<body id="bodyframe">
+<body id="bodyframe" ng-app="WEACCTAPP001">
     <div class="container-scroller">
         <!-- partial:header menu-->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row navbar-primary">
@@ -311,7 +311,7 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")Report/Reportpurchaseorder">ใบสั่งซื้อ</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="@Url.Content("~/")Report/Reportreceivinginventory">ใบรับสินค้า</a></li>
-                              
+
                             </ul>
                         </div>
                     </li>
@@ -439,7 +439,16 @@
     <script src="~/lib/vendors/iCheck.js"></script>
     <script src="~/lib/vendors/typeahead.js"></script>
     <script src="~/lib/vendors/select2.js"></script>
+    <script src="~/js/underscore/underscore-min.js"></script>
     <!-- End custom js for this page-->
+    <!-- AngularJS-->
+    <script src="~/js/angularJS/angular.js"></script>
+    <script src="~/js/angularJS/angular-resource.js"></script>
+    <script src="~/js/controller/app.js"></script>
+    <script src="~/js/controller/custom.js"></script>
+    <script src="~/js/controller/factory.js"></script>
+    <script src="~/lib/jquery.toast/toastDemo.js"></script>
+    <!-- End AngularJS -->
 
     @if (IsSectionDefined("RenderScriptWithPage"))
     {@RenderSection("RenderScriptWithPage", required: false)}

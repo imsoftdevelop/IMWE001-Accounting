@@ -17,7 +17,7 @@ namespace IMWE001_AccountingMicroAPI.Config
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Quickloan API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "WEAccount API", Version = "v1" });
                 c.OperationFilter<SwaggerHeaderFilter>();
             });
         }
