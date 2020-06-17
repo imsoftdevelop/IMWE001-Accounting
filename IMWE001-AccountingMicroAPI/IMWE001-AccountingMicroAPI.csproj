@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="IMauchlyCore" Version="1.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
@@ -23,6 +22,18 @@
   <ItemGroup>
     <ProjectReference Include="..\IMWE001-AccountingModels\IMWE001-AccountingModels.csproj" />
     <ProjectReference Include="..\IMWE001-AccountingRepository\IMWE001-AccountingRepository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="IMauchlyCore">
+      <HintPath>lib\IMauchlyCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="lib\IMauchlyCore.1.0.5.nupkg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
